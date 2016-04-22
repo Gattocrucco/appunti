@@ -1,0 +1,754 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = pdflatex
+
+%%% --- PREAMBLE --- %%%
+
+\documentclass[a4paper,twocolumn,twoside]{article}
+
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\renewcommand*\familydefault\sfdefault
+\usepackage[margin=1cm,top=1.8cm,inner=1.8cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{mfirstuc}
+\usepackage{paralist}
+
+\newcommand*\itemz[1]{\item[#1.]}
+\newcommand*\itemZ[1]{\itemz{\xmakefirstuc{#1}}}
+\newcommand*\pag{\null\hspace*{0pt}\dotfill}
+%\newcommand*\pag{\null\hspace*{\fill}}
+\renewcommand*\d{\itemz d}
+\newcommand*\p{\itemZ p}
+\renewcommand*\t{\itemZ t}
+\renewcommand*\o{\itemZ o}
+\renewcommand*\c{\itemZ c}
+\renewcommand*\l{\itemZ l}
+\newcommand*\e{\itemZ e}
+\newcommand*\x{\itemZ x}
+
+\newcommand*\R{\mathbb R}
+\newcommand*\Z{\mathbb Z}
+\newcommand*\C{\mathbb C}
+\newcommand*\T{\mathbb T}
+\newcommand*\N{\mathbb N}
+\DeclareMathOperator\GL{GL}
+\renewcommand*\L{\operatorname{L}}
+\renewcommand*\O{\operatorname{O}}
+\DeclareMathOperator\B{B}
+\DeclareMathOperator\U{U}
+\DeclareMathOperator\SU{SU}
+\DeclareMathOperator\SL{SL}
+\DeclareMathOperator\SO{SO}
+\newcommand*\de{\mathrm{d}}
+
+\frenchspacing
+
+\renewcommand\thesection{}
+\renewcommand\thesubsection{\arabic{subsection}}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+%%% --- DOCUMENT --- %%%
+
+\begin{document}
+
+\pagestyle{headings}
+
+\title{Indice globale di definizioni, teoremi, proposizioni, lemmi, osservazioni, corollari, esempi, esercizi per fisica II, 2015-2016}
+\date{}
+
+\maketitle
+\thispagestyle{empty}
+
+\tableofcontents
+
+\section{Serre: Rappresentazioni lineari di gruppi finiti, 1971}
+
+\subsection{Generalità sulle rappresentazioni}
+
+\begin{description}
+	\d rappresentazione unitaria \pag 4
+	\d rapp. regolare \pag 5
+	\d rapp. di permutazioni \pag 5
+	\d sottorappresentazione \pag 5
+	\t (1) un sottospazio stabile ha un complemento stabile \pag 6
+	\d somma diretta \pag 7
+	\d rapp. irriducibile \pag 7
+	\t (2) le rapp. si scompongono in rapp. irr. \pag 7
+	\d prodotto tensoriale \pag 8
+	\d prodotto tensoriale di rapp. (su un gruppo) \pag 8
+	\d quadrati simmetrico e alternante \pag 9
+\end{description}
+
+\subsection{Teoria dei caratteri}
+
+\begin{description}
+	\d carattere \pag 10
+	\p (1) proprietà di base del carattere \pag 10
+	\d funzione di classe \pag 11
+	\p (2) carattere della somma e del prodotto \pag 11
+	\p (3) carattere dei quadrati simm. e alt. \pag 11
+	\e (1) carattere dei quadrati simm. e alt. della somma \pag 12
+	\e (2) carattere della rapp. di perm. \pag 12
+	\e (3) rapp. duale \pag 12
+	\e (4) rapp. sugli omomorfismi tra spazi di rappresentazione \pag 12
+	\p (4) lemma di Schur \pag 13
+	\c (1) applicazione alla media \pag 13
+	\c (2) media del prodotto dei coefficienti di matrici di due rapp. irr. non isomorfe \pag 14
+	\c (3) media del prodotto dei coefficienti di matrici di una rapp. irr. \pag 14
+	\d prodotto scalare sui caratteri \pag 15
+	\t (3) ortonormalità dei caratteri irr. \pag 15
+	\t (4) calcolo del numero di componenti irr. isomorfe a una data rapp. irr. \pag 16
+	\c (1) la scomposizione in rapp. irr. è unica a meno di ordine e isomorfismi \pag 16
+	\c (2) rapp. con lo stesso carattere sono isomorfe \pag 16
+	\t (5) criterio di irriducibilità \pag 17
+	\d orbita \pag 17
+	\d transitività \pag 17
+	\e (6a) la rapp. di perm. contiene rapp. unitarie quante le orbite \pag 17
+	\e (6b) carattere della rapp. di perm. sul prodotto cartesiano \pag 17
+	\d doppia transitività \pag 17
+	\e (6c) fatti equivalenti alla doppia transitività \pag 17
+	\p (5) carattere della rapp. reg. \pag 18
+	\c (1) scomposizione della rapp. reg. \pag 18
+	\c (2) relazione sui gradi delle rapp. irr. \pag 18
+	\p (6) somma lungo il gruppo di una funzione di classe per una rapp. irr. \pag 19
+	\d spazio delle funzioni di classe \pag 19
+	\t (6) i caratteri delle rapp. irr. sono una base delle funzioni di classe \pag 19
+	\t (7) numero di rapp. irr. \pag 19
+	\p (7) relazioni sulla grandezza delle classi e sui caratteri irr. \pag 20
+	\d scomposizione canonica \pag 21
+	\t (8) proiezioni sulla scomposizione canonica \pag 21
+	\e (8a) dimesione dello spazio delle applicazioni lineari dallo spazio di rappresentazione di una componente irr. a quello della rapp. scomposta che commutano con la rapp. \pag 22
+	\e (8b) isomorfismo tra il prodotto della comp. irr. con lo spazio dell'es. (8a) e la corrispondente comp. canonica \pag 22
+	\p (8) scomposizione di una comp. canonica \pag 23
+	\e (9) isomorfismo tra lo spazio dell'es. 8a e il sottospazio della comp. canonica associato alla mappa della prop.~8 \pag 24
+	\e (10) sottorapp. minima per un punto \pag 24
+\end{description}
+
+\subsection{Sottogruppi, prodotti, rappresentazioni indotte}
+
+\begin{description}
+	\d gruppo abeliano \pag 25
+	\t (9) abeliano equivale ad avere rapp. irr. solo di grado~1 \pag 25
+	\d indice di un sottogruppo \pag 25
+	\c limite superiore ai gradi delle rapp. irr. dato un sottogruppo abeliano \pag 25
+	\e (1) anche i gruppi abeliani infiniti hanno rapp. irr. solo di grado~1 \pag 26
+	\d centro di un gruppo \pag 26
+	\e (2a) le rapp. irr. sono omotetie sul centro \pag 26
+	\e (2b) limite superiore al grado di una rapp. irr. dato il centro \pag 26
+	\d rapp. fedele \pag 26
+	\e (2c) rapp. fedele implica centro ciclico \pag 26
+	\e (3) gruppo duale \pag 26
+	\d gruppo prodotto \pag 26
+	\d prodotto diretto di sottogruppi \pag 27
+	\d prodotto tensoriale di rapp. (su gruppi diversi) \pag 27
+	\t (10i) irriducibilità del prodotto di irriducibili \pag 27
+	\t (10ii) tutti gli irriducibili sul prodotto sono prodotto di irriducibili \pag 27
+	\d classe laterale sinistra \pag 28
+	\d congruenza modulo un sottogruppo \pag 28
+	\d quoziente su un sottogruppo \pag 28
+	\d rapp. indotta \pag 28
+	\x (1) induzione della rapp. reg. \pag 29
+	\x (2) la rapp. unitaria induce la rapp. di perm. sul quoziente \pag 29
+	\x (3) l'induzione della somma è la somma degli indotti \pag 29
+	\x (4) sottorapp. indotta \pag 29
+	\x (5) induzione del prodotto tensore su un fattore \pag 29
+	\l (1) una mappa da uno spazio di rappresentazione a un altro che porta fuori la rapp. si estende univocamente alla rapp. indotta \pag 29
+	\t (11) esistenza e unicità della rapp. indotta \pag 30
+	\t (12) carattere di una rapp. indotta \pag 30
+	\e (4) le rapp. irr. sono contenute in indotte di rapp. irr. di sottogruppi \pag 31
+	\e (5) induzione attraverso isomorfismo allo spazio di funzioni dal gruppo allo spazio di rappresentazione che portano fuori la rapp. \pag 31
+	\e (6) la rapp. sul prodotto diretto indotta da una rapp. del primo fattore è isomorfa al prodotto della rapp. del primo fattore con la rapp. reg. del secondo \pag 31
+\end{description}
+
+\stepcounter{subsection}
+
+\subsection{Esempi}
+
+\begin{description}
+	\x (1) gruppo ciclico \pag 35
+	\x (2) rotazioni sul piano \pag 36
+	\x (3) gruppo diedrale \pag 36
+	\e (1) classi di coniugio del gruppo diedrale \pag 38
+	\e (2) prodotto di caratteri e caratteri dei quadrati simmetrico e alternante (sul gruppo diedrale) \pag 38
+	\e (3) riducibilità e carattere della rapp. usuale del gruppo diedrale \pag 38
+	\x (4) gruppo diedrale più riflessioni per l'origine \pag 40
+	\x (5) rotazioni e riflessioni sul piano \pag 39
+	\x (6) rotazioni e riflessioni sul piano più riflessioni per l'origine \pag 40
+	\x (7) gruppo alternante \pag 41
+	\d prodotto semidiretto di sottogruppi \pag 41
+	\e (4) induzione della rapp. irr. di grado~3 del gruppo alternante dal sottogruppo di elementi di ordine~2 \pag 41
+	\x (8) gruppo simmetrico \pag 42
+	\x (9) gruppo del cubo \pag 43
+	\e (4) decomposizione semidiretta del gruppo del cubo con il gruppo simmetrico~3 passando da quella diretta con il gruppo simmetrico~4 \pag 43
+	\e (5) isomorfismo tra il gruppo di rotazioni del cubo e il gruppo simmetrico~4 \pag 43
+\end{description}
+
+\section{Vinberg: Rappresentazioni lineari di gruppi, 1989}
+
+\setcounter{subsection}{-1}
+
+\subsection{Nozioni di base}
+
+\begin{description}
+	\x rotazioni come omomorfismo di $\R$ in $\GL_2(\R)$ \pag 2
+	\x (0.2) omomorfismo di $S_n$ in $\GL_n$ usando la base canonica \pag 2
+	\d (0.3) rappresentazione matriciale \pag 3
+	\d nucleo \pag 3
+	\d rapp. fedele \pag 3
+	\d rapp. triviale \pag 4
+	\d rapp. lineare \pag 4
+	\d equivalenza di rapp. matriciali \pag 5
+	\d isomorfismo di rapp. lineari \pag 5
+	\x (1) rapp. di $\R$ con le rotazioni \pag 6
+	\x (2) rapp. di $\R$ sullo spazio dei polinomi \pag 7
+	\x (3) rapp. di $\R$ sullo spazio di
+		\begin{inparaenum}[(a)]
+			\item funzioni continue
+			\item polinomi di grado limitato
+			\item polinomi in $\sin$ e $\cos$
+			\item span di $\sin$ e $\cos$
+		\end{inparaenum}
+		\pag 7
+	\d azione \pag 7
+	\d traslazioni a destra e a sinistra \pag 8
+	\d (0.9) rapp. lineare associata a un'azione \pag 8
+	\x (1) rapp. associata all'azione del gruppo delle rotazioni del cubo sulle facce \pag 9
+	\x (2) isomorfismo tra la rapp. associata all'azione naturale di $S_n$ e la rapp. dell'esempio 0.2 \pag 9
+	\d rapp. regolari destra e sinistra \pag 10
+	\o (0.10) la composizione di una rapp. con un omomorfismo è una rapp. \pag 10
+	\x restrizione come composizione con omomorfismo \pag 10
+	\x (1) la composizione con il coniugio è una rapp. isomorfa \pag 10
+	\e (1) $\det e^A=e^{\operatorname{tr}A}$ \pag 11
+	\e (2a) trovare $A$ tale che $e^{\chi A}$ è un boost \pag 11
+	\e (2b) trovare $A$ tale che $e^{tA}=\big(\begin{smallmatrix}1&t\\0&1\end{smallmatrix}\big)$ \pag 11
+	\e (3) caratterizzare le rapp. matriciali unidimensionali \pag 11
+	\e (4) mostrare che la traccia della rapp. dell'esempio 0.2 è il numero di punti fissati dalla permutazione \pag 11
+	\e (5) caratterizzare le rapp. matriciali triviali di un gruppo arbitrario \pag 11
+	\e (6) $e^{C^{-1}AC}=C^{-1}e^AC$, $C$ invertibile \pag 11
+	\e (9) trovare le rapp. di grado finito di
+		\begin{inparaenum}[(a)]
+			\item $\Z$
+			\item $\Z_m$
+		\end{inparaenum}
+		\pag 12
+	\e (10) trovare le rapp. complesse differenziabili di grado finito di
+		\begin{inparaenum}[(a)]
+			\item $\R^+$
+			\item $\{z\in\C\mid|z|=1\}$
+		\end{inparaenum}
+		\pag 12
+	\e (11) l'azione sull'identità è l'identità \pag 12
+	\e (12) le iperboli con asintoti paralleli agli assi con coefficienti da una matrice inducono un'azione da $\GL_2(\R)$ su $\R\cup\{\pm\infty\}$ \pag 12
+	\e (13) formula esplicita per la rapp. reg. destra \pag 12
+	\e (14) le rapp. reg. destra e sinistra sono isomorfe \pag 12
+	\e (15) ogni gruppo ha una rapp. lineare fedele \pag 12
+	\e (16) le rapp. di $\Z$ sono restrizioni di rapp. di $\C$? \pag 12
+	\e (17) trovare le rapp. complesse di grado finito di $\Z_m$ che rimangono isomorfe per inversione dell'asse \pag 12
+\end{description}
+
+\subsection{Sottospazi invarianti}
+
+\begin{description}
+	\d (1.1) sottospazio invariante sotto rapp. \pag 13
+	\x i polinomi di grado limitato sono sottospazi invarianti per la rapp. di $\R$ come traslazioni \pag 13
+	\o invarianza di somme e intersezioni di sottospazi invarianti \pag 13
+	\x forma della rapp. matriciale con base estesa da un sottospazio invariante \pag 14
+	\d (1.2) sottorappresentazione e rapp. quoziente \pag 14
+	\x forma matriciale delle sottorapp. e rapp. quoziente \pag 14
+	\d (1.3) rapp. irriducibile \pag 15
+	\x (1) irriducibilità delle rapp. unidimensionali \pag 15
+	\x (2) irr. della rapp. identica di $\GL(V)$ \pag 15
+	\x (3) irr. della rapp. di $\R$ come rotazioni \pag 15
+	\x (4) irr. della rapp. di $\R$ come traslazioni di polinomi \pag 15
+	\x (5) irr. delle rapp. monomiali di $S_n$ \pag 15
+	\d (1.4) rapp. completamente riducibile \pag 16
+	\o le rapp. irr. sono compl. rid. \pag 16
+	\x isomorfismo tra la sottorapp. su un sottospazio complementare e la rapp. quoziente, e descrizione matriciale \pag 16
+	\t (1) le sottorapp. di una rapp. compl. rid. sono compl. rid. \pag 17
+	\t (2) lo spazio di rappresentazione di una rapp. compl. rid. di grado finito è somma diretta di sottospazi invarianti minimali \pag 18
+	\t (3) se una rapp. è somma di finiti sottospazi invarianti minimali allora, dato un sottospazio invariante, è somma diretta di alcuni di essi e del sottospazio \pag 18
+	\o (1) applicare il teorema~3 con un sottospazio nullo \pag 19
+	\o (2) sotto le ipotesi del teorema~3, un sottospazio invariante non è necessariamente somma di quelli minimali dati \pag 19
+	\x (1) rapp. di $\GL(V)$ in $\L(V)$ con moltiplicazione a sinistra \pag 19
+	\x (2) rapp. di $\GL(V)$ in $\L(V)$ con il coniugio \pag 19
+	\x (3) rapp. naturale di $\GL(V)$ in $\B(V)$ \pag 20
+	\e (1) l'azione della rapp. su un sottospazio invariante è l'identità \pag 21
+	\e (2) trovare i sottospazi dei polinomi invarianti per rapp. di $\R$ come traslazioni \pag 21
+	\e (3) trovare i sottospazi invarianti nella rapp. esponenziale di $\C$ dove l'esponente non ha radici multiple nel polinomio caratteristico \pag 21
+	\e (5) le sottorapp. sui complementi dello stesso sottospazio invariante sono isomorfe \pag 21
+	\e (6) le rapp. quoziente di una rapp. compl. rid. sono compl. rid. \pag 21
+	\e (7) dire se è compl. rid.
+		\begin{inparaenum}[(a)]
+			\item la rapp. di $\R$ come traslazioni di polinomi
+			\item la rapp. esponenziale di $\C$ senza radici multiple nel polinomio caratteristico dell'esponente
+		\end{inparaenum}
+		\pag 21
+	\e (8) la rapp. esponenziale di $\C$ è compl. rid. se e solo se l'esponente è diagonalizzabile \pag 21
+	\e (9) la rapp. identica del gruppo ortogonale è irr. \pag 21
+	\e (10) le rapp. monomiali di $S_n$ su un campo a caratteristica zero sono compl. rid. \pag 21
+	\e (11) la restrizione ad $A_n$ della sottorapp. sui vettori con somma dei coefficienti nulla della rapp. monomiale di $S_n$ è irr. per $n\ge4$ \pag 21
+	\e (12) i sottospazi invarianti di rapp. di grado finito compl. rid. sono somma diretta di sottospazi invarianti minimali della decomposizione analoga della rapp. \pag 21
+	\e (14) sottospazi invarianti della rapp. di $\GL(V)$ in $\L(V)$ con il coniugio \pag 22
+	\e (15) le funzioni commutative e anticommutative sono sottospazi invarianti minimali per rapp. di $\GL(V)$ di $\B(V)$ \pag 22
+\end{description}
+
+\subsection{Completa riducibilità delle rappresentazioni di gruppi compatti}
+
+\begin{description}
+	\d invarianza di una funzione sotto rapp. \pag 22
+	\d rapp. ortogonale e rapp. unitaria \pag 22
+	\p le rapp. ortogonali e unitarie sono compl. rid. \pag 23
+	\t (1) le rapp. di gruppi finiti sono ortogonali/unitarie \pag 23
+	\c le rapp. reali/complesse di gruppi finiti sono compl. rid. \pag 24
+	\d (2.4) gruppo topologico \pag 24
+	\x (1) gruppo con topologia discreta \pag 24
+	\x (2) topologia di $\GL(V)$ \pag 24
+	\x (3) sottogruppi topologici \pag 24
+	\d gruppo compatto \pag 24
+	\x (1) gruppo finito con topologia discreta \pag 24
+	\x (2) gruppo ortogonale \pag 24
+	\x (3) gruppo unitario \pag 24
+	\x (4) sottogruppi chiusi di gruppi compatti \pag 24
+	\p compattezza del gruppo ortogonale \pag 24
+	\d rapp. continua \pag 25
+	\x (1) rapp. reali/complesse di gruppi con topologia discreta \pag 25
+	\x (2) le rapp. di $\GL(V)$ in $\L(V)$ per moltiplicazione a destra e coniugio e in $\B(V)$ naturale con $V$ reale/complesso sono continue \pag 25
+	\t (2) le rapp. di un gruppo compatto sono ortogonali/unitarie \pag 25
+	\c le rapp. reali/complesse di un gruppo compatto sono compl. rid. \pag 26
+	\d integrazione invariante normalizzata su un gruppo compatto \pag 26
+	\x (1) integrazione sui gruppi finiti \pag 26
+	\x (2) integrazione su $\U_1$ \pag 26
+	\x (3) integrazione su $\SU_2$ attraverso $S^3$ \pag 26
+	\t (2.6, 2.7) dimostrazione alternativa del teorema 2 \pag 27
+	\e (1) gli autovalori complessi di una rapp. ortogonale/unitaria hanno modulo~1 \pag 29
+	\e (2) dare un esempio di rapp. complessa non unitaria di $\Z$ \pag 29
+	\e (3) trovare un prodotto scalare invariante per la rapp. reale di $\Z_3$ che manda il generatore in $\big(\begin{smallmatrix}0&-1\\1&-1\end{smallmatrix}\big)$ \pag 30
+	\e (4) dire se sono compatti: $\Z$, $\Z_m$, $\T$, $\SL_n(\R)$ \pag 30
+	\e (5) la continuità di una rapp. reale/complessa passa alle sottorapp. e rapp. quoziente \pag 30
+	\e (6) la rapp. di $\GL(V)$ in $\L(V)$ con il coniugio, V reale/complesso, è continua \pag 30
+\end{description}
+
+\subsection{Operazioni di base sulle rappresentazioni}
+
+\begin{description}
+	\d (3.1) rapp. duale \pag 30
+	\x forma matriciale della rapp. duale \pag 31
+	\o le rapp. ortogonali sono isomorfe alla duale \pag 31
+	\o ogni rapp. è isomorfa alla biduale \pag 31
+	\t (1) la duale di una rapp. irr. di grado finito è irr. \pag 31
+	\d annullatore \pag 31
+	\d (3.2) somma di rapp. \pag 32
+	\x forma matriciale della somma di rapp. \pag 32
+	\t (2) compl. rid. di grado finito equivale a somma di rapp. irr. (a meno di isomorfismi) \pag 32
+	\t (3) se una rapp. è isomorfa a una somma di rapp. irr. allora le sue sottorapp. e rapp. quoziente sono isomorfe a somme di alcune delle rapp. irr. \pag 33
+	\c se le sottorapp. su finiti sottospazi minimali invarianti sono a coppie non isomorfe, i sottospazi sono indipendenti \pag 33
+	\t (4) la scomposizione in rapp. irr. è unica a meno di ordine e isomorfismi \pag 33
+	\d (3.3) prodotto di rapp. \pag 34
+	\x forma matriciale del prodotto di rapp. \pag 34
+	\x (1) prodotto con una rapp. triviale \pag 35
+	\x (2) prodotto con la duale \pag 36
+	\x (3) quadrato della duale \pag 36
+	\x (4) prodotto con una rapp. monodimensionale \pag 36
+	\o il prodotto di irr. non è necessariamente irr. \pag 36
+	\d (3.4) prodotto tensoriale di rapp. \pag 37
+	\x forma matriciale del prodotto tensoriale \pag 37
+	\x prodotto tensoriale con la duale \pag 37
+	\d (3.5) estensione del campo di base \pag 38
+	\d (3.6) complessificazione \pag 38
+	\x complessificazione della rapp. di $\R$ come rotazioni \pag 38
+	\t (5) rapp. reali di grado finito sono isomorfe se e solo se lo sono le complessificazioni \pag 39
+	\o (3.7) la complessificazione di un sottospazio invariante è un sottospazio invariante della complessificata \pag 39
+	\d coniugazione di vettori \pag 39
+	\o la coniugazione è antilineare \pag 39
+	\l un sottospazio della complessificata è complessificazione di un sottospazio se e solo se è uguale al coniugato \pag 40
+	\o la somme e l'intersezione con il coniugato sono uguali ai loro coniugati \pag 40
+	\t (6) la complessificata di una rapp. irr. è o irr. o somma di due rapp. irr. con spazi coniugati \pag 40
+	\x (2) rapp. fedele di $S_3$ con un triangolo \pag 40
+	\d (3.7) sollevamento e fattorizzazione di rapp. \pag 41
+	\o bigezione tra le rapp. del quoziente e le rapp. il cui nucleo contiene il sottogruppo normale \pag 41
+	\x (1) $\SL_n$ è normale ed è nucleo del determinante \pag 41
+	\x (2) gruppo di Klein \pag 42
+	\x (3) tutte le rapp. di $\Z_m$ fattorizzando quelle di $\Z$ \pag 42
+	\d sottogruppo commutatore \pag 42
+	\o ogni rapp. monodimensionale è sollevamento di una rapp. monodimensionale del quoziente sul commutatore \pag 42
+	\x tutte le rapp. monodimensionali di $S_n$ \pag 43
+	\e (1) descrivere la duale di una rapp. triviale \pag 43
+	\e (2) irriducibilità della duale implica irriducibilità \pag 43
+	\e (3) il passaggio alla duale commuta con la somma \pag 43
+	\e (4) la completa irriducibilità passa alla duale \pag 43
+	\e (5) la rapp. identica di $\SL_2$ è isomorfa alla duale \pag 43
+	\e (6) ogni rapp. compl. rid. è isomorfa alla somma della sottorapp. e della rapp. quoziente su uno stesso sottospazio invariante \pag 43
+	\e (7) regola di cancellazione per la somma di rapp. compl. rid. di grado finito \pag 43
+	\e (8) il prodotto di rapp. commuta con la somma \pag 43
+	\e (9) il prodotto di rapp. è commutativo \pag 43
+	\e (10) descrizione matriciale del quadrato di una rapp. \pag 44
+	\e (11) il prodotto di due rapp. esponenziali di $\C$ è una rapp. esponenziale; trovare l'esponente \pag 44
+	\e (12) il prodotto di una rapp. irr. con una monodimensionale è irr. \pag 44
+	\e (13) esplicitare la forma del prodotto tensoriale con la duale senza usare la forma matriciale \pag 44
+	\e (14) forma matriciale del quadrato tensoriale e confronto con il quadrato \pag 44
+	\e (15) la complessificata di una rapp. irr. di grado dispari è irr. \pag 44
+	\e (16) trovare le rapp. di grado finito di $\O_n$ i cui nuclei contengono $\SO_n$ \pag 44
+	\e (17) trovare le rapp. monodimensionali di $A_4$ \pag 44
+	\e (18) $\SL_n$ è il commutatore di $\GL_n$ \pag 44
+\end{description}
+
+\subsection{Proprietà delle rappresentazioni irriducibili complesse}
+
+\begin{description}
+	\d (4.1) morfismo di rapp. \pag 44
+	\x la proiezione su un sottospazio invariante parallela a un suo complemento invariante è un morfismo dalla rapp. alla sottorapp. \pag 45
+	\o il nucleo e l'immagine di un morfismo sono sottospazi invarianti \pag 45
+	\t (1) i morfismi di rapp. irr. sono isomorfismi o nulli \pag 45
+	\t (2) se lo spazio di una rapp. si scompone in sottospazi invarianti minimali tali che le sottorapp. sono a coppie non isomorfe, allora ogni altro sottospazio invariante è somma di alcuni di essi \pag 45
+	\d (4.2) endomorfismo di rapp. \pag 45
+	\t (3) lemma di Schur \pag 46
+	\c tutti i morfismi di due rapp. irr. complesse isomorfe sono isomorfismi multipli tra loro \pag 46
+	\t (4) tutti i sottospazi del prodotto tensoriale dello spazio di una rapp. irr. complessa con quello di una triviale invarianti per il prodotto delle rapp. e minimali sono prodotti tensoriali dello spazio della rapp. irr. con un vettore nello spazio della triviale \pag 46
+	\t (5) le rapp. irr. complesse di un gruppo abeliano sono monodimensionali \pag 47
+	\c ogni rapp. complessa di un gruppo abeliano ha un sottospazio invariante minimale \pag 47
+	\t (6) il prodotto tensoriale di due rapp. irr. complesse è irr. \pag 47
+	\t ogni rapp. irr. complessa del prodotto di due gruppi è il prodotto tensoriale di due rapp. irr. dei gruppi \pag 48
+	\d (4.5) elementi matriciali di una rapp. \pag 48
+	\d spazio dei coefficienti matriciali \pag 48
+	\p (1) gli spazi dei coeff. mat. di rapp. isomorfe sono uguali \pag 48
+	\p (2) lo spazio dei coeff. mat. di una somma di rapp. è la somma dei rispettivi spazi di coeff. mat. \pag 48
+	\d rapp. regolare (bilatera) \pag 49
+	\t (7) isomorfismo tra il prodotto tensoriale di una rapp. irr. complessa con la duale e la rapp. reg. ristretta allo spazio dei coeff. mat. \pag 49
+	\c (1) dimensione dello spazio dei coeff. mat. \pag 49
+	\c (2) isomorfismo tra il prodotto di una rapp. triviale con la duale di una rapp. irr. complesa e la rapp. reg. sinistra ristretta allo spazio dei coeff. mat. della rapp. irr.; isomorfismo tra il prodotto di una rapp. irr. complessa con la duale di una triviale e la rapp. reg. destra ristretta allo spazio dei coeff. mat della rapp. irr. \pag 50
+	\c (3) la rapp. reg. sinistra ristretta allo spazio dei coeff. mat. di una rapp. irr. complessa è isomorfa a un multiplo della duale della rapp. irr.; per la rapp. reg. destra vale con un multiplo della rapp. irr. \pag 50
+	\c (4) le rapp. reg. ristrette agli spazi dei coeff. mat. di due rapp. irr. complesse non isomorfe non sono isomorfe \pag 50
+	\c (5) gli spazi dei coeff. mat. di rapp. irr. complesse a coppie non isomorfe sono indipendenti \pag 50
+	\x scomposizione dello spazio dei coeff. mat. in una somma diretta di sottospazi invarianti per rapp. reg. sinistra o destra minimali \pag 50
+	\x rapp. monodimensionali esponenziali di un gruppo ciclico \pag 51
+	\l dati due prodotti hermitiani esiste un operatore lineare che applicato al primo fattore di un prodotto lo trasforma nell'altro \pag 51
+	\t (8) il prodotto hermitiano invariante di una rapp. irr. unitaria è unico a meno di un fattore costante \pag 52
+	\t (9) spazi invarianti minimali con sottorapp. non isomorfe di una rapp. unitaria sono ortogonali rispetto a qualunque prodotto hermitiano invariante \pag 52
+	\e (1) l'immagine attraverso morfismo di rapp. di un sottospazio invariante è un sottospazio invariante \pag 52
+	\e (2) gli endomorfismi della rapp. monomiale di $S_n$ ristretta a un sottogruppo doppiamente transitivo sono combinazione lineare dell'identità e dell'operatore che manda la base nella somma della base \pag 53
+	\e (3) dimensione dello spazio dei morfismi da una combinazione lineare a coefficienti naturali a un'altra di rapp. irr. complesse a coppie non isomorfe \pag 53
+	\e (4) la sottorapp. monomiale sul sottospazio di vettori con somma delle componenti nulla ristretta a un sottogruppo doppiamente transitivo è irr. \pag 53
+	\e (5) trovare gli automorfismi della rapp. di $\R$ come rotazioni \pag 53
+	\e (6) nello spazio di una rapp. complessa di un gruppo abeliano c'è una base che triangolarizza la rapp. \pag 53
+	\e (7) le rapp. irr. reali di un gruppo abeliano sono al più bidimensionali \pag 53
+	\e (8) la rapp. reg. destra di un gruppo finito è isomorfa alla somma di tutte (a meno di isomorfismi) le rapp. irr. del gruppo moltiplicate per il loro grado \pag 53
+	\e (9) i sottospazi del prodotto tensoriale dello spazio di una rapp. irr. complessa con quello di una triviale invarianti per il prodotto delle rapp. sono prodotti tensoriali dello spazio della rapp. irr. con un sottospazio della triviale \pag 53
+	\e (10) gli elementi matriciali di una rapp. irr. complessa sono indipendenti; è vero anche per una reale? \pag 53
+	\e (11) lo span dell'immagine di una rapp. irr. complessa è $\L(V)$ \pag 53
+	\e (12) le rapp. irr. sono isomorfe a una sottorapp. della rapp. reg. destra \pag 53
+	\e (13) le rapp. irr. sono isomorfe a una sottorapp. della rapp. reg. sinistra \pag 53
+	\e (14) dimostrare i corollari 4 e 5 su campi arbitrari \pag 54
+	\e (15) il prodotto scalare invariante di una rapp. irr. ortogonale è unico a meno di un fattore costante positivo \pag 54
+\end{description}
+
+\subsection{Scomposizione della rappresentazione regolare}
+
+\begin{description}
+	\t (1) le rapp. irr. complesse di un gruppo finito sono finite a meno di isomorfismi \pag 55
+	\t (2) lo spazio delle funzioni a valori complessi da un gruppo finito è la somma diretta degli spazi dei coeff. mat. delle rapp. irr. complesse del gruppo \pag 56
+	\c (1) la somma dei quadrati dei gradi delle rapp. irr. complesse di un gruppo finito è l'ordine del gruppo \pag 56
+	\c (2) le rapp. reg. destra e sinistra di un gruppo finito sono isomorfe alla somma delle rapp. irr. complesse del gruppo moltiplicate per il loro grado \pag 57
+	\x (1) il numero di rapp. irr. complesse di un gruppo finito abeliano è l'ordine del gruppo \pag 57
+	\x (2) rapp. irr. complesse di $S_3$ \pag 57
+	\d (5.3) carattere di una rapp. \pag 57
+	\x (1) carattere di una rapp. monodimensionale \pag 57
+	\x (2) carattere di una rapp. triviale \pag 57
+	\x (3) carattere della rapp. di $\R$ come rotazioni \pag 57
+	\x (4) carattere della rapp. monomiale di $S_n$ \pag 58
+	\x (5) carattere della rapp. di $S_3$ con un triangolo \pag 58
+	\o i caratteri di rapp. isomorfe sono uguali \pag 58
+	\o carattere della somma e del prodotto di rapp. \pag 58
+	\x carattere della rapp. monomiale di $S_n$ ristretta ai valori con somma delle componenti nulla \pag 58
+	\o il carattere è una funzione di classe \pag 59
+	\d funzione di classe \pag 59
+	\o (5.4) le funzioni di classe sono un sottospazio delle funzioni dal gruppo a valori complessi \pag 59
+	\o dimensione dello spazio delle funzioni di classe \pag 59
+	\t (3) i caratteri delle rapp. irr. complesse di un gruppo finito sono una base delle funzioni di classe \pag 59
+	\l le funzioni di classe nello spazio dei coeff. mat. di una rapp. irr. complessa di un gruppo finito sono proporzionali al carattere della rapp. \pag 59
+	\c (1) il numero di rapp. irr. complesse di un gruppo finito è il numero di classi di coniugio \pag 60
+	\c (2) le rapp. irr. complesse di un gruppo finito sono univocamente identificate dal loro carattere (a meno di isomorfismo) \pag 60
+	\x (1) numero di classi di coniugio di un gruppo abeliano finito \pag 60
+	\x (2) classi di coniugio di $S_4$ e rapp. come rotazioni di un cubo \pag 60
+	\d (5.5) azione transitiva \pag 61
+	\x (1) transitività della'azione naturale di $S_n$ \pag 61
+	\x (2) transitività della'azione di $O_n$ sulla sfera \pag 61
+	\d azione $l^H$ di un gruppo $G$ sulle classi laterali di $H\subseteq G$ \pag 61
+	\d stabilizzatore \pag 61
+	\p ogni azione transitiva è isomorfa a un'azione $l^H$ \pag 61
+	\t (4) il sottospazio dei vettori invarianti per rapp. reg. destra di un gruppo finito ristretta a un sottogruppo $H$ è la somma lungo le rapp. irr. complesse del gruppo delle immagini attraverso l'isomorfismo dal prodotto tensoriale con la duale allo spazio dei coeff. mat. del prodotto tensoriale del sottospazio dei vettori invarianti per la rapp. irr. complessa ristretta a $H$ con lo spazio della duale \pag 62
+	\c la rapp. come funzioni associata a $l^H$ è isomorfa alla somma delle rapp. irr. complesse del gruppo finito moltiplicate per la dimensione del loro sottospazio dei vettori invarianti per la rapp. irr. ristretta a $H$ \pag 63
+	\l il sottospazio massimale invariante per rapp. compl. rid. ha la stessa dimensione di quello per la duale \pag 63
+	\x azione del gruppo delle rotazioni del cubo sulle facce \pag 63
+	\x (5.7) rappresentazioni di $A_5$ \pag 64
+	\e (1) trovare una base degli elementi matriciali di $S_3$ \pag 65
+	\e (2) valore del carattere sull'identità \pag 65
+	\e (3) calcolare i caratteri
+		\begin{inparaenum}[(a)]
+			\item delle rapp. irr. complesse di $S_3$
+			\item delle rapp. reg. sinistra e destra di un gruppo finito qualsiasi
+		\end{inparaenum}
+		\pag 65
+	\e (4) trovare le rapp. irr. complesse di $A_4$ e i loro caratteri \pag 65
+	\e (5) un gruppo con tutte le rapp. irr. complesse monodimensionali è abeliano \pag 65
+	\e (6) un gruppo finito con più di due elementi ha più di due rapp. irr. complesse \pag 65
+	\e (7) trovare le rapp. irr. complesse
+		\begin{inparaenum}[(a)]
+			\item del gruppo diedrale
+			\item del gruppo generalizzato delle unità dei quaternioni;
+		\end{inparaenum}
+		verificare i corollari 1 dei teoremi 2 e 3 per questi esempi \pag 65
+	\e (8) usando i caratteri, trovare per quali $n$ la sottorapp. monomiale di $S_n$ sui vettori con somma delle componenti nulla è isomorfa al suo prodotto con la rapp. di parità \pag 65
+	\e (9) l'indice di $H$ nel gruppo finito $G$ è la somma lungo le rapp. irr. complesse di $G$ del grado della rapp. moltiplicato per il grado della rapp. ristretta a $H$ \pag 65
+	\e (10) scomporre la rapp. come funzione associata a
+		\begin{inparaenum}[(a)]
+			\item l'azione del gruppo delle rotazioni del cubo sui vertici
+			\item l'azione del gruppo di simmetria completo del tetraedro sugli spigoli
+		\end{inparaenum}
+		\pag 66
+	\e (11) trovare il carattere della rapp. irr. complessa di grado~5 di $A_5$ \pag 66
+	\e (12) una rapp. di un gruppo finito è isomorfa alla duale se e solo se il carattere è a valori reali \pag 66
+\end{description}
+
+\subsection{Relazioni di ortogonalità}
+
+\begin{description}
+	\d prodotto hermitiano nello spazio delle funzioni da un gruppo finito a valori complessi invariante per rapp. reg. \pag 66
+	\t (1) gli elementi matriciali delle rapp. irr. complesse di un gruppo finito scritti in una base ortonormale rispetto al prodotto hermitiano invariante di ogni rapp. sono una base ortogonale delle funzioni dal gruppo a valori complessi; la norma quadra di un elemento matriciale è l'inverso della dimensione della rapp. irr. \pag 67
+	\c (1) i caratteri delle rapp. irr. complesse di un gruppo finito sono una base ortonormale delle funzioni di classe \pag 68
+	\c (2) i coefficienti nella scomposizione in rapp. irr. di una rapp. complessa di un gruppo finito sono dati dal prodotto invariante per rapp. reg. dei caratteri \pag 68
+	\c (3) una rapp. complessa di un gruppo finito è irr. se e solo se il carattere ha norma~1 secondo il prodotto invariante per rapp. reg. \pag 69
+	\x (1) matrice dei caratteri delle rapp. irr. di un gruppo abeliano finito \pag 69
+	\x (2) tavola dei caratteri di $A_5$ \pag 69
+	\e (1) calcolare la norma quadra del carattere della rapp. reg. destra sia direttamente che usando la scomposizione in rapp. irr. \pag 71
+	\e (2) la dimensione dello spazio dei vettori invarianti per rapp. complessa di un grupo finito è il prodotto hermitiano del carattere della rapp. con quello identicamente unitario \pag 71
+	\e (3) scrivere la tavola dei caratteri di $S_4$ e scomporre il quadrato della rapp. monomiale ristretta ai vettori con somma delle componenti nulla \pag 71
+	\e (4) scomporre le rapp. di $S_4$ nello spazio delle funzioni
+		\begin{inparaenum}[(a)]
+			\item sui vertici del cubo
+			\item sugli spigoli del tetraedro \pag 71
+		\end{inparaenum}
+	\e (5) scomporre $\L(V)$ in sottospazi minimali invarianti per il prodotto di una rapp. irr. complessa tridimensionale di $A_5$ con la duale \pag 71
+	\e (6) la rapp. associata a un'azione da un gruppo finito è isomorfa alla somma lungo le orbite $H$ delle rapp. associate alle azioni $l^H$ \pag 71
+	\e (7) la somma lungo un gruppo finito di una rapp. irr. complessa moltiplicata per il carattere coniugato è l'ordine del gruppo diviso il grado della rapp. \pag 71
+	\e (8) i gradi delle rapp. irr. complesse di un gruppo finito dividono l'ordine del gruppo \pag 71
+\end{description}
+
+\subsection{I gruppi $\SU_2$ e $\SO_3$}
+
+\begin{description}
+	\d algebra dei quaternioni \pag 74
+	\d base dei quaternioni \pag 74
+	\o regole di moltiplicazione per la base dei quaternioni \pag 74
+	\o $\SU_2$ come sfera nei quaternioni \pag 74
+	\d omomorfismo da $\SU_2$ in $\SO_3$ \pag 75
+	\t l'omomorfismo da $\SU_2$ in $\SO_3$ è suriettivo; nucleo dell'omomorfismo \pag 75
+	\l (1) un sottogruppo di $\SO_3$ che agisce transitivamente sulla sfera e contiene le rotazioni intorno a un asse è $\SO_3$ \pag 75
+	\l (2) ogni matrice $2\times2$ hermitiana a traccia nulla è coniugata con una matrice di $\SU_2$ a una matrice diagonale a traccia nulla \pag 76
+	\p (7.3) isomorfismo tra $\SO_3$ e $\SU_2$ quozientato sull'identità e sul suo opposto \pag 76
+	\d topologia quoziente \pag 77
+	\o le rapp. continue di un gruppo quoziente si ottengono fattorizzando le rapp. continue del numeratore \pag 77
+	\l isomorfismo tra un gruppo topologico e il quoziente sul nucleo del dominio di un omomorfismo continuo al gruppo \pag 77
+	\o $\SO_3$ è isomorfo allo spazio proiettivo \pag 78
+	\p le rapp. continue di $\SO_3$ si ottengono fattorizzando le rapp. continue di $\SU_2$ il cui nucleo contiene l'opposto dell'identità \pag 78
+	\d rapp. di $\SL_2$ come polinomi omogenei in due variabili e restrizione a $\SU_2$ \pag 78
+	\p la rapp. di $\SU_2$ come polinomi omogenei in due variabili è irr. \pag 78
+	\o la rapp. di $\SU_2$ come polinomi omogenei in due variabili si fattorizza a $\SO_3$ \pag 79
+	\e (1) omomorfismo da $\SU_2\times\SU_2$ in $\SO_4$ e nucleo \pag 79
+	\e (2) esplicitare un isomorfismo tra la complessificazione della rapp. di $\SU_2$ come matrici $2\times2$ hermitiane a traccia nulla e quella come polinomi omogenei di secondo grado in due variabili \pag 79
+	\e (3) le funzioni di classe su $\SU_2$ sono determinate dalla restrizione al sottogruppo diagonale e sono pari nell'argomento degli elementi della diagonale \pag 79
+	\e (4) calcolare la restrizione del carattere della rapp. di $\SU_2$ come polinomi omogenei in due variabili al sottogruppo diagonale \pag 80
+	\e (5) lo span dei caratteri delle rapp. di $\SU_2$ come polinomi omogenei in due variabili ristretti al sottogruppo diagonale e visti come funzioni di un elemento della diagonale è lo spazio delle funzioni sul sottogruppo diagonale scrivibili come polinomi nei due elementi sulla diagonale e invarianti per coniugazione dell'argomento \pag 80
+	\e (6) integrale invariante su $\SU_2$ ristretto alle funzioni di classe continue \pag 80
+\end{description}
+
+\section{Bracci: Appunti del corso Metodi matematici per la Fisica I, 2004}
+
+\subsection{Spazi normati e con prodotto scalare}
+
+\subsubsection{Definizioni e proprietà elementari}
+
+\begin{description}
+	\d (1.1.1) norma \pag 1
+	\d (1.1.2) spazio normato \pag 1
+	\d (1.1.3) limite \pag 1
+	\d (1.1.4) punto di accumulazione \pag 2
+	\d (1.1.5) insieme limitato \pag 2
+	\l (1.1.1) unicità del limite su un punto di accumulazione \pag 2
+	\l (1.1.2) unicità del limite per $x\to\infty$ \pag 2
+	\d (1.1.6) limite di una successione \pag 2
+	\l (1.1.3) unicità del limite di una successione \pag 2
+	\d (1.1.7) continuità in un punto \pag 2
+	\l (1.1.4) definizione di continuità con il limite \pag 2
+	\l (1.1.5) definizione di continuità con le successioni \pag 2
+	\t (1.1.1) la somma di funzioni continue è continua \pag 3
+	\l (1.1.6) la somma dei limiti è il limite della somma \pag 3
+	\t (1.1.2) la composizione di funzioni continue è continua \pag 3
+	\d (1.1.8) continuità sul dominio \pag 3
+	\d (1.1.9) funzione lipschitziana \pag 3
+	\l (1.1.7) lipschitziana $\implies$ continua \pag 3
+	\t (1.1.3) la norma è lipschitziana \pag 3
+	\d (1.1.10) norme equivalenti \pag 4
+	\l (1.1.8) norme equivalenti $\implies$ limiti di successioni uguali \pag 4
+	\l (1.1.9) norme equivalenti $\implies$ limiti di funzioni uguali \pag 4
+\end{description}
+
+\subsubsection{Topologia}
+
+\begin{description}
+	\d (1.2.1) palle aperte e chiuse \pag 4
+	\d (1.2.2) insiemi aperti e chiusi \pag 4
+	\l (1.2.1) le palle aperte sono aperte e le palle chiuse sono chiuse \pag 4
+	\t (1.2.1) proprietà generali della famiglia degli aperti \pag 5
+	\t (1.2.2) proprietà generali della famiglia dei chiusi \pag 5
+	\t (1.2.3) definizione di chiuso con le successioni \pag 5
+	\t (1.2.4) i chiusi e gli aperti per norme equivalenti sono gli stessi \pag 5
+	\d (1.2.3) chiusura \pag 6
+	\t (1.2.5) definizione di chiusura con le successioni \pag 6
+	\c (1.2.1) la chiusura della palla aperta è la palla chiusa \pag 6
+	\d (1.2.4) insiemi compatti per successioni e relativamente compatti \pag 6
+	\l (1.2.2) compatto $\implies$ chiuso e limitato \pag 6
+	\t (1.2.6) (Weierstrass) una funzione continua su un compatto ammette massimo e minimo \pag 6
+	\d (1.2.5) continuità uniforme \pag 7
+	\o uniformemente continua $\implies$ continua \pag 7
+	\t (1.2.7) (Heine-Cantor-Borel) continua su un compatto $\implies$ uniformemente continua \pag 7
+	\t (1.2.8) in uno spazio di dimensione finita tutte le norme sono equivalenti \pag 7
+	\x esempio di spazio di dimensione infinita con norme non equivalenti \pag 8
+	\c (1.2.2) (Bolzano-Weierstrass) in uno spazio di dimensione finita gli insiemi chiusi e limitati sono compatti \pag 8
+	\x esempio di spazio di dimensione infinita con insieme chiuso e limitato ma non compatto \pag 8
+	\c (1.2.3) (Bolzano-Weierstrass) in uno spazio di dimensione finita i sottoinsiemi infiniti e limitati hanno un punto di accumulazione \pag 8
+	\d (1.2.6) densità \pag 8
+	\d (1.2.7) parte interna \pag 9
+	\o definizione di parte interna con le palle aperte \pag 8
+	\l (1.2.3) parte interna vuota $\iff$ complementare denso \pag 8
+\end{description}
+
+\subsubsection{Spazi di Banach}
+
+\begin{description}
+	\d (1.3.1) successione di Cauchy ovvero fondamentale \pag 9
+	\o le successioni di Cauchy per norme equivalenti sono le stesse \pag 9
+	\l (1.3.1) le successioni convergenti sono di Cauchy \pag 9
+	\d (1.3.2) spazi completi e di Banach \pag 9
+	\l (1.3.2) la completezza rispetto a norme equivalenti è equivalente \pag 9
+	\o $\R$ è uno spazio di Banach \pag 9
+	\t (1.3.1) gli spazi di dimensione finita sono completi \pag 9
+	\c (1.3.1) i sottospazi di dimensione finita sono chiusi \pag 10
+	\t (1.3.2) esistenza del completamento \pag 10
+	\d (1.3.3) completamento \pag 11
+	\d (1.3.4) spazi delle funzioni continua su un intervallo con e senza supporto compatto \pag 11
+	\l (1.3.3) lo spazio delle funzioni continua su un intervallo limitato a supporto compatto non è completo per norma $L^1$ \pag 11
+	\d (1.3.5) spazio $L^1$ \pag 11
+	\t (1.3.3) definizione di $L^1$ come funzioni integrabili \pag 11
+	\t (1.3.4) (Weierstrass) lo spazio dei polinomi in una variabile è denso nello spazio delle funzioni continue su un intervallo limitato per norma $\infty$ \pag 12
+	\x controesempio con intervallo illimitato \pag 12
+	\c (1.3.2) su un intervallo limitato i polinomi in una variabile sono densi in $L^1$ \pag 13
+	\d (1.3.6) spazi delle funzioni infinitamente derivabili con e senza supporto compatto \pag 13
+	\c (1.3.3) su un intervallo limitato le funzioni liscie sono dense in $L^1$ \pag 13
+	\t (1.3.5) su un intervallo limitato le funzioni liscie a supporto compatto sono dense in $L^1$ \pag 13
+	\d (1.3.7) funzione caratteristica di un insieme \pag 13
+	\c (1.3.4) su un intervallo illimitato le funzioni liscie a supporto compatto sono dense in $L^1$ \pag 13
+	\d (1.3.8) spazio $L^p$ \pag 14
+	\t (1.3.6) (Fisher-Riesz) gli spazi $L^p$ sono di Banach \pag 14
+	\t (1.3.7) lo spazio delle funzioni liscie a supporto compatto è denso in $L^p$ \pag 14
+	\t (1.3.8) (Disuguaglianza di Hölder) \pag 14
+	\c (1.3.5) su un intervallo limitato $p>q\implies L^p\subseteq L^q$ \pag 14
+	\x controesempio su un intervallo illimitato \pag 14
+	\t (1.3.9) una successione convergente in $L^p$ ammette una sottosuccessione puntualmente convergente \pag 15
+	\x (1.3.1) la convergenza in $L^p$ non implica la convergenza puntuale quasi ovunque \pag 15
+	\t (1.3.10) su un intervallo limitato una successione in $L^p$ che converge uniformemente converge in $L^p$ \pag 15
+	\e (1.3.2) controesempio per un intervallo illimitato \pag 15
+	\t (1.3.11) una successione limitata in $L^p$ che converge puntualmente converge in $L^p$ \pag 15
+	\e (1.3.3) controesempio per una successione non limitata \pag 15
+	\t (1.3.2) (delle contrazioni di Banach) in uno spazio di Banach le contrazioni ammettono uno e un solo punto fisso \pag 15
+\end{description} 
+
+\subsubsection{Prodotti scalari}
+
+\begin{description}
+	\d (1.4.1) prodotto scalare \pag 16
+	\t (1.4.1) (Cauchy-Schwarz) \pag 16
+	\o la maggiorazione di Cauchy-Schwarz vale anche per prodotti scalari degeneri \pag 17
+	\c (1.4.1) norma indotta da un prodotto scalare \pag 17
+	\t (1.4.2) un prodotto scalare è continuo per la norma che induce \pag 17
+	\t (1.4.3) identità del parallelogramma \pag 18
+	\x norma che non deriva da un prodotto scalare \pag 18
+	\t (1.4.4) formula di polarizzazione \pag 18
+	\t (1.4.5) (von Neumann) una norma che soddisfa l'identità del parallelogramma è indotta da un prodotto scalare \pag 18
+	\c (1.4.2) una norma è indotta da un prodotto scalare se e solo se soddisfa l'identità del parallelogramma \pag 19
+	\c (1.4.3) la norma $p$-esima è indotta da un prodotto scalare se e solo se $p=2$ \pag 20
+\end{description}
+
+\subsubsection{Proprietà elementari degli spazi di Hilbert}
+
+\begin{description}
+	\d (1.5.1) spazio di Hilbert \pag 20
+	\t (1.5.1) $L^2$ è di Hilbert \pag 20
+	\d (1.5.2) insieme completo e base \pag 20
+	\l (1.5.1) un vettore ortogonale a un insieme completo è nullo \pag 20
+	\d (1.5.3) insieme ortonormale \pag 20
+	\t (1.5.2) (Disuguaglianza di Bessel) \pag 21
+	\c (1.5.1) il prodotto scalare di un vettore con una successione ortonormale converge a 0 \pag 21
+	\t (1.5.3) un insieme numerabile di vettori tale che ogni vettore ortogonale all'insieme è nullo è completo \pag 21
+	\c (1.5.2) un insieme numerabile è completo se e solo se l'unico vettore ortogonale a esso è 0 \pag 22
+	\t (1.5.4) serie di Fourier \pag 22
+	\t (1.5.5) valore minimo della differenza tra un vettore e una serie parziale lungo un insieme numerabile ortonormale \pag 22
+	\c (1.5.3) (identità di Parsevall) un insieme numerabile ortonormale è completo se e solo se la norma quadra di ogni vettore è la serie di Fourier delle norme quadre \pag 22
+	\t (1.5.6)  (Fisher-Riesz) fatti equivalenti alla completezza per un insiemr ortonormale numerabile \pag 22
+	\t (1.5.7) una serie lungo una successione ortonormale completa converge se e solo se converge la serie dei moduli quadri dei coefficienti \pag 23
+\end{description}
+
+\subsection{Equazioni differenziali alle derivate parziali}
+
+\subsubsection{Serie di Fourier}
+
+\begin{description}
+	\t (2.1.1) (Lemma di Riemann-Lebesgue) \[f\in L^1(-\infty,\infty)\implies\lim_{\alpha\to\infty}\int_{-\infty}^\infty f(x)e^{i\alpha x}\de x=0\] \pag 24
+	\t (2.1.2) \[\phi\in C_c^\infty(-\infty,\infty)\implies\lim_{\alpha\to\infty}\alpha^r\int_{-\infty}^\infty\phi(x)e^{i\alpha x}\de x=0\] \pag 25
+	\d (2.1.1) polinomio trigonometrico \pag 25
+	\l (2.1.1) le potenze intere di funzioni trigonometriche sono polinomi trigonometrici \pag 25
+	\t (1.2.3) (Weierstrass) i polinomi trigonometrici sono densi nelle funzioni continue a supporto compatto sull'intervallo $[-\pi,\pi]$ con la norma $\infty$ \pag 25
+	\c (2.1.1) i polinomi trigonometrici sono densi in $L^2(-\pi,\pi)$ \pag 26
+	\l (2.1.2) $\{e^{inx}\}_{n\in\Z}$ è un insieme ortogonale in $L^2(-\pi,\pi)$ \pag 26
+	\t (2.1.4) $\left\{e^{inx}/\sqrt{2\pi}\right\}_{n\in\Z}$ è una base ortonormale in $L^2(-\pi,\pi)$ \pag 26
+	\t (2.1.5) $\{\sin(nx)/\sqrt\pi\}_{n\in\N_0}\cup\{\cos(nx)/\sqrt\pi\}_{n\in\N}$ è una base ortonormale in $L^2(-\pi,\pi)$ \pag 26
+	\l (2.1.3) $\sum_{-\infty}^\infty|z_n|<\infty\implies\sum_{-\infty}^\infty z_n\frac{e^{inx}}{\sqrt{2\pi}}$ converge uniformemente ed è continua \pag 26
+	\l (2.1.4) $\sum_{-\infty}^\infty|na_n|<\infty\implies\sum_{-\infty}^\infty a_n\frac{e^{inx}}{\sqrt{2\pi}}$ è continua e derivabile termine a termine \pag 26
+	\d serie di Fourier in $L^1(-\pi,\pi)$ \pag 27
+	\t (2.1.6) $f\in L^1(-\pi,\pi)$, $f$ continua in $x_0$, il rapporto incrementale di $f$ intorno a $x_0$ è integrabile intorno a $x_0 \implies$ la serie di Fourier di $f$ converge puntualmente a $f$ in $x_0$ \pag 27
+	\t (2.1.7) (criterio di Dini) $f\in L^1(-\pi,\pi)$, $\exists f(x_0^+),f(x_0^-)$, i rapporti incrementali di $f$ a destra e a sinistra di $x_0$ sono in $L^1$ intorno a destra di 0 $\implies$ la serie di Fourier di $f$ converge alla media dei limiti destro e sinistro di $f$ in $x_0$ \pag 28
+	\t (2.1.8) $f$ periodica con periodo $2\pi$, $f\in C^1\implies$ la serie di Fourier di $f$ converge uniformemente a $f$ \pag 28
+\end{description}
+
+\subsubsection{Problema ai limiti per il quadrato \pag 29}
+
+\subsubsection{Problema ai limiti per il cerchio \pag 33}
+
+\setcounter{paragraph}{2}
+\paragraph{Funzioni armoniche}
+
+\begin{description}
+	\d (2.3.1) funzione armonica \pag 38
+	\d (2.3.2) problema di Dirichlet \pag 39
+	\t (2.3.1) soluzione del problema di Dirichlet su un disco con condizione al bordo continua \pag 39
+	\t (2.3.2) (Principio del massimo) per una funzione continua sulla chiusura di un aperto limitato con laplaciano non negativo sull'aperto, l'estremo superiore sull'aperto è maggiorato dal massimo sulla frontiera \pag 39
+	\c (2.3.1) una soluzione del problema di Dirichlet su un aperto limitato è compresa tra il minimo e il massimo della condizione al bordo \pag 39
+	\c (2.3.2) l'unica soluzione del problema di Dirichlet su un aperto limitato con condizione al bordo nulla è la funzione nulla \pag 40
+	\c (2.3.3) unicità della soluzione del problema di Dirichlet \pag 40
+	\c (2.3.4) unicità della soluzione dle problema di Dirichlet su un disco con condizione al bordo continua \pag 40
+	\c (2.3.5) (Teorema della media) \pag 40
+	\c (2.3.6) una funzione armonica su un aperto connesso il cui modulo ammette massimo è costante \pag 40
+\end{description}
+
+\paragraph{Lemma di Green e sue conseguenze}
+
+\begin{description}
+	\l (2.3.1) (lemma di Green) $f,g\in C^2\implies$ \[\int_S(f\Delta g-g\Delta f)\de S=\int_\sigma\left(f\frac{\partial g}{\partial n}-g\frac{\partial f}{\partial n}\right)\de\sigma\] \pag 41
+	\t (2.3.3) (teorema della media) \pag 41
+	\d (2.3.3) funzione di Green in due dimensioni \pag 42
+\end{description}
+
+\end{document}
