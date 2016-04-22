@@ -1,0 +1,14 @@
+*.log
+*.pdf
+*.aux
+*.toc
+*.out
+*.synctex.gz
+.DS_Store
+*.*(busy)
+*.lb
+*.watcher_pid
+*.fdb_latexmk
+*.fls
+*.loe
+*.ai
