@@ -52,39 +52,41 @@
 \frenchspacing
 \pagenumbering{gobble}
 
-%%%%%%
-\begin{formulae}{3}{trigonometry}
-\[\sin(\alpha\pm\beta)=\sin\alpha\cos\beta\pm\cos\alpha\sin\beta\]
-\[\cos(\alpha\pm\beta)=\cos\alpha\cos\beta\mp\sin\alpha\sin\beta\]
-\[\tan(\alpha\pm\beta)=\frac{\tan\alpha\pm\tan\beta}{1\mp\tan\alpha\tan\beta}\]
-\[\sin(2\alpha)=2\sin\alpha\cos\alpha;\,\tan(2\alpha)=\frac{2\tan\alpha}{1-\tan^2\alpha}\]
-\[\cos(2\alpha)=\cos^2\alpha-\sin^2\alpha=\]
-\[=2\cos^2\alpha-1=1-2\sin^2\alpha\]
-\[\sin\alpha\pm\sin\beta=2\sin\frac{\alpha\pm\beta}{2}\cos\frac{\alpha\mp\beta}{2}\]
-\[\cos\alpha+\cos\beta=2\cos\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2}\]
-\[\cos\alpha-\cos\beta=-2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}\]
-\[2\sin\alpha\sin\beta=\cos(\alpha-\beta)-\cos(\alpha+\beta)\]
-\[2\sin\alpha\cos\beta=\sin(\alpha+\beta)+\sin(\alpha-\beta)\]
-\[2\cos\alpha\cos\beta=\cos(\alpha+\beta)+\cos(\alpha-\beta)\]
-\[\sin\frac{\alpha}{2}=\pm\sqrt{\frac{1-\cos\alpha}{2}}\quad\cos\frac{\alpha}{2}=\pm\sqrt{\frac{1+\cos\alpha}{2}}\]
-\[\tan\frac{\alpha}{2}=\frac{\sin\alpha}{1+\cos\alpha}=\frac{1-\cos\alpha}{\sin\alpha}=\pm\sqrt{\frac{1-\cos\alpha}{1+\cos\alpha}}\]
-\[\sin^2\alpha=\frac{\tan^2\alpha}{1+\tan^2\alpha}\quad\sin\alpha=\frac{2\tan\frac{\alpha}{2}}{1+\tan^2\frac{\alpha}{2}}\]
-\[\cos^2\alpha=\frac{1}{1+\tan^2\alpha}\quad\cos\alpha=\frac{1-\tan^2\frac{\alpha}{2}}{1+\tan^2\frac{\alpha}{2}}\]
-\[a\sin x+b\cos x=\]
-\[=\frac{\abs{a}}a\sqrt{a^2+b^2}\sin(x+\atan\frac ba)\]
-\[=\frac{\abs{b}}b\sqrt{a^2+b^2}\cos(x-\atan\frac ab)\]
+
+\begin{formulae}{3}{trigonometric functions}
+	\[\sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\beta\]
+	\[\cos(\alpha+\beta)=\cos\alpha\cos\beta-\sin\alpha\sin\beta\]
+	\[\tan(\alpha+\beta)=\frac{\tan\alpha+\tan\beta}{1-\tan\alpha\tan\beta}\]
+	\[\sin(2\alpha)=2\sin\alpha\cos\alpha;\,\tan(2\alpha)=\frac{2\tan\alpha}{1-\tan^2\alpha}\]
+	\[\cos(2\alpha)=\cos^2\alpha-\sin^2\alpha=\]
+	\[=2\cos^2\alpha-1=1-2\sin^2\alpha\]
+	\[\sin\alpha+\sin\beta=2\sin\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2}\]
+	\[\cos\alpha+\cos\beta=2\cos\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2}\]
+	\[\cos\alpha-\cos\beta=-2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}\]
+	\[2\sin\alpha\sin\beta=\cos(\alpha-\beta)-\cos(\alpha+\beta)\]
+	\[2\sin\alpha\cos\beta=\sin(\alpha+\beta)+\sin(\alpha-\beta)\]
+	\[2\cos\alpha\cos\beta=\cos(\alpha+\beta)+\cos(\alpha-\beta)\]
+	\[\sin\frac{\alpha}{2}=\pm\sqrt{\frac{1-\cos\alpha}{2}}\quad\cos\frac{\alpha}{2}=\pm\sqrt{\frac{1+\cos\alpha}{2}}\]
+	\[\tan\frac{\alpha}{2}=\frac{\sin\alpha}{1+\cos\alpha}=\frac{1-\cos\alpha}{\sin\alpha}=\pm\sqrt{\frac{1-\cos\alpha}{1+\cos\alpha}}\]
+	\[\sin^2\alpha=\frac{\tan^2\alpha}{1+\tan^2\alpha}\quad\sin\alpha=\frac{2\tan\frac{\alpha}{2}}{1+\tan^2\frac{\alpha}{2}}\]
+	\[\cos^2\alpha=\frac{1}{1+\tan^2\alpha}\quad\cos\alpha=\frac{1-\tan^2\frac{\alpha}{2}}{1+\tan^2\frac{\alpha}{2}}\]
+	\[a\sin x+b\cos x=\]
+	\[=\frac{\abs{a}}a\sqrt{a^2+b^2}\sin(x+\atan\frac ba)\]
+	\[=\frac{\abs{b}}b\sqrt{a^2+b^2}\cos(x-\atan\frac ab)\]
 \end{formulae}
-%%%%%%
+
 \begin{formulae}{3}{hyperbolic functions}
-\[\cosh(x+y)=\cosh x\cosh y+\sinh x\sinh y\]
-\[\begin{psmallmatrix}\sinh x\\\cosh x\end{psmallmatrix}=\inv2\begin{psmallmatrix}e^x-e^{-x}\\e^x+e^{-x}\end{psmallmatrix}\]
-\[\cosh^2x-\sinh^2x=1\]
-\[\cosh^2x=\inv{1-\tanh^2x}\]
-\[\sin x=-i\sinh(ix)\]
-\[\cos x=\cosh(ix)\]
-\[\artanh x=\inv2\log\frac{1+x}{1-x}\]
+	\[\sinh(x+y)=\sinh x\cosh y+\cosh x\sinh y\]
+	\[\cosh(x+y)=\cosh x\cosh y+\sinh x\sinh y\]
+	\[\tanh(x+y)=\frac{\tanh x+\tanh y}{1+\tanh x\tanh y}\]
+	\[\begin{psmallmatrix}\sinh x\\\cosh x\end{psmallmatrix}=\inv2\begin{psmallmatrix}e^x-e^{-x}\\e^x+e^{-x}\end{psmallmatrix}\]
+	\[\cosh^2x-\sinh^2x=1\]
+	\[\cosh^2x=\inv{1-\tanh^2x}\]
+	\[\sin x=-i\sinh(ix)\]
+	\[\cos x=\cosh(ix)\]
+	\[\artanh x=\inv2\log\frac{1+x}{1-x}\]
 \end{formulae}
-%%%%%%
+
 \begin{formulae}{2}{areas}
 \[\text{triangle: }\sqrt{p(p-a)(p-b)(p-c)}\]
 \[\text{quad: }\sqrt{(p-a)(p-b)(p-c)(p-d)-abcd\cos^2\frac{\alpha+\gamma}{2}}\]
