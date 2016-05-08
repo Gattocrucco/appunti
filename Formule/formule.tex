@@ -49,7 +49,7 @@
 \begin{document}
 
 \setdispacing[2pt]
-
+\frenchspacing
 \pagenumbering{gobble}
 
 %%%%%%
@@ -413,30 +413,37 @@ N&\Xi&O&\Pi&P&\Sigma&T&Y&\Phi&X&\Psi&\Omega\\
 \nu&\xi&o&\pi/\varpi&\rho/\varrho&\sigma/\varsigma&\tau&\upsilon&\phi/\varphi&\chi&\psi&\omega
 \end{array}\]
 \end{formulae}
-%%%%%%
-\sisetup{exponent-product=\cdot,scientific-notation=true,per-mode=fraction,round-mode=figures,round-precision=4}%
-\begin{formulae}{5}{constants}
-\[\pi=\num{3.14159265358979}\]
-\[e=\num{2.71828182845905}\]
-\[\gamma=\num{0.5772156649015328606065120900824024310421}\]
-\[G=\SI{6.67384e-11}{\m\cubed\per\kg\per\s\squared}\]
-\[R=\SI{8.3144621}{\J\per\mol\per\K}\]
-\[R=\SI{0.08205736}{\l\atm\per\mol\per\K}\]
-\[N_\text A=\SI{6.02214129 E+23}{\per\mol}\]
-\[k=\SI{1.3806488 E-23}{\J\per\K}\]
-\[c=\SI{2.99792458 E+8}{\m\per\s}\]
-\[q_\text e=\SI{1.602176565 E-19}{\A\s}\]
-\[m_\text e=\SI{9.10938291 E-31}{\kg}\]
-\[m_\text p=\SI{1.672621777 E-27}{\kg}\]
-\[m_\text n=\SI{1.674927351 E-27}{\kg}\]
-\[\text{amu}=\SI{1.660538921 E-27}{\kg}\]
-\[h=\SI{6.62606957 E-34}{\J\s}\]
-\[\varepsilon_0=\SI{8.854187817 E-12}{\per\kg\per\m\cubed\coulomb\squared\s\squared}\]
-\[\mu_0=\SI{0.00000125663706143592}{\N\per\A\squared}\]
-\[\mu_\text B=\SI{9.27400968 E-24}{\A\m\squared}\]
-\[\alpha=\num{7.2973525698e-3}\]
+
+\sisetup{
+	exponent-product=\cdot,
+	scientific-notation=true,
+	per-mode=fraction,
+	round-mode=figures,
+	round-precision=4
+}
+\begin{formulae}{5}{constants, units}
+	\[\pi=\num{3.14159265358979}\]
+	\[e=\num{2.71828182845905}\]
+	\[\gamma=\num{0.5772156649015328606065120900824024310421}\]
+	\[G=\SI{6.67384e-11}{\m\cubed\per\kg\per\s\squared}\]
+	\[R=\SI{8.3144621}{\J\per\mol\per\K}\]
+	\[R=\SI{0.08205736}{\l\atm\per\mol\per\K}\]
+	\[N_\text A=\SI{6.02214129 E+23}{\per\mol}\]
+	\[k=\SI{1.3806488 E-23}{\J\per\K}\]
+	\[c=\SI{2.99792458 E+8}{\m\per\s}\]
+	\[q_\text e=\SI{1.602176565 E-19}{\A\s}\]
+	\[m_\text e=\SI{9.10938291 E-31}{\kg}\]
+	\[m_\text p=\SI{1.672621777 E-27}{\kg}\]
+	\[m_\text n=\SI{1.674927351 E-27}{\kg}\]
+	\[\text{amu}=\SI{1.660538921 E-27}{\kg}\]
+	\[h=\SI{6.62606957 E-34}{\J\s}\]
+	\[\varepsilon_0=\SI{8.854187817 E-12}{\per\kg\per\m\cubed\coulomb\squared\s\squared}\]
+	\[\mu_0=\SI{0.00000125663706143592}{\N\per\A\squared}\]
+	\[\mu_\text B=\SI{9.27400968 E-24}{\A\m\squared}\]
+	\[\alpha=\num{7.2973525698e-3}\]
+	\[\si{\eV}=\SI{1e-12}{erg}\]
 \end{formulae}
-%%%%%%
+
 \begin{formulae}{4}{chemistry}
 \newcommand*\deltastd[1]{\Delta{#1}^{\text o}}
 \newcommand*\enthstd[1][f]{\deltastd H_{\text{#1}}}
@@ -483,7 +490,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&Y&\Phi&X&\Psi&\Omega\\
 \[\dj Q=0:pV^\gamma,TV^{\gamma-1},p^{\inv\gamma-1}T\text{ const.}\]
 \end{formulae}
 %%%%%%
-\begin{formulae}{6}{electronics}
+\begin{formulae}{6}{electronics (MKS)}
 	\[\begin{psmallmatrix}V\\I\end{psmallmatrix}=\begin{psmallmatrix}V_0\\I_0\end{psmallmatrix}e^{i\omega t}\]
 	\[Z=\frac VI\]
 	\[Z_R=R\]
@@ -493,6 +500,8 @@ N&\Xi&O&\Pi&P&\Sigma&T&Y&\Phi&X&\Psi&\Omega\\
 	\[\inv{Z_\text{parallel}}=\sum_k\inv{Z_k}\]
 	\[\sum_\text{loop}V_k=0\]
 	\[\sum_\text{node}I_k=0\]
+	\[\mathcal E=-L\dot I\]
+	\[L=\frac{\Phi_B}I\]
 \end{formulae}
 
 \begin{formulae}{5}{relativity}
@@ -535,24 +544,22 @@ N&\Xi&O&\Pi&P&\Sigma&T&Y&\Phi&X&\Psi&\Omega\\
 \[P_l\big(\frac{\vec r\vec r'}{rr'}\big)=\frac{4\pi}{2l+1}\sum_{m=-l}^l\conj Y_{lm}(\theta',\varphi')Y_{lm}(\theta,\varphi)\]
 \[V(r>\diam\supp\rho,\theta,\varphi)=\sum_{l=0}^\infty\sum_{m=-l}^l\frac{4\pi}{2l+1}q_{lm}[\rho]\frac{Y_{lm}(\theta,\varphi)}{r^{l+1}}\]
 \[q_{lm}[\rho]=\int_0^\infty r^2\dd r\int_0^{2\pi}\dd\varphi\int_0^\pi\sin\theta\,\dd\theta\,r^l\rho(r,\theta,\varphi)\conj Y_{lm}(\theta,\varphi)\]
-\[\chi=\frac{4\pi}3\frac{np_0^2}{kT};\,\vec E_e=\vec E+\frac{4\pi}3\vec P;\,\vec D=\varepsilon\vec E;\,\div\vec D=4\pi\rho\]
 \end{formulae}
 
 \begin{formulae}{3}{magnetostatics (CGS)}
-\[\div\vec J=-\pdv{\rho}{t}=0;\,I=\int\vec J\vec{\dd S}\]
-\[\text{solenoid: }B=4\pi\frac{j_\text s}c\]
-\[\vec{\dd F}=\frac{I\vec{\dd l}}c\times\vec B=\dd^3x\frac{\vec J}c\times\vec B;\,\vec F_q=q\frac{\dotvec r}c\times\vec B\]
-\[\vec{\dd B}=\frac{I\vec{\dd l}}c\times\frac{\vec r}{r^3};\,\vec B_q=q\frac{\dotvec r}c\times\frac{\vec r}{r^3}\]
-\[\vec B=\curl\vec A;\,\vec A=\int\dd^3r'\frac{\vec J'}c\inv{\abs{\vec r-\vec r'}}+\grad A_0\]
-\[\vec B=\int\dd^3r'\frac{\vec J'}c\times\frac{\vec r-\vec r'}{\abs{\vec r-\vec r'}^3}\]
-\[\div\vec A=0\rightarrow\laplacian\vec A=-4\pi\frac{\vec J}c\]
-\[\div\vec B=0;\,\curl\vec B=4\pi\frac{\vec J}c;\,\oint\vec B\vec{\dd l}=4\pi\frac Ic\]
-\[\vec m=\inv2\int\dd^3r'\qty\big(\vec r'\times\frac{\vec J'}c)=\inv{2c}\frac qm\vec L\]
-\[\vec A\approx\frac{\vec m\times\vec r}{r^3};\,\vec\tau=\vec m\times\vec B\]
-\[\vec H=\frac{\vec B}\mu=\vec B-4\pi\vec M;\,\curl\vec H=0\]
+	\[\div\vec J=-\pdv{\rho}{t}=0;\,I=\int\vec J\vec{\dd S}\]
+	\[\text{solenoid: }B=4\pi\frac{j_\text s}c\]
+	\[\vec{\dd F}=\frac{I\vec{\dd l}}c\times\vec B=\dd^3x\frac{\vec J}c\times\vec B;\,\vec F_q=q\frac{\dotvec r}c\times\vec B\]
+	\[\vec{\dd B}=\frac{I\vec{\dd l}}c\times\frac{\vec r}{r^3};\,\vec B_q=q\frac{\dotvec r}c\times\frac{\vec r}{r^3}\]
+	\[\vec B=\curl\vec A;\,\vec A=\int\dd^3r'\frac{\vec J'}c\inv{\abs{\vec r-\vec r'}}+\grad A_0\]
+	\[\vec B=\int\dd^3r'\frac{\vec J'}c\times\frac{\vec r-\vec r'}{\abs{\vec r-\vec r'}^3}\]
+	\[\div\vec A=0\rightarrow\laplacian\vec A=-4\pi\frac{\vec J}c\]
+	\[\div\vec B=0;\,\curl\vec B=4\pi\frac{\vec J}c;\,\oint\vec B\vec{\dd l}=4\pi\frac Ic\]
+	\[\vec m=\inv2\int\dd^3r'\qty\big(\vec r'\times\frac{\vec J'}c)=\inv{2c}\frac qm\vec L\]
+	\[\vec A\approx\frac{\vec m\times\vec r}{r^3};\,\vec\tau=\vec m\times\vec B\]
 \end{formulae}
 
-\begin{formulae}{3}{Electromagnetism (CGS)}
+\begin{formulae}{3}{electromagnetism (CGS)}
 	\[\text{Faraday: }\mathcal E=-\inv c\dv{\Phi_B}{t}\]
 	\[\curl\vec E=-\inv c\pdv{\vec B}{t};\,\div\vec E=4\pi\rho;\,\div\vec J=-\pdv{\rho}{t}\]
 	\[\curl\vec B=4\pi\frac{\vec J}c+\inv c\pdv{\vec E}{t};\,\div\vec B=0\]
@@ -585,6 +592,35 @@ N&\Xi&O&\Pi&P&\Sigma&T&Y&\Phi&X&\Psi&\Omega\\
 	\[\Theta^{\alpha\beta}=\inv{4\pi}\qty(g^{\alpha\mu}F_{\mu\lambda}F^{\lambda\beta}-\inv4g^{\alpha\beta}F_{\mu\lambda}F^{\mu\lambda})\]
 	\[\Theta^{\alpha\beta}=\smqty(u & c\vec g \\ c\vec g & -\tens T)\]
 	\[\partial_\mu\Theta^{\mu\nu}=-\inv cF^{\nu\lambda}J_\lambda=\inv cJ_\lambda F^{\lambda\nu}\]
+\end{formulae}
+
+\begin{formulae}{3}{electromagnetism in matter (CGS)}
+	\[\vec P=\frac{\avg{\vec d}}V;\,\vec M=\frac{\avg{\vec m}}V\]
+	\[\rho_\text{pol}=-\grad\vec P;\,\sigma_\text{pol}=\hat n\vec P;\,\frac{\vec J_\text{mag}}c=\curl\vec M\]
+	\[\vec D=\vec E+4\pi\vec P;\,\vec H=\vec B-4\pi\vec M\]
+	\[\div\vec D=4\pi\rho_\text{ext};\,\curl\vec E=-\inv c\pdv{\vec B}{t}\]
+	\[\div\vec B=0;\,\curl\vec H=4\pi\frac{\vec J_\text{ext}}c+\inv c\pdv{\vec D}{t}\]
+	\[\text{static linear isotropic: }\vec P=\chi\vec E\]
+	\[\text{static linear: }P_i=\chi_{ij}E_j\]
+	\[\text{static linear: }\varepsilon=1+4\pi\chi\]
+	\[\text{static: }\Delta D_\bot=4\pi\sigma_\text{ext};\,\Delta E_\parallel=0\]
+	\[\text{static linear: }u=\inv{8\pi}\vec E\vec D\]
+	\[\Delta U_\text{dielectric}=\inv2\int\dd^3r\vec P\vec E_0\]
+	\[\text{plane capacitor: }C=\frac\varepsilon{4\pi}\frac Sd\]
+	\[\text{non-interacting gas: }\vec d=\alpha\vec E_0;\,\chi=n\alpha\]
+	\[\text{hom. cubic isotropic: }\chi=\inv{\inv{n\alpha}-\frac{4\pi}3}\]
+	\[\text{Clausius-Mossotti: }\frac{\varepsilon-1}{\varepsilon+2}=\frac{4\pi}3n\alpha\]
+	\[\chi=\frac{4\pi}3\frac{np_0^2}{kT};\,\vec E_e=\vec E+\frac{4\pi}3\vec P\]
+	\[\vec J\vec E=-\div(\frac c{4\pi}\vec E\times\vec H)-\inv{4\pi}\qty(\vec E\pdv{\vec D}{t}+\vec H\pdv{\vec B}{t})\]
+	\[n=\sqrt{\varepsilon\mu};\,k=n\frac\omega c\]
+	\[\vec J_\text c=\sigma\vec E;\,\tilde\varepsilon=\varepsilon+i\frac{4\pi\sigma}\omega\]
+	\[\text{I: }u=\inv{8\pi}(\vec E\vec D+\vec H\vec B)\]
+	\[\text{I: }\avg u=\inv{16\pi}(\varepsilon E^2+\mu H^2)\]
+	\[\text{I: }\avg{S_z}=\frac cn\avg u\]
+	\[\text{II: }\avg u=\inv{16\pi}\qty(\pdv\omega(\varepsilon_\omega\omega)\avg{E^2}+\pdv\omega(\mu_\omega\omega)\avg{H^2})\]
+	\[\text{II: }\avg{S_z}=v_\text g\avg u;\,v_\text g=\pdv{\omega}{k}\]
+	\[\text{III: }\avg W=\frac\omega{8\pi}\qty(\Im(\varepsilon_\omega)\abs{E_0^2}+\Im(\mu_\omega)\abs{H_0^2})\]
+	\[\text{($\mu=1$) TE: }E_\text t=\frac{2E_\text i}{1+\frac{k_{t2}}{k_{i2}}};\,E_\text r=\frac{1-\frac{k_{t2}}{k_{i2}}}{1+\frac{k_{t2}}{k_{i2}}}E_\text i\]
 \end{formulae}
 
 \end{document}
