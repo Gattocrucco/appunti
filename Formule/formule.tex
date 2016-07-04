@@ -21,6 +21,7 @@
 \usepackage{chemarrow} % \chemarrow
 \let\oldchemarrow\chemarrow
 \renewcommand\chemarrow{\mathrel{\oldchemarrow}}
+\usepackage{esint} % \fint
 
 \usepackage{priclimath}
 \usepackage{priclilayout}
@@ -122,6 +123,7 @@
 	\[\scp{\hat f}{\hat g}=\scp fg\]
 	\[F\qty[\frac{\sin x}x]=\sqrt\frac\pi2\chi_{[-1;1]}\]
 	\[\dv{}{x}\int_0^xg(x,y)\dd y=\int_0^x\pdv{g}{x} (x,y)\dd y+g(x,x)\]
+	\[\pm\sqrt z=\sqrt\frac{\Re z+\abs{z}}2+\frac{i\Im z}{\sqrt{2(\Re z+\abs{z})}}\]
 \end{formulae}
 
 \begin{formulae}{5}{derivatives}
@@ -457,7 +459,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\mu_0=\SI{0.00000125663706143592}{\N\per\A\squared}\]
 	\[\mu_\text B=\SI{9.27400968 E-24}{\A\m\squared}\]
 	\[\alpha=\num{7.2973525698e-3}\]
-	\[\si{\eV}=\SI{1e-12}{erg}\]
+	\[\si{\eV}=\SI{1.602e-12}{erg}\]
 \end{formulae}
 
 \begin{formulae}{4}{chemistry}
@@ -562,8 +564,9 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[V(\vec r)=\avg V_S+\int\rho G_\text N(\vec r)\,\dd^3x+\inv{4\pi}\oint_S\pdv{V}{n}G_\text N(\vec r)\,\dd S\]
 	\[\laplacian_yG(\vec x,\vec y)=-4\pi\delta(\vec x-\vec y);\,G_\text D(\vec x,\vec y)|_{\vec y\in S}=0;\,\pdv{G_\text N}{n}(\vec x,\vec y)\big|_{\vec y\in S}=-\frac{4\pi}S\]
 	\[U_\text{sphere}=\frac35\frac{Q^2}R;\,\vec p=\int\dd^3r\rho\vec r;\,\vec E_\text{dip}=\frac{3(\vec p\hat r)\hat r-\vec p}{r^3};\,V_\text{dip}=\frac{\vec p\hat r}{r^2}\]
+	\[\text{force on a dipole: }\vec F_\text{dip}=(\vec p\,\vec\nabla)\vec E\]
 	\[Q_{ij}=\int\dd^3r\rho(\vec r)(3r_ir_j-\delta_{ij}r^2);\,V_\text{quad}=\inv{6r^5}Q_{ij}(3r_ir_j-\delta_{ij}r^2)\]
-	\[V(r,\theta)=\sum_{l=0}^\infty\big(A_lr^l-\frac{B_l}{r^{l+1}}\big)P_l(\cos\theta)\]
+	\[V(r,\theta)=\sum_{l=0}^\infty\big(A_lr^l+\frac{B_l}{r^{l+1}}\big)P_l(\cos\theta)\]
 	\[V(r,\theta,\varphi)=\sum_{l=0}^\infty\sum_{m=-l}^l\big(A_{lm}r^l+\frac{B_{lm}}{r^{l+1}}\big)Y_{lm}(\theta,\varphi)\]
 	\[\inv{\abs{\vec r-\vec r'}}=\sum_{l=0}^\infty\frac{\min(r,r')^l}{\max(r,r')^{l+1}}P_l\big(\frac{\vec r\vec r'}{rr'}\big)\]
 	\[P_l(x)=\inv{2^ll!}\dv[l]x(x^2-1)^l;\,f=\sum_{l=0}^\infty c_lP_l:c_l=\frac{2l+1}2\int_{-1}^1fP_l\]
@@ -630,13 +633,13 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[F^{\alpha\beta}F_{\alpha\beta}=2(B^2-E^2);\,F^{\alpha\beta}\mathscr F_{\alpha\beta}=4\vec E\vec B\]
 	\[\Theta^{\mu\nu}=\inv{4\pi}\qty(F^\mu_{\phantom\mu\alpha}F^{\alpha\nu}+\inv4g^{\mu\nu}F_{\alpha\beta}F^{\alpha\beta})\]
 	\[\Theta^{\mu\nu}=\smqty(u & c\vec g \\ c\vec g & -\tens T)\]
-	\[\partial_\alpha\Theta^{\alpha\nu}=\inv cJ_\alpha F^{\alpha\nu}\]
+	\[\partial_\alpha\Theta^{\alpha\nu}=\frac{J_\alpha}cF^{\alpha\nu}\]
 \end{formulae}
 
 \begin{formulae}{3}{E.M. in matter (CGS)}
 	\[\div\vec D=4\pi\rho_\text{ext};\,\curl\vec E=-\inv c\pdv{\vec B}{t}\]
 	\[\div\vec B=0;\,\curl\vec H=4\pi\frac{\vec J_\text{ext}}c+\inv c\pdv{\vec D}{t}\]
-	\[\vec P=\frac{\avg{\vec p}}V;\,\vec M=\frac{\avg{\vec m}}V\]
+	\[\vec P=\dv{\avg{\vec p}}{V};\,\vec M=\dv{\avg{\vec m}}{V}\]
 	\[\rho_\text{pol}=-\grad\vec P;\,\sigma_\text{pol}=\hat n\vec P;\,\frac{\vec J_\text{mag}}c=\curl\vec M\]
 	\[\vec D_\text{pol}=\vec E+4\pi\vec P;\,\vec H_\text{mag}=\vec B-4\pi\vec M\]
 	\[\text{static linear isotropic: }\vec P=\chi\vec E\]
@@ -644,13 +647,15 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\text{static linear: }\varepsilon=1+4\pi\chi\]
 	\[\text{static: }\Delta D_\bot=4\pi\sigma_\text{ext};\,\Delta E_\parallel=0\]
 	\[\text{static linear: }u=\inv{8\pi}\vec E\vec D\]
-	\[\Delta U_\text{dielectric}=\inv2\int\dd^3r\vec P\vec E_0\]
+	\[\Delta U_\text{dielectric}=-\inv2\int\dd^3r\vec P\vec E_0\]
 	\[\text{plane capacitor: }C=\frac\varepsilon{4\pi}\frac Sd\]
+	\[\text{cilindric capacitor: }C=\frac L{2\log\frac Rr}\]
 	\[\text{atomic polarizability: }\vec p=\alpha\vec E\]
 	\[\text{non-interacting gas: }\vec p=\alpha\vec E_0;\,\chi=n\alpha\]
 	\[\text{hom. cubic isotropic: }\chi=\inv{\inv{n\alpha}-\frac{4\pi}3}\]
 	\[\text{Clausius-Mossotti: }\frac{\varepsilon-1}{\varepsilon+2}=\frac{4\pi}3n\alpha\]
-	\[\chi=\frac{4\pi}3\frac{np_0^2}{kT};\,\vec E_e=\vec E+\frac{4\pi}3\vec P\]
+	\[\text{perm. dipole: }\chi=\frac13\frac{np_0^2}{kT}\]
+	\[\text{local field: }\vec E_\text{loc}=\vec E+\frac{4\pi}3\vec P\]
 	\[\vec J\vec E=-\div(\frac c{4\pi}\vec E\times\vec H)-\inv{4\pi}\qty(\vec E\pdv{\vec D}{t}+\vec H\pdv{\vec B}{t})\]
 	\[n=\sqrt{\varepsilon\mu};\,k=n\frac\omega c\]
 	\[\text{plane wave: }B=nE\]
@@ -658,12 +663,22 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\omega_\text p^2=4\pi\frac{nq^2}m;\,\omega_\text{cyclo}=\frac{qB}{mc}\]
 	\[\text{I: }u=\inv{8\pi}(\vec E\vec D+\vec H\vec B)\]
 	\[\text{I: }\avg{S_z}=\frac cn\avg u\]
-	\[\text{II: }u=\inv{8\pi}\qty(\pdv\omega(\varepsilon_\omega\omega)E^2+\pdv\omega(\mu_\omega\omega)H^2)\]
-	\[\text{II: }\avg{S_z}=v_\text g\avg u;\,v_\text g=\pdv{\omega}{k}\]
-	\[\text{III: }\avg W=\frac\omega{8\pi}\qty(\Im\varepsilon_\omega\abs{E_0^2}+\Im\mu_\omega\abs{H_0^2})\]
+	\[\text{II: }u=\inv{8\pi}\qty(\pdv\omega(\varepsilon\omega)E^2+\pdv\omega(\mu\omega)H^2)\]
+	\[\text{II: }\avg{S_z}=v_\text g\avg u;\,v_\text g=\pdv{\omega}{k}=\frac c{n+\omega\pdv{n}{\omega}}\]
+	\[\text{III: }\avg W=\frac\omega{4\pi}\qty(\Im\varepsilon\avg{E^2}+\Im\mu\avg{H^2})\]
 	\[\text{Fresnel TE (S): }\frac{E_\text t}{E_\text i}=\frac2{1+\frac{k_{tz}}{k_{iz}}};\,\frac{E_\text r}{E_\text i}=\frac{1-\frac{k_{tz}}{k_{iz}}}{1+\frac{k_{tz}}{k_{iz}}}\]
 	\[\text{TM (P): }\frac{E_\text t}{E_\text i}=\frac2{\frac{n_2}{n_1}+\frac{n_1}{n_2}\frac{k_{tz}}{k_{iz}}};\,\frac{E_\text r}{E_\text i}=\frac{\frac{n_2}{n_1}-\frac{n_1}{n_2}\frac{k_{tz}}{k_{iz}}}{\frac{n_2}{n_1}+\frac{n_1}{n_2}\frac{k_{tz}}{k_{iz}}}\]
 	\[\text{Fresnel: }k_{tz}=\pm\sqrt{\varepsilon_2\qty(\frac\omega c)^2-k_x^2},\,\Im k_{tz}>0\]
+	\[\text{Drüde-Lorentz: }\varepsilon=1-\frac{\omega_\text p^2}{\omega^2+i\gamma\omega-\omega_0^2}\]
+	\[P(t)=\int_{-\infty}^\infty g(t-t')E(t')\dd t'\]
+	\[P(\omega)=\chi(\omega)E(\omega)\]
+	\[\chi(\omega)=\int_{-\infty}^\infty e^{i\omega t}g(t)\dd t\]
+	\[g(t<0)=0\implies\chi(-\omega)=\conj\chi(\omega)\]
+	\[\Re\varepsilon(\omega)=1+\frac2\pi\fint_0^\infty\frac{\omega'\qty(\Im\varepsilon(\omega')-\frac{4\pi\sigma_0}{\omega'})}{\omega'^2-\omega^2}\dd\omega'\]
+	\[\Im\varepsilon(\omega)=-\frac{2\omega}\pi\fint_0^\infty\frac{\Re\varepsilon(\omega')-1}{\omega'^2-\omega^2}\dd\omega'+\frac{4\pi\sigma_0}\omega\]
+	\[\text{sum rule: }\frac\pi2\omega_\text p^2=\int_0^\infty\omega\Im\varepsilon\dd\omega\]
+	\[\text{sum rule: }2\pi^2\sigma_0=\int_0^\infty(1-\Re\varepsilon)\dd\omega\]
+	\[\text{Miller rule: }\chi^{(2)}(\omega,\omega)\propto\chi^{(1)}(\omega)^2\chi^{(1)}(2\omega)\]
 \end{formulae}
 
 \end{document}
