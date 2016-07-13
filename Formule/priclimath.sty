@@ -27,7 +27,7 @@
 \newcommand*\setdef[2][x]{\{{#1}\,|\,{#2}\}}
 \newcommand*\Setdef[2][x]{\left\{{#1}\vphantom{#2}\right.\left|\,{#2}\vphantom{#1}\right\}}
 \newcommand*\pset{\mathscr{P}} % power set
-\newcommand*\funarrow{\,\chemarrow\,}
+\newcommand*\funarrow{\mathrel{\chemarrow}}
 \newcommand*\fundef[3][f]{{#1}:{#2}\funarrow{#3}}
 
 \DeclareMathOperator\id{id} % identity
@@ -73,6 +73,8 @@
 \newcommand*\Dotp[2]{\left\langle{#1},{#2}\right\rangle} % scalar product (with big brackets)
 \newcommand*\scp[2]{\langle{#1}|{#2}\rangle} % scalar product
 \newcommand*\Scp[2]{\left\langle\vphantom{#2}{#1}\right.\hspace{-0.2em}\left|\vphantom{#1}{#2}\right\rangle} % scalar product (with big brackets)
+\newcommand*\psp[2]{({#1}|{#2})} % scalar product
+\newcommand*\Psp[2]{\left(\vphantom{#2}{#1}\right.\hspace{-0.2em}\left|\vphantom{#1}{#2}\right)} % scalar product (with big brackets)
 \newcommand*\Norm[1]{\left\|{#1}\right\|} % norm (with big bars)
 \newcommand*\polys[2][\mathbb K]{{#1}[{#2}]} % space of polynomials over field
 \newcommand*\Polys[2][\mathbb K]{{#1}\left[{#2}\right]} % space of polynomials over field (with big brackets)

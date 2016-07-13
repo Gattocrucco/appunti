@@ -49,6 +49,19 @@
 \DeclareSIUnit\atm{atm}
 \DeclareSIUnit\C{\coulomb}
 
+\DeclareMathOperator\Hom{Hom}
+\DeclareMathOperator\Ind{Ind}
+\DeclareMathOperator\Reg{Reg}
+\DeclareMathOperator\SU{SU}
+\newcommand*\C{\mathbb C}
+
+\DeclareFontEncoding{LS1}{}{}
+\DeclareFontSubstitution{LS1}{stix}{m}{n}
+\DeclareSymbolFont{symbols2}{LS1}{stixfrak} {m} {n}
+\DeclareMathSymbol{\operp}{\mathbin}{symbols2}{"A8}
+
+\DeclareMathOperator*\bigoperp{\text{\large$\operp$}}
+
 %%% --- DOCUMENT --- %%%
 
 \begin{document}
@@ -404,23 +417,40 @@
 \[x\geq0,\abs{\ddot x}\leq M:\abs{\dot x}\leq\sqrt{2Mx}\]
 \[\inv{1+x}<\ln\big(1+\inv x\big)<\inv x\]
 \end{formulae}
-%%%%%%
-\begin{formulae}{3}{vector spaces}
-\[(V,\mathbb K,+,\cdot)\text{ vector space};\quad\mathbb K\text{ field}\]
-\[\exists\,\vec0\in V:\vec v+\vec0=\vec v\]
-\[\fundef[\cdot]{\mathbb K\times V}V;\quad\lambda\cdot(\vec v+\vec w)=\lambda\vec v+\lambda\vec w\]
-\[0_\mathbb K\cdot\vec v=\vec0,\,1_\mathbb K\cdot\vec v=\vec v\]
-\[\lambda\in\mathbb K,\,\vec v,\vec w\in V\then\vec v+\vec w\in V,\,\lambda\vec v\in V\]
-\[\dim(U+V)=\dim U+\dim V-\dim(U\cap V)\]
-\[\ell\text{ linear}:\ell(\vec v+\lambda\vec w)=\ell(\vec v)+\lambda\ell(\vec w)\]
-\[\ker\ell=\setdef[\vec v\in V]{\ell(\vec v)=0}\]
-\[\dim V=\dim \ell(V)+\dim(V\cap\ker\ell)\]
-\[\dotp{}{}:V\times V\rightarrow\mathbb K;\quad\dotp{\vec v}{\vec w}=\dotp{\vec w}{\vec v}\]
-\[\dotp{\vec v+\lambda\vec w}{\vec u}=\dotp{\vec v}{\vec u}+\lambda\dotp{\vec w}{\vec u}\]
-\[\norm{}:V\rightarrow\mathbb K;\quad\norm{\vec v}=0\rightarrow\vec v=\vec0\]
-\[\norm{\lambda\vec v}=\abs{\lambda}\norm{\vec v};\quad\norm{\vec v+\vec w}\leq\norm{\vec v}+\norm{\vec w}\]
+
+\begin{formulae}{3}{Linear algebra}
+	\[\dim(U+V)=\dim U+\dim V-\dim(U\cap V)\]
+	\[\dim V=\dim \ell(V)+\dim(V\cap\ker\ell)\]
 \end{formulae}
-%%%%%%
+
+\begin{formulae}{5}{Groups}
+	\[\text{stabilizer: }\operatorname{Stab}_Gx=\setdef[g\in G]{gx=x}\]
+\end{formulae}
+
+% \begin{formulae}{3}{linear representations}
+% 	\[\C[G]=\setdef[\sum_ia_ig_i]{a_i\in\C\et g_i\in G}\]
+% 	\[\C^G=\set{\fundef G\C}\]
+% 	\[\C[G]\simeq\C^G;\,\sum_ia_ig_i\mapsto(g_i\mapsto a_i)\]
+% 	\[\psp fg=\inv{\abs{G}}\sum_{s\in G}f(s)\conj g(s)\]
+% 	\[\dim\Hom(\rho,\sigma)=\psp{\chi_\rho}{\chi_\sigma}\]
+% 	\[\dim V_\rho^G=\psp{\chi_\rho}I\]
+% 	\[\Hom(V_\rho,V_\sigma)\simeq V_\rho^*\otimes V_\sigma\text{ (finite dimension)}\]
+% 	\[V_\tau=\Hom(V_\rho,V_\sigma);\,\tau_g(\varphi)=\sigma_g\circ\varphi\circ\rho_g^{-1}\]
+% 	\[\chi_\text{reg}(g)=\abs{G}\delta_{ge};\,\psp{\chi_\text{reg}}{\chi_\rho}=\deg\rho\]
+% 	\[\dim\Lambda^mV=\binom nm;\,\dim S^mV=\binom{n+m-1}m\]
+% 	\[\chi_{\Lambda^2\rho}=\frac{\chi_\rho(g)^2-\chi_\rho(g^2)}2;\,\chi_{S^2\rho}=\frac{\chi_\rho(g)^2+\chi_\rho(g^2)}2\]
+% 	\[\Hom_H(\rho,\sigma_H)\simeq\Hom_G(\Ind_H^G\rho,\sigma)\]
+% 	\[\Reg_{(h_1,h_2)}f=g\mapsto f(h_2^{-1}gh_1)\]
+% 	\[i=\dim\Hom(S^2\rho,I)-\dim\Hom(\Lambda^2\rho,I)\]
+% 	\[i=\inv{\abs{G}}\sum_{g\in G}\chi(g^2)=\begin{cases}1&\text{forma simm.}\\0&\text{no forma}\\-1&\text{forma alt.}\end{cases}\]
+% 	\[M(\rho)=\Span\set{[\rho_g]_{ij}}\]
+% 	\[\C^G=\bigoperp_{\rho\text{ irr.}}M(\rho)\]
+% 	\[\rho,\sigma\text{ irr.}\et\Reg_{M(\rho)}\simeq\Reg_{M(\sigma)}\so\rho\simeq\sigma\]
+% 	\[\int_{\SU_2^\#}f=\inv\pi\int_0^{2\pi}f(g_\theta)\sin^2\theta\dd\theta;\,g\sim\smqty(e^{i\theta}&0\\0&e^{-i\theta})\]
+% 	\[\rho_m\otimes\rho_n\simeq\bigoplus_{j=0}^{\min(m,n)}\rho_{m+n-2j}\]
+% 	\[\chi_{\rho_m}(g_\theta)=\frac{z^{m+1}-z^{-(m+1)}}{z-z^{-1}},\,z=e^{i\theta}\]
+% \end{formulae}
+
 \begin{formulae}{2}{symbols}
 \[\begin{array}{llll llll llll}
 A&B&\Gamma&\Delta&E&Z&H&\Theta&I&K&\Lambda&M\\
@@ -672,12 +702,13 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\text{Drüde-Lorentz: }\varepsilon=1-\frac{\omega_\text p^2}{\omega^2+i\gamma\omega-\omega_0^2}\]
 	\[P(t)=\int_{-\infty}^\infty g(t-t')E(t')\dd t'\]
 	\[P(\omega)=\chi(\omega)E(\omega)\]
-	\[\chi(\omega)=\int_{-\infty}^\infty e^{i\omega t}g(t)\dd t\]
-	\[g(t<0)=0\implies\chi(-\omega)=\conj\chi(\omega)\]
+	\[\chi(\omega)=\int_{-\infty}^\infty e^{i\omega t}g(t)\dd t;\,\chi(-\omega)=\conj\chi(\omega)\]
+	\[g(t<0)=0\implies\]
 	\[\Re\varepsilon(\omega)=1+\frac2\pi\fint_0^\infty\frac{\omega'\qty(\Im\varepsilon(\omega')-\frac{4\pi\sigma_0}{\omega'})}{\omega'^2-\omega^2}\dd\omega'\]
 	\[\Im\varepsilon(\omega)=-\frac{2\omega}\pi\fint_0^\infty\frac{\Re\varepsilon(\omega')-1}{\omega'^2-\omega^2}\dd\omega'+\frac{4\pi\sigma_0}\omega\]
 	\[\text{sum rule: }\frac\pi2\omega_\text p^2=\int_0^\infty\omega\Im\varepsilon\dd\omega\]
 	\[\text{sum rule: }2\pi^2\sigma_0=\int_0^\infty(1-\Re\varepsilon)\dd\omega\]
+	\[\text{sum rule: }\int_0^\infty(\Re n-1)\dd\omega=0\]
 	\[\text{Miller rule: }\chi^{(2)}(\omega,\omega)\propto\chi^{(1)}(\omega)^2\chi^{(1)}(2\omega)\]
 \end{formulae}
 
