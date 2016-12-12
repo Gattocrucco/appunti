@@ -143,24 +143,30 @@
 	\[\avg{\Re(ae^{-i\omega t})\Re(be^{-i\omega t})}=\inv2\Re(a\conj b)\]
 \end{formulae}
 
+\newcommand*\at[1]{\big|_{#1}}
 \begin{formulae}{5}{derivatives}
-\[\tan'x=1+\tan^2x\]
-\[\cot'x=-1-\cot^2x\]
-\[\atan'x=-\acot'x=\inv{1+x^2}\]
-\[\asin'x=-\acos'x=\inv{\sqrt{1-x^2}}\]
-\[(a^x)'=a^x\ln a\]
-\[\log_a'x=\inv{x\ln a}\]
-\[\cosh'x=\sinh x\]
-\[\tanh'x=1-\tanh^2x\]
-\[\artanh'x=\arcoth'x=\inv{1-x^2}\]
-\[\arsinh'x=\inv{\sqrt{x^2+1}}\]
-\[\arcosh'x=\inv{\sqrt{x^2-1}}\]
-\[(f^{-1})'=\inv{f'(f^{-1})}\]
-\[\big(\inv x\big)'=-\frac{\dot x}{x^2}\]
-\[\big(\frac{x}{y}\big)'=\frac{\dot xy-x\dot y}{y^2}\]
-\[(x^y)'=x^y\big(\dot y\ln x+y\frac{\dot x}{x}\big)\]
+	\[\tan'x=1+\tan^2x\]
+	\[\cot'x=-1-\cot^2x\]
+	\[\atan'x=-\acot'x=\inv{1+x^2}\]
+	\[\asin'x=-\acos'x=\inv{\sqrt{1-x^2}}\]
+	\[(a^x)'=a^x\ln a\]
+	\[\log_a'x=\inv{x\ln a}\]
+	\[\cosh'x=\sinh x\]
+	\[\tanh'x=1-\tanh^2x\]
+	\[\artanh'x=\arcoth'x=\inv{1-x^2}\]
+	\[\arsinh'x=\inv{\sqrt{x^2+1}}\]
+	\[\arcosh'x=\inv{\sqrt{x^2-1}}\]
+	\[(f^{-1})'=\inv{f'(f^{-1})}\]
+	\[\big(\inv x\big)'=-\frac{\dot x}{x^2}\]
+	\[\big(\frac{x}{y}\big)'=\frac{\dot xy-x\dot y}{y^2}\]
+	\[(x^y)'=x^y\big(\dot y\ln x+y\frac{\dot x}{x}\big)\]
+	\[\pdv{(x,y)}{(u,v)}\is\pdv{x}{u}\pdv{y}{v}-\pdv{x}{v}\pdv{y}{u}\]
+	\[\pdv{(x,y)}{(u,y)}=\pdv{x}{u}\at y=-\pdv{x}{y}\at u\pdv{y}{u}\at x\]
+	\[\pdv{x}{y}\at u\pdv{y}{u}\at x\pdv{u}{x}\at y=-1\]
+	\[\pdv{x}{u}\at y=\pdv{x}{u}\at v-\pdv{x}{y}\at u\pdv{y}{u}\at v\]
+	\[\pdv{x}{u}\at v=\pdv{x}{y}\at v\pdv{y}{u}\at v\]
 \end{formulae}
-%%%%%%
+
 \begin{formulae}{5}{integrals}
 \[\integ{x^a}=\frac{x^{a+1}}{a+1}\]
 \[\integ{a^x}=\frac{a^x}{\ln a}\]
@@ -532,13 +538,29 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[K_a=\frac{[\ce{A-}][\ce{H3O+}]}{[\ce{AH}]}\]
 \end{formulae}
 
-\begin{formulae}{6}{thermodynamics}
-\[\dj L=p\dd V\]
-\[\dj Q=\dd U+\dj L\]
-\[\dd S=\frac{\dj Q}T\]
-\[C_V=\big(\frac{\dj Q}{\dd T}\big)_V\]
-\[C_p=\big(\frac{\dj Q}{\dd T}\big)_p\]
-\[\gamma=\frac{C_p}{C_V}\]
+\begin{formulae}{3}{thermodynamics}
+	\[\dj Q=T\dd S=\dd U+\dj L=\dd U+p\dd V-\mu\dd N\]
+	\[C_{V,N}=\pdv{Q}{T}\at{V,N}=\pdv{U}{T}\at{V,N}\]
+	\[C_{p,N}=\pdv{Q}{T}\at{p,N}=\pdv{U}{T}\at{p,N}+p\pdv{V}{T}\at{p,N}\]
+	\[\gamma\is\frac{C_p}{C_V}\]
+	\[\mu_J\is\pdv{T}{V}\at{U,N}\]
+	\[\lambda U=U(\lambda(S,V,N))\then U=ST-pV+\mu N\]
+	\[\then S\dd T-V\dd p+N\dd\mu=0\]
+	\[\text{Fix }S,V,N:\min U\text{ at equilibrium}\]
+	\[\text{Fix }T,V,N:\min F=U-TS\]
+	\[\text{Fix }T,p,N:\min G=F+pV\]
+	\[\text{Fix }S,p,N:\min H=U+pV\]
+	\begin{centering}
+		\pgfmathsetmacro{\maxr}{1}
+		\begin{tikzpicture}[scale=.4]
+			\draw[->] (-1,-1) node[below left]{$S$} -- (1,1) node[above right]{$T$};
+			\draw[->] (1,-1) node[below right]{$p$} -- (-1,1) node[above left]{$V$};
+			\path (90:\maxr) node{$F$} (180:\maxr) node{$U$} (-90:\maxr) node{$H$} (0:\maxr) node{$G$};
+			\path (2.5,1) node[right] {$\pdv{T}\frac GT\at p=-\frac H{T^2}$};
+			\path (2.5,-1) node[right] {$\pdv{T}\frac FT\at V=-\frac U{T^2}$};
+		\end{tikzpicture}
+	\end{centering}
+	\[\Omega=U-TS-\mu N\]
 \end{formulae}
 
 \begin{formulae}{3}{ideal gas}
