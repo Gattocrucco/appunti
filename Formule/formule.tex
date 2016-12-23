@@ -38,7 +38,7 @@
 \newcommand*\titlet[1]{\textbf{\xmakefirstuc{#1}}}
 
 \newenvironment{formulae}[2]{%
-\vspace{-20pt}
+% \vspace{-20pt}
 \begin{multicols}{#1}
 \noindent\titlet{#2}}
 {\end{multicols}}
@@ -104,22 +104,25 @@
 	\[\cosh^2x=\inv{1-\tanh^2x}\]
 	\[\sin x=-i\sinh(ix)\]
 	\[\cos x=\cosh(ix)\]
-	\[\arsinh x=\log(x+\sqrt{x^2+1})\]
-	\[\arcosh x=\log(x+\sqrt{x^2-1})\]
+	\[\begin{psmallmatrix}
+		\arsinh x\\ \arcosh x
+	\end{psmallmatrix}=\log(x+\sqrt{x^2+\begin{psmallmatrix}
+		1 \\ -1
+	\end{psmallmatrix}})\]
 	\[\artanh x=\inv2\log\frac{1+x}{1-x}\]
 \end{formulae}
 
 \begin{formulae}{2}{areas}
-\[\text{triangle: }\sqrt{p(p-a)(p-b)(p-c)}\]
-\[\text{quad: }\sqrt{(p-a)(p-b)(p-c)(p-d)-abcd\cos^2\frac{\alpha+\gamma}{2}}\]
-\[\text{Pick: }A=\left(I+\frac{B}{2}-1\right)A_\text{check}\]
+	\[\text{triangle: }\sqrt{p(p-a)(p-b)(p-c)}\]
+	\[\text{quad: }\sqrt{(p-a)(p-b)(p-c)(p-d)-abcd\cos^2\frac{\alpha+\gamma}{2}}\]
+	\[\text{Pick: }A=\left(I+\frac{B}{2}-1\right)A_\text{check}\]
 \end{formulae}
-%%%%%%
+
 \begin{formulae}{5}{combinatorics}
-\[D_{n,k}=\frac{n!}{(n-k)!}\]
-\[P_n^{(m_1,m_2,\dots)}=\frac{n!}{m_1!m_2!\dots}\]
-\[C_{n,k}=\binom{n}{k}=\frac{n!}{k!(n-k)!}\]
-\[C'_{n,k}=\binom{n+k-1}{k}\]
+	\[D_{n,k}=\frac{n!}{(n-k)!}\]
+	\[P_n^{(m_1,m_2,\dots)}=\frac{n!}{m_1!m_2!\dots}\]
+	\[C_{n,k}=\binom{n}{k}=\frac{n!}{k!(n-k)!}\]
+	\[C'_{n,k}=\binom{n+k-1}{k}\]
 \end{formulae}
 
 \begin{formulae}{3}{miscellaneous}
@@ -141,6 +144,9 @@
 	\[\pm\sqrt z=\sqrt\frac{\Re z+\abs{z}}2+\frac{i\Im z}{\sqrt{2(\Re z+\abs{z})}}\]
 	\[\delta(g(x))=\frac{\delta(x-x_i)}{\abs{g'(x_i)}};\,g(x_i)=0\]
 	\[\avg{\Re(ae^{-i\omega t})\Re(be^{-i\omega t})}=\inv2\Re(a\conj b)\]
+	\[\erf(x)=\frac2{\sqrt\pi}\int_0^xe^{-t^2}\dd t\]
+	\[f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint\frac{f(z)\dd z}{(z-z_0)^{n+1}}\]
+	\[f(z)=\sum_{k=-\infty}^\infty\qty(\inv{2\pi i}\oint\frac{f(z')\dd z'}{(z'-z_0)^{k+1}})(z-z_0)^k\]
 \end{formulae}
 
 \newcommand*\at[1]{\big|_{#1}}
@@ -168,21 +174,21 @@
 \end{formulae}
 
 \begin{formulae}{5}{integrals}
-\[\integ{x^a}=\frac{x^{a+1}}{a+1}\]
-\[\integ{a^x}=\frac{a^x}{\ln a}\]
-\[\integ{\inv{x}}=\ln|x|\]
-\[\integ{\tan x}=-\ln|\cos x|\]
-\[\integ{\cot x}=\ln|\sin x|\]
-\[\invinteg{\sin x}=\ln\abs{\tan\frac x2}\]
-\[\invinteg{\cos x}=\ln\abs{\tan(\frac x2+\frac\pi4)}\]
-\[\integ{\ln x}=x(\ln x-1)\]
-\[\integ{\tanh x}=\ln\cosh x\]
-\[\integ{\coth x}=\ln\abs{\sinh x}\]
-\[\invinteg{\sqrt{a^2-x^2}}=\asin\frac xa\]
-\[\invinteg{a^2+x^2}=\inv a\atan\frac xa\]
-\[\integ{xy}=x\integ y-\integ{(\dot x\integ y)}\]
-\[\integ{e^{yx}x}=e^{yx}\big(\frac yx-\inv{y^2}\big)\]
-\[\integ{e^{-x^2}}=\sqrt\pi\]
+	\[\integ{x^a}=\frac{x^{a+1}}{a+1}\]
+	\[\integ{a^x}=\frac{a^x}{\ln a}\]
+	\[\integ{\inv{x}}=\ln|x|\]
+	\[\integ{\tan x}=-\ln|\cos x|\]
+	\[\integ{\cot x}=\ln|\sin x|\]
+	\[\invinteg{\sin x}=\ln\abs{\tan\frac x2}\]
+	\[\invinteg{\cos x}=\ln\abs{\tan(\frac x2+\frac\pi4)}\]
+	\[\integ{\ln x}=x(\ln x-1)\]
+	\[\integ{\tanh x}=\ln\cosh x\]
+	\[\integ{\coth x}=\ln\abs{\sinh x}\]
+	\[\invinteg{\sqrt{a^2-x^2}}=\asin\frac xa\]
+	\[\invinteg{a^2+x^2}=\inv a\atan\frac xa\]
+	\[\integ{xy}=x\integ y-\integ{(\dot x\integ y)}\]
+	\[\integ{e^{yx}x}=e^{yx}\big(\frac yx-\inv{y^2}\big)\]
+	\[\dinteg{-\infty}\infty{e^{-x^2}}=\sqrt\pi\]
 \end{formulae}
 
 \begin{formulae}{3}{differential equations}
@@ -195,27 +201,27 @@
 \end{formulae}
 
 \begin{formulae}{3}{taylor}
-\[\sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\dotsb\]
-\[\cos x=1-\frac{x^2}{2}+\frac{x^4}{4!}-\frac{x^6}{6!}+\dotsb\]
-\[\tan x=x+\frac{x^3}{3}+\frac2{15}x^5+\frac{17}{315}x^7+\LO9\]
-\[\inv{\sin x}=\inv x+\frac x6+\frac7{360}x^3+\frac{31}{15120}x^5+\LO7\]
-\[\inv{\cos x}=1+\frac{x^2}2+\frac5{24}x^4+\frac{61}{720}x^6+\frac{277}{8064}x^8+\LO{10}\]
-\[\inv{\tan x}=\inv x-\frac x3-\frac{x^3}{45}-\frac2{945}x^5+\LO7\]
-\[\asin x=x+\frac{x^3}6+\frac3{40}x^5+\frac5{112}x^7+\LO9\]
-\[\atan x=x-\frac{x^3}3+\frac{x^5}5-\frac{x^7}7+\dotsb\]
-\[\inv{1-x}=1+x+x^2+x^3+\dotsb\]
-\[\inv{1+x}=1-x+x^2-x^3+\dotsb\]
-\[e^x=1+x+\frac{x^2}2+\frac{x^3}{3!}+\dotsb\]
-\[\ln(1+x)=x-\frac{x^2}2+\frac{x^3}3-\frac{x^4}4+\dotsb\]
-\[\sinh x=x+\frac{x^3}{3!}+\frac{x^5}{5!}+\frac{x^7}{7!}+\dotsb\]
-\[\cosh x=1+\frac{x^2}2+\frac{x^4}{4!}+\frac{x^6}{6!}+\dotsb\]
-\[\tanh x=x-\frac{x^3}{3}+\frac2{15}x^5-\frac{17}{315}x^7+\LO9\]
-\[\inv{\sinh x}=\inv x-\frac x6+\frac7{360}x^3-\frac{31}{15120}x^5+\LO7\]
-\[\inv{\cosh x}=1-\frac{x^2}2+\frac5{24}x^4-\frac{61}{720}x^6+\frac{277}{8064}x^8+\LO{10}\]
-\[\inv{\tanh x}=\inv x+\frac x3-\frac{x^3}{45}+\frac2{945}x^5+\LO7\]
-\[(1+x)^n=1+nx+\frac{n(n-1)}2x^2+\LO3\]
-\[(1+x)^x=1+x^2-\frac{x^3}2+\frac56x^4-\frac34x^5+\LO6\]
-\[x!=1-\gamma x+\big(\frac{\gamma^2}2+\frac{\pi^2}{12}\big)x^2+\LO3\]
+	\[\sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\dotsb\]
+	\[\cos x=1-\frac{x^2}{2}+\frac{x^4}{4!}-\frac{x^6}{6!}+\dotsb\]
+	\[\tan x=x+\frac{x^3}{3}+\frac2{15}x^5+\frac{17}{315}x^7+\LO9\]
+	\[\inv{\sin x}=\inv x+\frac x6+\frac7{360}x^3+\frac{31}{15120}x^5+\LO7\]
+	\[\inv{\cos x}=1+\frac{x^2}2+\frac5{24}x^4+\frac{61}{720}x^6+\frac{277}{8064}x^8+\LO{10}\]
+	\[\inv{\tan x}=\inv x-\frac x3-\frac{x^3}{45}-\frac2{945}x^5+\LO7\]
+	\[\asin x=x+\frac{x^3}6+\frac3{40}x^5+\frac5{112}x^7+\LO9\]
+	\[\atan x=x-\frac{x^3}3+\frac{x^5}5-\frac{x^7}7+\dotsb\]
+	\[\inv{1-x}=1+x+x^2+x^3+\dotsb\]
+	\[\inv{1+x}=1-x+x^2-x^3+\dotsb\]
+	\[e^x=1+x+\frac{x^2}2+\frac{x^3}{3!}+\dotsb\]
+	\[\ln(1+x)=x-\frac{x^2}2+\frac{x^3}3-\frac{x^4}4+\dotsb\]
+	\[\sinh x=x+\frac{x^3}{3!}+\frac{x^5}{5!}+\frac{x^7}{7!}+\dotsb\]
+	\[\cosh x=1+\frac{x^2}2+\frac{x^4}{4!}+\frac{x^6}{6!}+\dotsb\]
+	\[\tanh x=x-\frac{x^3}{3}+\frac2{15}x^5-\frac{17}{315}x^7+\LO9\]
+	\[\inv{\sinh x}=\inv x-\frac x6+\frac7{360}x^3-\frac{31}{15120}x^5+\LO7\]
+	\[\inv{\cosh x}=1-\frac{x^2}2+\frac5{24}x^4-\frac{61}{720}x^6+\frac{277}{8064}x^8+\LO{10}\]
+	\[\inv{\tanh x}=\inv x+\frac x3-\frac{x^3}{45}+\frac2{945}x^5+\LO7\]
+	\[(1+x)^n=1+nx+\frac{n(n-1)}2x^2+\LO3\]
+	\[(1+x)^x=1+x^2-\frac{x^3}2+\frac56x^4-\frac34x^5+\LO6\]
+	\[x!=1-\gamma x+\big(\frac{\gamma^2}2+\frac{\pi^2}{12}\big)x^2+\LO3\]
 \end{formulae}
 
 \begin{formulae}{3}{vectors}
@@ -254,53 +260,54 @@
 \end{formulae}
 
 \begin{formulae}{4}{statistics}
-\[P(E\cap E_1)=P(E_1)\cdot P(E|E_1)\]
-\[\Delta x_\text{hist}\approx\frac{x_\text{max}-x_\text{min}}{\sqrt{N}}\]
-\[P(x\leq k)=F(k)=\dinteg{-\infty}{k}{p(x)}\]
-\[\text{median}=F^{-1}(\inv2)\]
-\[E[f(x)]=\dinteg{-\infty}{\infty}{f(x)p(x)}\]
-\[\mu=E[x]=\dinteg{-\infty}{\infty}{xp(x)}\]
-\[\alpha_n=E[x^n]\]
-\[M_n=E[(x-\mu)^n]\]
-\[\sigma^2=M_2=E[x^2]-\mu^2\]
-\[\fwhm\approx2\sigma\]
-\[\gamma_1=\frac{M_3}{\sigma^3},\,\gamma_2=\frac{M_4}{\sigma^4}\]
-\[\phi[y](t)=E[e^{ity}]\]
-\[\phi[y_1+\lambda y_2]=\phi[y_1]\phi[\lambda y_2]\]
-\[\alpha_n=i^{-n}\pdv[n]{t}{\phi[x]}\big|_{t=0}\]
-\[h\geq0:P(h\geq k)\leq\frac{E[h]}k\]
-\[P(|x-\mu|>k\sigma)\leq\inv{k^2}\]
-\[B(k;n,p)=\binom{n}{k}p^k(1-p)^{n-k}\]
-\[\mu_B=np,\,\sigma_B^2=np(1-p)\]
-\[P(k;\mu)=\frac{\mu^k}{k!}e^{-\mu},\,\sigma_P^2=\mu\]
-\[u(x;a,b)=\inv{b-a},\,x\in[a;b]\]
-\[\mu_u=\frac{b+a}{2},\,\sigma_u^2=\frac{(b-a)^2}{12}\]
-\[\varepsilon(x;\lambda)=\lambda e^{-\lambda x},\,x\geq0\]
-\[\mu_\varepsilon=\inv{\lambda},\,\sigma_\varepsilon^2=\inv{\lambda^2}\]
-\[g(x;\mu,\sigma)=\inv{\sigma\sqrt{2\pi}}e^{-\inv{2}(\frac{x-\mu}{\sigma})^2}\]
-\[\fwhm_g=2\sigma\sqrt{2\ln2}\]
-\[z=\frac{x-\mu}{\sigma};\,\mu,\sigma[z]=0,1\]
-\[\chi^2=\sum_{i=1}^nz_i^2;\,\wp:=p[\chi^2]\]
-\[\wp(x;n)=\frac{2^{-\frac{n}{2}}}{\Gamma(\frac{n}{2})}x^{\frac{n}{2}-1}e^{-\frac{x}{2}}\]
-\[\mu_\wp=n,\,\sigma_\wp^2=2n\]
-\[n\geq30:\wp(x;n)\approx g(x;n,\sqrt{2n})\]
-\[n\geq8:p[\sqrt{2\chi^2}]\approx g(;\sqrt{2n-1},1)\]
-\[S(x;n)=\frac{\Gamma(\frac{n+1}2)}{\sqrt{n\pi}\Gamma(\frac n2)}\big(1+\frac{x^2}n\big)^{-\frac{n+1}2}\]
-\[\mu_S=0,\,\sigma^2_S=\frac n{n-2}\]
-\[p\big[z\sqrt\frac n{\chi^2}\big]=S(,n)\]
-\[n\geq35:S(x;n)\approx g(x;0,1)\]
-\[c(x;a)=\frac{a}{\pi}\inv{a^2+x^2}\]
-\[\sigma_{xy}=E[xy]-\mu_x\mu_y\leq\sigma_x\sigma_y\]
-\[\rho=\frac{\sigma_{xy}}{\sigma_x\sigma_y},\,|\rho|\leq1\]
-\[\mu[f(x_1,\ldots)]\approx f(\mu_1,\ldots)\]
-\[\sigma^2[f(x_1,\ldots)]\approx\sigma_{x_i x_j}\pdv{f}{x_i}\big|_{\mu_i}\pdv{f}{x_j}\big|_{\mu_j}\]
-\[\mu\approx m=\inv{n}\sum_{i=1}^nx_i\]
-\[\sigma^2\approx s^2=\inv{n-1}\sum_{i=1}^n(x_i-m)^2\]
-\[s_m^2=\frac{s^2}{n}\]
-\[p\big[\frac{m-\mu}{s_m}\big]=S(;n)\]
+	\[P(E\cap E_1)=P(E_1)\cdot P(E|E_1)\]
+	\[\Delta x_\text{hist}\approx\frac{x_\text{max}-x_\text{min}}{\sqrt{N}}\]
+	\[P(x\leq k)=F(k)=\dinteg{-\infty}{k}{p(x)}\]
+	\[\text{median}=F^{-1}(\inv2)\]
+	\[E[f(x)]=\dinteg{-\infty}{\infty}{f(x)p(x)}\]
+	\[\mu=E[x]=\dinteg{-\infty}{\infty}{xp(x)}\]
+	\[\alpha_n=E[x^n]\]
+	\[M_n=E[(x-\mu)^n]\]
+	\[\sigma^2=M_2=E[x^2]-\mu^2\]
+	\[\fwhm\approx2\sigma\]
+	\[\gamma_1=\frac{M_3}{\sigma^3},\,\gamma_2=\frac{M_4}{\sigma^4}\]
+	\[\phi[y](t)=E[e^{ity}]\]
+	\[\phi[y_1+\lambda y_2]=\phi[y_1]\phi[\lambda y_2]\]
+	\[\alpha_n=i^{-n}\pdv[n]{t}{\phi[x]}\big|_{t=0}\]
+	\[h\geq0:P(h\geq k)\leq\frac{E[h]}k\]
+	\[P(|x-\mu|>k\sigma)\leq\inv{k^2}\]
+	\[B(k;n,p)=\binom{n}{k}p^k(1-p)^{n-k}\]
+	\[\mu_B=np,\,\sigma_B^2=np(1-p)\]
+	\[P(k;\mu)=\frac{\mu^k}{k!}e^{-\mu},\,\sigma_P^2=\mu\]
+	\[u(x;a,b)=\inv{b-a},\,x\in[a;b]\]
+	\[\mu_u=\frac{b+a}{2},\,\sigma_u^2=\frac{(b-a)^2}{12}\]
+	\[\varepsilon(x;\lambda)=\lambda e^{-\lambda x},\,x\geq0\]
+	\[\mu_\varepsilon=\inv{\lambda},\,\sigma_\varepsilon^2=\inv{\lambda^2}\]
+	\[g(x;\mu,\sigma)=\inv{\sigma\sqrt{2\pi}}e^{-\inv{2}(\frac{x-\mu}{\sigma})^2}\]
+	\[g(\vec x;\vec\mu,V)=\frac{e^{-\inv2\transp{(\vec x-\vec\mu)}V^{-1}(\vec x-\vec\mu)}}{\sqrt{\det(2\pi V)}}\]
+	\[\fwhm_g=2\sigma\sqrt{2\ln2}\]
+	\[z=\frac{x-\mu}{\sigma};\,\mu,\sigma[z]=0,1\]
+	\[\chi^2=\sum_{i=1}^nz_i^2;\,\wp:=p[\chi^2]\]
+	\[\wp(x;n)=\frac{2^{-\frac{n}{2}}}{\Gamma(\frac{n}{2})}x^{\frac{n}{2}-1}e^{-\frac{x}{2}}\]
+	\[\mu_\wp=n,\,\sigma_\wp^2=2n\]
+	\[n\geq30:\wp(x;n)\approx g(x;n,\sqrt{2n})\]
+	\[n\geq8:p[\sqrt{2\chi^2}]\approx g(;\sqrt{2n-1},1)\]
+	\[S(x;n)=\frac{\Gamma(\frac{n+1}2)}{\sqrt{n\pi}\Gamma(\frac n2)}\big(1+\frac{x^2}n\big)^{-\frac{n+1}2}\]
+	\[\mu_S=0,\,\sigma^2_S=\frac n{n-2}\]
+	\[p\big[z\sqrt\frac n{\chi^2}\big]=S(,n)\]
+	\[n\geq35:S(x;n)\approx g(x;0,1)\]
+	\[c(x;a)=\frac{a}{\pi}\inv{a^2+x^2}\]
+	\[\sigma_{xy}=E[xy]-\mu_x\mu_y\leq\sigma_x\sigma_y\]
+	\[\rho_{xy}=\frac{\sigma_{xy}}{\sigma_x\sigma_y},\,|\rho_{xy}|\leq1\]
+	\[\mu_{f(x)}\approx f(\mu_x)\]
+	\[\sigma_{fg}\approx\sigma_{x_i x_j}\pdv{f}{x_i}\big|_{\mu_{x_i}}\pdv{g}{x_j}\big|_{\mu_{x_j}}\]
+	\[\mu\approx m=\inv{n}\sum_{i=1}^nx_i\]
+	\[\sigma^2\approx s^2=\inv{n-1}\sum_{i=1}^n(x_i-m)^2\]
+	\[s_m^2=\frac{s^2}{n}\]
+	\[p\big[\frac{m-\mu}{s_m}\big]=S(;n)\]
 \end{formulae}
 
-\begin{formulae}{4}{fit}
+\begin{formulae}{4}{fit (ML)}
 	\[f(x)=mx+q,\quad f(x)=a,\]
 	\[f(x)=bx,\quad f(x;\theta)=\theta_ih_i(x)\]
 	\[m=\frac{\sum\inv{\D y^2}\cdot\sum\frac{xy}{\D y^2}-\sum\frac{x}{\D y^2}\cdot\sum\frac{y}{\D y^2}}{\sum\inv{\D y^2}\cdot\sum\frac{x^2}{\D y^2}-(\sum\frac x{\D y^2})^2}\]
@@ -310,6 +317,8 @@
 	\]
 	\[\Delta mq=\frac{-\sum\frac x{\D y^2}}{\sum\inv{\D y^2}\cdot\sum\frac{x^2}{\D y^2}-(\sum\frac{x}{\D y^2})^2}\]
 	\[a=\frac{\sum\frac y{\D y^2}}{\sum\inv{\D y^2}},\ \D a^2=\inv{\sum\inv{\D y^2}}\]
+	\[\mathbf a=(\sum V_\mathbf y^{-1})^{-1}(\sum V_\mathbf y^{-1}\mathbf y)\]
+	\[\D\mathbf a^2=(\sum V_\mathbf y^{-1})^{-1}\]
 	\[b=\frac{\sum\frac{xy}{\D y^2}}{\sum\frac{x^2}{\D y^2}},\ \D b^2=\inv{\sum\frac{x^2}{\D y^2}}\]
 	\[H_{ij}:=h_j(x_i);\,V_{ij}:=\Delta y_iy_j\]
 	\[\chi^2=(y-f(x;\theta))^TV^{-1}(y-f(x;\theta))\]
@@ -318,117 +327,117 @@
 \end{formulae}
 
 \begin{formulae}{3}{kinematics}
-\[\inv{R}=\abs\big{\frac{v_xa_y-v_ya_x}{v^3}}\]
-\[\vec\omega=\dot\varphi\cos\theta\hat r-\dot\varphi\sin\theta\hat\theta+\dot\theta\hat\varphi\]
-\[\dotvec w=\dv{(\vec w\hat r)}{t}\hat r+\dv{(\vec w\hat\theta)}{t}\hat\theta+\dv{(\vec w\hat\varphi)}{t}\hat\varphi+\vec\omega\times\vec w\]
-\[\theta\equiv\frac\pi2\rightarrow\dot{\vec r}=\dot r\hat r+r\dot\varphi\hat\varphi\]
-\[\theta\equiv\frac\pi2\rightarrow\ddotvec r=(\ddot r-r\dot\varphi^2)\hat r+(r\ddot\varphi+2\dot r\dot\varphi)\hat\varphi\]
-\[\dot{\vec r}=\dot r\hat r+r\dot\theta\hat\theta+r\dot\varphi\sin\theta\hat\varphi\]
-\[\dotp{\ddot{\vec r}}{\hat r}=\ddot r-r\dot\theta^2-r\dot\varphi^2\sin^2\theta\]
-\[\dotp{\ddot{\vec r}}{\hat\theta}=r\ddot\theta+2\dot r\dot\theta-r\dot\varphi^2\sin\theta\cos\theta\]
-\[\dotp{\ddot{\vec r}}{\hat\varphi}=r\ddot\varphi\sin\theta+2\dot r\dot\varphi\sin\theta+2r\dot\theta\dot\varphi\cos\theta\]
-\[\vec{A}=\ddotvec r+\vec{A}_\text T+\vec\omega\times(\vec\omega\times\vec{r})+\dot{\vec\omega}\times\vec{r}+2\vec\omega\times\dotvec r\]
-\begin{centering}
-\tdplotsetmaincoords{60}{110}
-\pgfmathsetmacro{\rvec}{1.2}
-\pgfmathsetmacro{\thetavec}{40}
-\pgfmathsetmacro{\phivec}{60}
-\pgfmathsetmacro{\verlen}{.6}
-\pgfmathsetmacro{\thvec}{50}
-\begin{tikzpicture}[scale=1.5,tdplot_main_coords]
-	\coordinate (O) at (0,0,0);
-	\draw[thick,->] (O) -- (\verlen,0,0) node[left]{$\hat x$};
-	\draw[thick,->] (O) -- (0,\verlen,0) node[below right]{$\hat y$};
-	\draw[thick,->] (O) -- (0,0,\verlen) node[above]{$\hat z$};
-	\tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
-	\draw[-stealth] (O) -- (P) node[above left] {$\vec r$};
-	\draw[dashed] (O) -- (Pxy) -- (P);
-	\tdplotdrawarc {(O)}{0.3}{0}{\phivec}{anchor=north}{$\varphi$}
-	\tdplotsetthetaplanecoords{\phivec}
-	\tdplotdrawarc[tdplot_rotated_coords]{(O)}{0.3}{0}{\thetavec}{anchor=south west}{$\theta$}
-	\tdplotsetrotatedcoords{\phivec}{\thetavec}{0}
-	\tdplotsetrotatedcoordsorigin{(P)}
-	\draw[thick,tdplot_rotated_coords,->] (0,0,0) -- (\verlen,0,0) node[right]{$\scriptstyle\hat\theta$};
-	\draw[thick,tdplot_rotated_coords,->] (0,0,0) -- (0,\verlen,0) node[anchor=west]{$\scriptstyle\hat\varphi$};
-	\draw[thick,tdplot_rotated_coords,->] (0,0,0) -- (0,0,\verlen) node[anchor=south]{$\scriptstyle\hat r$};
-\end{tikzpicture}
-\begin{tikzpicture}[scale=1.5]
-	\coordinate (O) at (0,0);
-	\coordinate (P) at (\thvec:.8);
-	\draw[thick,->] (O) -- (\verlen,0) node[right]{$\hat x$};
-	\draw[thick,->] (O) -- (0,\verlen) node[left]{$\hat y$};
-	\draw[-stealth] (O) -- (P);
-	\draw (P)+(135:.1) node[below right]{$\vec r$};
-	\draw (.2,0) node[above right]{$\varphi$} arc(0:\thvec:.2);
-	\draw[thick,->] (P) -- +(\thvec:\verlen);
-	\draw (P)+(\thvec:{\verlen-.05}) node[above right]{$\scriptstyle\hat r$};
-	\draw[thick,->] (P) -- +({90+\thvec}:\verlen);
-	\draw (P)+({90+\thvec}:{\verlen-.1}) node[above left]{$\scriptstyle\hat\varphi$};
-\end{tikzpicture}
-\end{centering}
+	\[\inv{R}=\abs\big{\frac{v_xa_y-v_ya_x}{v^3}}\]
+	\[\vec\omega=\dot\varphi\cos\theta\hat r-\dot\varphi\sin\theta\hat\theta+\dot\theta\hat\varphi\]
+	\[\dotvec w=\dv{(\vec w\hat r)}{t}\hat r+\dv{(\vec w\hat\theta)}{t}\hat\theta+\dv{(\vec w\hat\varphi)}{t}\hat\varphi+\vec\omega\times\vec w\]
+	\[\theta\equiv\frac\pi2\rightarrow\dot{\vec r}=\dot r\hat r+r\dot\varphi\hat\varphi\]
+	\[\theta\equiv\frac\pi2\rightarrow\ddotvec r=(\ddot r-r\dot\varphi^2)\hat r+(r\ddot\varphi+2\dot r\dot\varphi)\hat\varphi\]
+	\[\dot{\vec r}=\dot r\hat r+r\dot\theta\hat\theta+r\dot\varphi\sin\theta\hat\varphi\]
+	\[\dotp{\ddot{\vec r}}{\hat r}=\ddot r-r\dot\theta^2-r\dot\varphi^2\sin^2\theta\]
+	\[\dotp{\ddot{\vec r}}{\hat\theta}=r\ddot\theta+2\dot r\dot\theta-r\dot\varphi^2\sin\theta\cos\theta\]
+	\[\dotp{\ddot{\vec r}}{\hat\varphi}=r\ddot\varphi\sin\theta+2\dot r\dot\varphi\sin\theta+2r\dot\theta\dot\varphi\cos\theta\]
+	\[\vec{A}=\ddotvec r+\vec{A}_\text T+\vec\omega\times(\vec\omega\times\vec{r})+\dot{\vec\omega}\times\vec{r}+2\vec\omega\times\dotvec r\]
+	\begin{centering}
+	\tdplotsetmaincoords{60}{110}
+	\pgfmathsetmacro{\rvec}{1.2}
+	\pgfmathsetmacro{\thetavec}{40}
+	\pgfmathsetmacro{\phivec}{60}
+	\pgfmathsetmacro{\verlen}{.6}
+	\pgfmathsetmacro{\thvec}{50}
+	\begin{tikzpicture}[scale=1.5,tdplot_main_coords]
+		\coordinate (O) at (0,0,0);
+		\draw[thick,->] (O) -- (\verlen,0,0) node[left]{$\hat x$};
+		\draw[thick,->] (O) -- (0,\verlen,0) node[below right]{$\hat y$};
+		\draw[thick,->] (O) -- (0,0,\verlen) node[above]{$\hat z$};
+		\tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+		\draw[-stealth] (O) -- (P) node[above left] {$\vec r$};
+		\draw[dashed] (O) -- (Pxy) -- (P);
+		\tdplotdrawarc {(O)}{0.3}{0}{\phivec}{anchor=north}{$\varphi$}
+		\tdplotsetthetaplanecoords{\phivec}
+		\tdplotdrawarc[tdplot_rotated_coords]{(O)}{0.3}{0}{\thetavec}{anchor=south west}{$\theta$}
+		\tdplotsetrotatedcoords{\phivec}{\thetavec}{0}
+		\tdplotsetrotatedcoordsorigin{(P)}
+		\draw[thick,tdplot_rotated_coords,->] (0,0,0) -- (\verlen,0,0) node[right]{$\scriptstyle\hat\theta$};
+		\draw[thick,tdplot_rotated_coords,->] (0,0,0) -- (0,\verlen,0) node[anchor=west]{$\scriptstyle\hat\varphi$};
+		\draw[thick,tdplot_rotated_coords,->] (0,0,0) -- (0,0,\verlen) node[anchor=south]{$\scriptstyle\hat r$};
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=1.5]
+		\coordinate (O) at (0,0);
+		\coordinate (P) at (\thvec:.8);
+		\draw[thick,->] (O) -- (\verlen,0) node[right]{$\hat x$};
+		\draw[thick,->] (O) -- (0,\verlen) node[left]{$\hat y$};
+		\draw[-stealth] (O) -- (P);
+		\draw (P)+(135:.1) node[below right]{$\vec r$};
+		\draw (.2,0) node[above right]{$\varphi$} arc(0:\thvec:.2);
+		\draw[thick,->] (P) -- +(\thvec:\verlen);
+		\draw (P)+(\thvec:{\verlen-.05}) node[above right]{$\scriptstyle\hat r$};
+		\draw[thick,->] (P) -- +({90+\thvec}:\verlen);
+		\draw (P)+({90+\thvec}:{\verlen-.1}) node[above left]{$\scriptstyle\hat\varphi$};
+	\end{tikzpicture}
+	\end{centering}
 \end{formulae}
-%%%%%%
+
 \begin{formulae}{4}{mechanics}
-\[\dot\alpha=\dv t\alpha(\beta,t)=\pdv{\alpha}{\beta}\dot\beta+\pdv{\alpha}{t}\]
-\[\vec p:=m\dotvec r;\,\vec F=\dotvec p;\,\dv{(mT)}{t}=\vec F\vec p\]
-\[M:=\sum_im_i;\,\vec R:=\frac{m_i\vec r_i}M\]
-\[T=\inv2M{\dotvec R}^2+\inv2m_i(\dotvec r_i-{\dotvec R})^2\]
-\[\vec L=\vec R\times M\dotvec R+(\vec r_i-\vec R)\times m_i(\dotvec r_i-\dotvec R)\]
-\[\vec\tau_O=\dotvec L_O+\vec v_O\times\vec p\]
-\[\tau_1=I_1\dot\omega_1+(I_3-I_2)\omega_3\omega_2\]
-\[\lagr(q,\dot q,t)=T-V+\dv tf(q,t)\]
-\[S[q]=\int_{t_1}^{t_2}\lagr(q,\dot q,t)\,\dd t\]
-\[\pdv\epsilon S[q+\epsilon]\big|^{\epsilon(t_1)=\epsilon(t_2)=0}_{\epsilon\equiv0}=0\]
-\[p:=\pdv{\lagr}{\dot q};\,\dot p=\pdv{\lagr}{q}\]
-\[\hami(q,p,t)=\dot qp-\lagr\]
-\[\dot q=\pdv{\hami}{p};\,\dot p=-\pdv{\hami}{q}\]
-\[\dv{\hami}{t}=\pdv{\hami}{t}=-\pdv{\lagr}{t}\]
-\[\pb{u}{v}=\pdv{u}{q}\pdv{v}{p}-\pdv{u}{p}\pdv{v}{q}\]
-\[\dv{u}{t}=\pb{u}{\hami}+\pdv{u}{t}\]
-\[\eta=(q,p);\,\Gamma=\smqty(0&1\\-1&0)\]
-\[\dot\eta=\Gamma\pdv{\hami}{\eta};\,\pb{u}{v}=\pdv{u}{\eta}\Gamma\pdv{v}{\eta}\]
+	\[\dot\alpha=\dv t\alpha(\beta,t)=\pdv{\alpha}{\beta}\dot\beta+\pdv{\alpha}{t}\]
+	\[\vec p:=m\dotvec r;\,\vec F=\dotvec p;\,\dv{(mT)}{t}=\vec F\vec p\]
+	\[M:=\sum_im_i;\,\vec R:=\frac{m_i\vec r_i}M\]
+	\[T=\inv2M{\dotvec R}^2+\inv2m_i(\dotvec r_i-{\dotvec R})^2\]
+	\[\vec L=\vec R\times M\dotvec R+(\vec r_i-\vec R)\times m_i(\dotvec r_i-\dotvec R)\]
+	\[\vec\tau_O=\dotvec L_O+\vec v_O\times\vec p\]
+	\[\tau_1=I_1\dot\omega_1+(I_3-I_2)\omega_3\omega_2\]
+	\[\lagr(q,\dot q,t)=T-V+\dv tf(q,t)\]
+	\[S[q]=\int_{t_1}^{t_2}\lagr(q,\dot q,t)\,\dd t\]
+	\[\pdv\epsilon S[q+\epsilon]\big|^{\epsilon(t_1)=\epsilon(t_2)=0}_{\epsilon\equiv0}=0\]
+	\[p:=\pdv{\lagr}{\dot q};\,\dot p=\pdv{\lagr}{q}\]
+	\[\hami(q,p,t)=\dot qp-\lagr\]
+	\[\dot q=\pdv{\hami}{p};\,\dot p=-\pdv{\hami}{q}\]
+	\[\dv{\hami}{t}=\pdv{\hami}{t}=-\pdv{\lagr}{t}\]
+	\[\pb{u}{v}=\pdv{u}{q}\pdv{v}{p}-\pdv{u}{p}\pdv{v}{q}\]
+	\[\dv{u}{t}=\pb{u}{\hami}+\pdv{u}{t}\]
+	\[\eta=(q,p);\,\Gamma=\smqty(0&1\\-1&0)\]
+	\[\dot\eta=\Gamma\pdv{\hami}{\eta};\,\pb{u}{v}=\pdv{u}{\eta}\Gamma\pdv{v}{\eta}\]
 \end{formulae}
-%%%%%%
+
 \begin{formulae}{5}{inertia}
-\[\text{point: }mr^2\]
-\[\text{two points: }\mu d^2\]
-\[\text{rod: }\inv{12}mL^2\]
-\[\text{disk: }\inv2mr^2\]
-\[\text{tetrahedron: }\inv{20}ms^2\]
-\[\text{octahedron: }\inv{10}ms^2\]
-\[\text{sphere: }\frac23mr^2\]
-\[\text{ball: }\frac25mr^2\]
-\[\text{cone: }\frac3{10}mr^2\]
-\[\text{torus: }m\big(R^2+\frac34r^2\big)\]
-\[\text{ellipsoid: }I_a=\inv5m(b^2+c^2)\]
-\[\text{rectangulus: }\inv{12}m(a^2+b^2)\]
+	\[\text{point: }mr^2\]
+	\[\text{two points: }\mu d^2\]
+	\[\text{rod: }\inv{12}mL^2\]
+	\[\text{disk: }\inv2mr^2\]
+	\[\text{tetrahedron: }\inv{20}ms^2\]
+	\[\text{octahedron: }\inv{10}ms^2\]
+	\[\text{sphere: }\frac23mr^2\]
+	\[\text{ball: }\frac25mr^2\]
+	\[\text{cone: }\frac3{10}mr^2\]
+	\[\text{torus: }m\big(R^2+\frac34r^2\big)\]
+	\[\text{ellipsoid: }I_a=\inv5m(b^2+c^2)\]
+	\[\text{rectangulus: }\inv{12}m(a^2+b^2)\]
 \end{formulae}
-%%%%%%
+
 \begin{formulae}{5}{Kepler}
-\[\avg U=-2\avg T\]
-\[U_\text{eff}=U+\frac{L^2}{2mr^2}\]
-\[\inv\mu=\inv{m_1}+\inv{m_2}\]
-\[\vec r=\vec r_1-\vec r_2,\,\alpha=Gm_1m_2\]
-\[T=\inv2M{\dotvec R}^2+\inv2\mu\dotvec r^{\,2}\]
-\[\vec L=\vec R\times M\dotvec R+\vec r\times\mu\dotvec r\]
-\[k=\frac{L^2}{\mu\alpha},\,\varepsilon=\sqrt{1+\frac{2EL^2}{\mu\alpha^2}}\]
-\[r=\frac k{1+\varepsilon\cos\theta}\]
-\[a=\frac k{\abs{1-\varepsilon^2}}=\frac\alpha{2\abs{E}}\]
-\[a^3\omega^2=G(m_1+m_2)=\frac\alpha\mu\]
-\[\vec A=\mu\dotvec r\times\vec L-\mu\alpha\hat r,\,\dotvec A=0\]
+	\[\avg U=-2\avg T\]
+	\[U_\text{eff}=U+\frac{L^2}{2mr^2}\]
+	\[\inv\mu=\inv{m_1}+\inv{m_2}\]
+	\[\vec r=\vec r_1-\vec r_2,\,\alpha=Gm_1m_2\]
+	\[T=\inv2M{\dotvec R}^2+\inv2\mu\dotvec r^{\,2}\]
+	\[\vec L=\vec R\times M\dotvec R+\vec r\times\mu\dotvec r\]
+	\[k=\frac{L^2}{\mu\alpha},\,\varepsilon=\sqrt{1+\frac{2EL^2}{\mu\alpha^2}}\]
+	\[r=\frac k{1+\varepsilon\cos\theta}\]
+	\[a=\frac k{\abs{1-\varepsilon^2}}=\frac\alpha{2\abs{E}}\]
+	\[a^3\omega^2=G(m_1+m_2)=\frac\alpha\mu\]
+	\[\vec A=\mu\dotvec r\times\vec L-\mu\alpha\hat r,\,\dotvec A=0\]
 \end{formulae}
-%%%%%%
+
 \begin{formulae}{4}{inequalities}
-\[|a|-|b|\leq|a+b|\leq|a|+|b|\]
-\[x>-1:1+nx\leq(1+x)^n\]
-\[\frac{|a^n-b^n|}{|a-b|<1}\leq n(1+|b|)^{n-1}\]
-\[\sqrt[\uproot2p]{\sum(a_i+b_i)^p}\leq\sqrt[\uproot2p]{\sum a_i^p}+\sqrt[\uproot2p]{\sum b_i^p}\]
-\[\sum a_ib_i\leq\big(\sum a_i^p\big)^\inv p\big(\sum b_i^\frac{p}{p-1}\big)^\frac{p-1}p\]
-\[x^py^q\leq\big(\frac{px+qy}{p+q}\big)^{p+q}\]
-\[\sqrt[\uproot2p]{\inv n\sum a_i^{p\leq q}}\leq\sqrt[\uproot2q]{\inv n\sum a_i^q}\]
-\[\sum\big(\frac{a_1+\ldots\,a_i}{i}\big)^p\leq\big(\frac p{p-1}\big)^p\sum a_i^p\]
-\[x\geq0,\abs{\ddot x}\leq M:\abs{\dot x}\leq\sqrt{2Mx}\]
-\[\inv{1+x}<\ln\big(1+\inv x\big)<\inv x\]
+	\[|a|-|b|\leq|a+b|\leq|a|+|b|\]
+	\[x>-1:1+nx\leq(1+x)^n\]
+	\[\frac{|a^n-b^n|}{|a-b|<1}\leq n(1+|b|)^{n-1}\]
+	\[\sqrt[\uproot2p]{\sum(a_i+b_i)^p}\leq\sqrt[\uproot2p]{\sum a_i^p}+\sqrt[\uproot2p]{\sum b_i^p}\]
+	\[\sum a_ib_i\leq\big(\sum a_i^p\big)^\inv p\big(\sum b_i^\frac{p}{p-1}\big)^\frac{p-1}p\]
+	\[x^py^q\leq\big(\frac{px+qy}{p+q}\big)^{p+q}\]
+	\[\sqrt[\uproot2p]{\inv n\sum a_i^{p\leq q}}\leq\sqrt[\uproot2q]{\inv n\sum a_i^q}\]
+	\[\sum\big(\frac{a_1+\ldots\,a_i}{i}\big)^p\leq\big(\frac p{p-1}\big)^p\sum a_i^p\]
+	\[x\geq0,\abs{\ddot x}\leq M:\abs{\dot x}\leq\sqrt{2Mx}\]
+	\[\inv{1+x}<\ln\big(1+\inv x\big)<\inv x\]
 \end{formulae}
 
 \begin{formulae}{3}{Linear algebra}
@@ -506,6 +515,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\mu_\text B=\SI{9.27400968 E-24}{\A\m\squared}\]
 	\[\alpha=\num{7.2973525698e-3}\]
 	\[\si{barn}=\SI{1e-28}{m^2}\]
+	\[\si{\candela}_{\SI[scientific-notation=false]{555}{\nano\metre}}=\SI{0.00146412884333821}{\watt\per\steradian}\]
 \end{formulae}
 
 \begin{formulae}{4}{chemistry}
@@ -577,18 +587,15 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[S=-\pdv{F}{T}\]
 \end{formulae}
 
-\begin{formulae}{6}{electronics (MKS)}
-	\[\begin{psmallmatrix}V\\I\end{psmallmatrix}=\begin{psmallmatrix}V_0\\I_0\end{psmallmatrix}e^{i\omega t}\]
-	\[Z=\frac VI\]
-	\[Z_R=R\]
-	\[Z_C=-i\inv{\omega C}\]
-	\[Z_L=i\omega L\]
-	\[Z_\text{series}=\sum_k Z_k\]
-	\[\inv{Z_\text{parallel}}=\sum_k\inv{Z_k}\]
-	\[\sum_\text{loop}V_k=0\]
-	\[\sum_\text{node}I_k=0\]
-	\[\mathcal E=-L\dot I\]
-	\[L=\frac{\Phi_B}I\]
+\begin{formulae}{3}{electronics (MKS)}
+	\[\begin{psmallmatrix}V\\I\end{psmallmatrix}=\begin{psmallmatrix}V_0\\I_0\end{psmallmatrix}e^{i\omega t},\ Z=\frac VI\]
+	\[Z_R=R,\ Z_C=-i\inv{\omega C},\ Z_L=i\omega L\]
+	\[Z_\text{series}=\sum_k Z_k,\ \inv{Z_\text{parallel}}=\sum_k\inv{Z_k}\]
+	\[\sum_\text{loop}V_k=0,\ \sum_\text{node}I_k=0\]
+	\[\mathcal E=-L\dot I,\ L=\frac{\Phi_B}I\]
+	\[I_{A\to C}=I_0\qty\big(e^{\frac{V_{AC}}{V_T}}-1),\ V_T=\eta\frac{k_\text BT}{q_\text e}\]
+	\[I_{E,\text{out}}=I_0^E\qty\big(e^{\frac{V_{BE}}{V_T}}-1)-\alpha_R I_0^C\qty\big(e^{\frac{V_{BC}}{V_T}}-1)\]
+	\[I_{C,\text{in}}=-I_0^C\qty\big(e^{\frac{V_{BC}}{V_T}}-1)+\alpha_F I_0^E\qty\big(e^{\frac{V_{BE}}{V_T}}-1)\]
 \end{formulae}
 
 \begin{formulae}{5}{relativity}
@@ -754,7 +761,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[n=\sqrt{\varepsilon\mu};\,k=n\frac\omega c\]
 	\[\text{plane wave: }B=nE\]
 	\[\vec J_\text c=\sigma\vec E;\,\varepsilon_\sigma=1+i\frac{4\pi\sigma}\omega\]
-	\[\omega_\text p^2=4\pi\frac{nq^2}m;\,\omega_\text{cyclo}=\frac{qB}{mc}\]
+	\[\omega_\text p^2=4\pi\frac{n_\text{vol}q^2}m;\,\omega_\text{cyclo}=\frac{qB}{mc}\]
 	\[\text{I: }u=\inv{8\pi}(\vec E\vec D+\vec H\vec B)\]
 	\[\text{I: }\avg{S_z}=\frac cn\avg u\]
 	\[\text{II: }u=\inv{8\pi}\qty(\pdv\omega(\varepsilon\omega)E^2+\pdv\omega(\mu\omega)H^2)\]
@@ -786,12 +793,33 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[E_B=-\frac1{n^2}\frac{e^2}{2r_B}\]
 	\[\alpha=\frac{e^2}{\hbar c}\]
 	\[\text{Planck: }\frac{8\pi\hbar}{c^3}\frac{\nu^3}{e^\frac{h\nu}{kT}-1}\dd\nu\]
+	\[\lambda_\text{Broglie}=\frac hp\]
 	\[\sigma_1=\smqty(0&1\\1&0);\,\sigma_2=\smqty(0&-i\\i&0);\,\sigma_3=\smqty(1&0\\0&-1)\]
-	\[\text{Schrödinger: }i\hbar\pdv{\psi}{t}=H\psi\]
-	\[U(t)=e^{-\frac{iHt}\hbar};\,U^\dagger=U^{-1}\]
-	\[H=H_0+V_\lambda:\pdv{E_n(\lambda)}{\lambda}=\bra{\psi_n(\lambda)}{\pdv{V_\lambda}{\lambda}}\ket{\psi_n(\lambda)}\]
+	\[\sigma_i\sigma_j=\delta_{ij}+i\varepsilon_{ijk}\sigma_k\]
+	\[i\hbar\pdv{\mathcal U}{t}=\hami\mathcal U\]
+	\[\pdv{\hami}{t}=0\then\mathcal U(t)=e^{-\frac{i\hami t}\hbar}\]
+	\[\comm{\hami(t)}{\hami(t')}=0\then\mathcal U(t)=e^{-\frac{i\int_0^t\dd t\hami(t)}\hbar}\]
+	\[\mathcal U(t)=\qty(\frac{-i}\hbar)^k\int_0^t\dd t_1\dotsm\dd t_k\hami(t_1)\dotsm\hami(t_k)\]
+	\[H=H_0+V_\lambda:\pdv{E_n}{\lambda}\at{\lambda=0}=\bra{\psi_n}{\pdv{V_\lambda}{\lambda}}\ket{\psi_n}\at{\lambda=0}\]
 	\[[A,BC]=[A,B]C+B[A,C]\]
-	\[[P,Q]=\frac\hbar i\]
+	\[\comm{A}{\comm{B}{C}}+\comm{B}{\comm{C}{A}}+\comm{C}{\comm{A}{B}}=0\]
+	\[\comm{X}{P}=i\hbar\]
+	\[\psi(x)=\bra{x}\ket{\psi}\]
+	\[\bra{x}{X}\ket{\psi}=x\bra{x}\ket{\psi}\]
+	\[\bra{x}{P}\ket{\psi}=\frac\hbar i\pdv{x}\bra{x}\ket{\psi}\]
+	\[\ip{x}{p}=\inv{\sqrt{2\pi\hbar}}e^{\frac{ipx}\hbar}\]
+	\[\ev{(A-\ev{A})^2}\ev{(B-\ev{B})^2}\ge\inv4\abs{\ev{\comm{A}{B}}}^2\]
+	\[e^{iH}Ae^{-iH}=A+i\comm{H}{A}+\frac{i^2}{2!}\comm{H}{\comm{H}{A}}+\dotsb\]
+\end{formulae}
+
+\begin{formulae}{3}{QM solutions}
+	\[\hami_\text{box}=\frac{p^2}{2m}+\begin{cases}
+		0 & 0<x<L \\ \infty & \text{otherwise}
+	\end{cases}\]
+	\[\psi_n(x)=\sqrt\frac2L\sin(n\pi\frac xL),\ n\ge1\]
+	\[E_n=\frac{n^2\pi^2\hbar^2}{2mL^2}=\frac{n^2h^2}{8mL^2}\]
+	\[\D x^2=L^2\qty(\inv{12}-\inv{2n^2\pi^2})\]
+	\[\D p=\frac{\hbar n\pi}{L}=\frac{hn}{2L}\]
 \end{formulae}
 
 \sisetup{
@@ -815,6 +843,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[M\chemarrow abc:(m_a+m_b)^2\le s_{ab}\le(M-m_c)^2\]
 	\[M\chemarrow abc:s_{ab}+s_{bc}+s_{ac}=M^2+m_a^2+m_b^2+m_c^2\]
 	\[a_iA_i\chemarrow b_jB_j:Q:=(a_im_{A_i}-b_jm_{B_j})c^2\]
+	\[p=qBR\]
 \end{formulae}
 
 \end{document}
