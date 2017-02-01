@@ -136,17 +136,13 @@
 	\[e^{i\theta}=\cos\theta+i\sin\theta\]
 	\[\Gamma(1+z)=\int_0^\infty t^ze^{-t}dt=z!\]
 	\[n!\approx(\frac ne)^n\sqrt{2\pi n}\]
-	\[\text{Fourier: }c_n=\frac2T\int_0^Tf(t)\cos(n\frac tT)\dd t\]
-	\[F[f]=\hat f(k)=\inv{\sqrt{2\pi}}\dinteg{-\infty}\infty{e^{-ikx}f(x)}\]
-	\[\scp{\hat f}{\hat g}=\scp fg\]
-	\[F\qty[\frac{\sin x}x]=\sqrt\frac\pi2\chi_{[-1;1]}\]
 	\[\dv{}{x}\int_0^xg(x,y)\dd y=\int_0^x\pdv{g}{x} (x,y)\dd y+g(x,x)\]
 	\[\pm\sqrt z=\sqrt\frac{\Re z+\abs{z}}2+\frac{i\Im z}{\sqrt{2(\Re z+\abs{z})}}\]
-	\[\delta(g(x))=\frac{\delta(x-x_i)}{\abs{g'(x_i)}};\,g(x_i)=0\]
 	\[\avg{\Re(ae^{-i\omega t})\Re(be^{-i\omega t})}=\inv2\Re(a\conj b)\]
 	\[\erf(x)=\frac2{\sqrt\pi}\int_0^xe^{-t^2}\dd t\]
 	\[f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint\frac{f(z)\dd z}{(z-z_0)^{n+1}}\]
 	\[f(z)=\sum_{k=-\infty}^\infty\qty(\inv{2\pi i}\oint\frac{f(z')\dd z'}{(z'-z_0)^{k+1}})(z-z_0)^k\]
+	\[\sinc x\is\frac{\sin x}x\]
 \end{formulae}
 
 \newcommand*\at[1]{\big|_{#1}}
@@ -223,6 +219,172 @@
 	\[(1+x)^n=1+nx+\frac{n(n-1)}2x^2+\LO3\]
 	\[(1+x)^x=1+x^2-\frac{x^3}2+\frac56x^4-\frac34x^5+\LO6\]
 	\[x!=1-\gamma x+\big(\frac{\gamma^2}2+\frac{\pi^2}{12}\big)x^2+\LO3\]
+\end{formulae}
+
+\newcommand*\fourier{\mathcal F} % fourier transform
+\renewcommand*\L[1][1]{L^{#1}} % p-integrable functions
+\newcommand*\conv{\mathop{\star}} % convolution
+\renewcommand*\scp[2]{({#1},{#2})} % scalar product
+\begin{formulae}{3}{fourier}
+	\[\text{Fourier: }c_n=\frac2T\int_0^Tf(t)\cos(n\frac tT)\dd t\]
+	\[\fourier[f](\omega)=\hat f(\omega)=\int\dd te^{i\omega t}f(t)\]
+	\[f,g\in\L[2]:\scp{\hat f}{\hat g}=2\pi\scp fg\]
+	\[\fourier\qty[\frac{\sin t}t]=\sqrt\frac\pi2\chi_{[-1;1]}(\omega)\] % verify the constant
+	\[t^{k\le n}f(t)\in\L[1]:\fourier[t^nf(t)]=(-i)^n\hat f^{(n)}\]
+	\[f^{(k\le n)}\in\L[1]:\fourier[f^{(n)}]=(-i\omega)^n\hat f\]
+	\[\fourier^2f=2\pi f(-t);\ (\omega\hat f)'=-\fourier[tf']\]
+	\[f\conv g=g\conv f;\ \hat f\conv\hat g=2\pi\fourier[fg]\]
+	\[f\in\L[1],\ g\in\L[p]:\fourier[f\conv g]=\hat f\hat g\]
+	\[f\conv g(x)=\int f(x-y)g(y)\dd y\]
+	\[(f\conv g)'=f'\conv g=f\conv g'\]
+	\[f(x+\Delta)\conv g=f\conv g(x+\Delta)\]
+	\[f\in\L[1],\ g\in\L[p]\then f\conv g\in\L[p]\]
+	\[f,g\in\L[2]:f\conv g=\inv{2\pi}\int\hat f\hat ge^{-i\omega t}\dd\omega\]
+	\[\norm{f}=1:\D\omega\D t\ge\inv2\]
+	\[\D\omega\D t=\inv2:f(t)=g(t;\bar t,\D t)e^{-i\bar\omega t}\]
+\end{formulae}
+
+\newcommand*\pp{\mathcal{P}} % principal part integral
+\newcommand*\sgn{\operatorname{sgn}} % sign
+\newcommand*\dist[2]{\langle{#1},{#2}\rangle} % distribution
+\begin{formulae}{3}{distributions}
+	\[\mathcal D\is\setdef[f\in C^\infty]{\exists K\text{ compact}:f(\comp K)=0}\]
+	\[\mathcal S\is\setdef[f\in C^\infty]{|x^nf^{(k)}|\le A_{nk}}\supset\mathcal D\]
+	\[\dist 1f\is\int f;\ \dist{gT}f\is\dist T{gf}\]
+	\[T\in \mathcal S':\dist{\fourier T}f\is\dist T{\fourier f}\]
+	\[\dist{T'}f\is-\dist T{f'};\ \dist{\delta}f\is f(0)\]
+	\[\dist{T\otimes S}\phi\is\dist{T(x)}{\dist{S(y)}{\phi(x+y)}}\]
+	\[\dist{T\conv S}\phi\is\dist{T\otimes S}{\phi(x+y)}\]
+	\[\fourier1=2\pi\delta(\omega);\ \fourier\sgn=2i\pp\inv\omega\]
+	\[\fourier\theta=i\pp\inv\omega+\pi\delta(\omega)\]
+	\[x^nT=0\then T=\sum_{k=0}^{n-1}a_k\delta^{(k)}\]
+	\[xT=S\then T=S/x+k\delta\]
+	\[T,S\in\mathcal D':T\otimes S=S\otimes T\]
+	\[\sum_{n=0}^\infty e^{inx}=\pp\inv{1-e^{ix}}+\pi\sum_{n=-\infty}^\infty\delta(x-2n\pi)\]
+	\[\delta^{(n)}\conv f=f^{(n)}\]
+	\[\delta(g(x))=\frac{\delta(x-x_i)}{\abs{g'(x_i)}};\,g(x_i)=0\]
+\end{formulae}
+
+\newcommand*\Z{\mathbb{Z}}
+\begin{formulae}{3}{Bessel functions}
+	\[\text{sol. of }x^2\partial_x^2f+x\partial_xf+(x^2-\alpha^2)f=0\]
+	\[\alpha=\text{``order''}\]
+	\[J_\alpha=\text{``first kind, normal''}\]
+	\[\alpha\in\Z_0\vel\alpha >0:J_\alpha(0)=0\]
+	\[J_0(0)=1;\ \text{otherwise }|J_\alpha(0)|=\infty\]
+	\[\alpha\notin\Z:J_\alpha,J_{-\alpha}\text{ indep.}\]
+	\[\alpha\in\Z:J_{-\alpha}=(-1)^\alpha J_\alpha\]
+	\[Y_\alpha=\text{``second kind, normal'' (also $N_\alpha$)}\]
+	\[\alpha\notin\Z:Y_\alpha=\frac{\cos(\alpha\pi)J_\alpha-J_{-\alpha}}{\sin(\alpha\pi)}\]
+	\[\alpha\in\Z:Y_\alpha=\lim_{\alpha'\to\alpha}Y_{\alpha'}\]
+	\[\alpha\in\Z:Y_\alpha,J_\alpha\text{ indep.}\]
+	\[\alpha\in\Z:Y_{-\alpha}=(-1)^\alpha Y_\alpha\]
+	\[\frac{2\alpha}xJ_\alpha(x)=J_{\alpha-1}(x)+J_{\alpha+1}(x)\]
+	\[2J_\alpha'(x)=J_{\alpha-1}(x)-J_{\alpha+1}(x)\]
+	\[\int_0^1\dd xxJ_\alpha(xu_{\alpha,m})J_\alpha(xu_{\alpha,n})=\frac{\delta_{mn}}2J_{\alpha+1}^2(u_{\alpha,m})\]
+	\[u_{\alpha,n}=\text{$n$th. zero of $J_\alpha$}\]
+\end{formulae}
+
+\begin{formulae}{3}{Cylindrical harmonics}
+	\[V(\rho,\phi,z)=\sum_{n=0}^\infty\int\dd kA_{nk}P_{nk}(\rho)\Phi_n(\phi)Z_k(z)\]
+	\[P_{nk}(\rho)=\text{comb. of }J_n(k\rho),Y_n(k\rho)\]
+	\[\Phi_n(\phi)=\text{comb. of }e^{\pm in\phi}\]
+	\[Z_k(z)=\text{comb. of }e^{\pm kz}\]
+\end{formulae}
+
+\begin{formulae}{4}{inequalities}
+	\[|a|-|b|\leq|a+b|\leq|a|+|b|\]
+	\[x>-1:1+nx\leq(1+x)^n\]
+	\[\frac{|a^n-b^n|}{|a-b|<1}\leq n(1+|b|)^{n-1}\]
+	\[\sqrt[\uproot2p]{\sum(a_i+b_i)^p}\leq\sqrt[\uproot2p]{\sum a_i^p}+\sqrt[\uproot2p]{\sum b_i^p}\]
+	\[\sum a_ib_i\leq\big(\sum a_i^p\big)^\inv p\big(\sum b_i^\frac{p}{p-1}\big)^\frac{p-1}p\]
+	\[x^py^q\leq\big(\frac{px+qy}{p+q}\big)^{p+q}\]
+	\[\sqrt[\uproot2p]{\inv n\sum a_i^{p\leq q}}\leq\sqrt[\uproot2q]{\inv n\sum a_i^q}\]
+	\[\sum\big(\frac{a_1+\ldots\,a_i}{i}\big)^p\leq\big(\frac p{p-1}\big)^p\sum a_i^p\]
+	\[x\geq0,\abs{\ddot x}\leq M:\abs{\dot x}\leq\sqrt{2Mx}\]
+	\[\inv{1+x}<\ln\big(1+\inv x\big)<\inv x\]
+\end{formulae}
+
+\begin{formulae}{3}{Linear algebra}
+	\[\dim(U+V)=\dim U+\dim V-\dim(U\cap V)\]
+	\[\dim V=\dim \ell(V)+\dim(V\cap\ker\ell)\]
+\end{formulae}
+
+% \begin{formulae}{5}{Groups}
+% 	\[\text{stabilizer: }\operatorname{Stab}_Gx=\setdef[g\in G]{gx=x}\]
+% \end{formulae}
+%
+% \begin{formulae}{3}{linear representations}
+% 	\[\C[G]=\setdef[\sum_ia_ig_i]{a_i\in\C\et g_i\in G}\]
+% 	\[\C^G=\set{\fundef G\C}\]
+% 	\[\C[G]\simeq\C^G;\,\sum_ia_ig_i\mapsto(g_i\mapsto a_i)\]
+% 	\[\psp fg=\inv{\abs{G}}\sum_{s\in G}f(s)\conj g(s)\]
+% 	\[\dim\Hom(\rho,\sigma)=\psp{\chi_\rho}{\chi_\sigma}\]
+% 	\[\dim V_\rho^G=\psp{\chi_\rho}I\]
+% 	\[\Hom(V_\rho,V_\sigma)\simeq V_\rho^*\otimes V_\sigma\text{ (finite dimension)}\]
+% 	\[V_\tau=\Hom(V_\rho,V_\sigma);\,\tau_g(\varphi)=\sigma_g\circ\varphi\circ\rho_g^{-1}\]
+% 	\[\chi_\text{reg}(g)=\abs{G}\delta_{ge};\,\psp{\chi_\text{reg}}{\chi_\rho}=\deg\rho\]
+% 	\[\dim\Lambda^mV=\binom nm;\,\dim S^mV=\binom{n+m-1}m\]
+% 	\[\chi_{\Lambda^2\rho}=\frac{\chi_\rho(g)^2-\chi_\rho(g^2)}2;\,\chi_{S^2\rho}=\frac{\chi_\rho(g)^2+\chi_\rho(g^2)}2\]
+% 	\[\Hom_H(\rho,\sigma_H)\simeq\Hom_G(\Ind_H^G\rho,\sigma)\]
+% 	\[\Reg_{(h_1,h_2)}f=g\mapsto f(h_2^{-1}gh_1)\]
+% 	\[i=\dim\Hom(S^2\rho,I)-\dim\Hom(\Lambda^2\rho,I)\]
+% 	\[i=\inv{\abs{G}}\sum_{g\in G}\chi(g^2)=\begin{cases}1&\text{forma simm.}\\0&\text{no forma}\\-1&\text{forma alt.}\end{cases}\]
+% 	\[M(\rho)=\Span\set{[\rho_g]_{ij}}\]
+% 	\[\C^G=\bigoperp_{\rho\text{ irr.}}M(\rho)\]
+% 	\[\rho,\sigma\text{ irr.}\et\Reg_{M(\rho)}\simeq\Reg_{M(\sigma)}\so\rho\simeq\sigma\]
+% 	\[\int_{\SU_2^\#}f=\inv\pi\int_0^{2\pi}f(g_\theta)\sin^2\theta\dd\theta;\,g\sim\smqty(e^{i\theta}&0\\0&e^{-i\theta})\]
+% 	\[\rho_m\otimes\rho_n\simeq\bigoplus_{j=0}^{\min(m,n)}\rho_{m+n-2j}\]
+% 	\[\chi_{\rho_m}(g_\theta)=\frac{z^{m+1}-z^{-(m+1)}}{z-z^{-1}},\,z=e^{i\theta}\]
+% \end{formulae}
+
+\begin{formulae}{2}{symbols}
+\[\begin{array}{llll llll llll}
+A&B&\Gamma&\Delta&E&Z&H&\Theta&I&K&\Lambda&M\\
+\alpha&\beta&\gamma&\delta&\epsilon/\varepsilon&\zeta&\eta&\theta/\vartheta&\iota&\kappa&\lambda&\mu
+\end{array}\]
+\[\begin{array}{llll llll llll}
+N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
+\nu&\xi&o&\pi/\varpi&\rho/\varrho&\sigma/\varsigma&\tau&\upsilon&\phi/\varphi&\chi&\psi&\omega
+\end{array}\]
+\end{formulae}
+
+\sisetup{
+	exponent-product=\cdot,
+	scientific-notation=true,
+	per-mode=fraction,
+	round-mode=figures,
+	round-precision=4
+}
+\begin{formulae}{5}{constants, units}
+	\[\pi=\num{3.14159265358979}\]
+	\[e=\num{2.71828182845905}\]
+	\[\gamma=\num{0.5772156649015328606065120900824024310421}\]
+	\[G=\SI{6.67384e-11}{\m\cubed\per\kg\per\s\squared}\]
+	\[R=\SI{8.3144621}{\J\per\mol\per\K}\]
+	\[R=\SI{0.08205736}{\l\atm\per\mol\per\K}\]
+	\[N_\text A=\SI{6.02214129 E+23}{\per\mol}\]
+	\[k_\text B=\SI{1.3806488 E-23}{\J\per\K}\]
+	\[k_\text B=\SI{8.6173324 E-5}{\eV\per\K}\]
+	\[c=\SI{2.99792458 E+8}{\m\per\s}\]
+	\[q_\text e=\SI{1.602176565 E-19}{\A\s}\]
+	\[m_\text e=\SI{9.10938291 E-31}{\kg}\]
+	\[m_\text p=\SI{1.672621777 E-27}{\kg}\]
+	\[m_\text n=\SI{1.674927351 E-27}{\kg}\]
+	\[m_\text e=\SI{0.5109989461}{\MeV}\]
+	\[m_\text p=\SI{938.2720813}{\MeV}\]
+	\[m_\text n=\SI{939.5654133}{\MeV}\]
+	\[m_\text n-m_\text p=\SI{1.293332}{\MeV}\]
+	\[\text{amu}=\SI{1.660538921 E-27}{\kg}\]
+	\[h=\SI{6.62606957 E-34}{\J\s}\]
+	\[h=\SI{4.13566751 E-15}{\eV\s}\]
+	\[\varepsilon_0=\SI{8.854187817 E-12}{\per\newton\per\metre\squared\coulomb\squared}\]
+	\[\frac1{4\pi\varepsilon_0}=\SI{8.98755178736818 E+9}{\newton\metre\squared\per\coulomb\squared}\]
+	\[\mu_0=\SI{0.00000125663706143592}{\N\per\A\squared}\]
+	\[\mu_\text B=\SI{9.27400968 E-24}{\A\m\squared}\]
+	\[\alpha=\num{7.2973525698e-3}\]
+	\[\si{barn}=\SI{1e-28}{m^2}\]
+	\[\si{\candela}_{\SI[scientific-notation=false]{555}{\nano\metre}}=\SI{0.00146412884333821}{\watt\per\steradian}\]
 \end{formulae}
 
 \begin{formulae}{3}{vectors}
@@ -429,95 +591,90 @@
 	\[\vec A=\mu\dotvec r\times\vec L-\mu\alpha\hat r,\,\dotvec A=0\]
 \end{formulae}
 
-\begin{formulae}{4}{inequalities}
-	\[|a|-|b|\leq|a+b|\leq|a|+|b|\]
-	\[x>-1:1+nx\leq(1+x)^n\]
-	\[\frac{|a^n-b^n|}{|a-b|<1}\leq n(1+|b|)^{n-1}\]
-	\[\sqrt[\uproot2p]{\sum(a_i+b_i)^p}\leq\sqrt[\uproot2p]{\sum a_i^p}+\sqrt[\uproot2p]{\sum b_i^p}\]
-	\[\sum a_ib_i\leq\big(\sum a_i^p\big)^\inv p\big(\sum b_i^\frac{p}{p-1}\big)^\frac{p-1}p\]
-	\[x^py^q\leq\big(\frac{px+qy}{p+q}\big)^{p+q}\]
-	\[\sqrt[\uproot2p]{\inv n\sum a_i^{p\leq q}}\leq\sqrt[\uproot2q]{\inv n\sum a_i^q}\]
-	\[\sum\big(\frac{a_1+\ldots\,a_i}{i}\big)^p\leq\big(\frac p{p-1}\big)^p\sum a_i^p\]
-	\[x\geq0,\abs{\ddot x}\leq M:\abs{\dot x}\leq\sqrt{2Mx}\]
-	\[\inv{1+x}<\ln\big(1+\inv x\big)<\inv x\]
+\begin{formulae}{5}{relativity}
+	\[\beta=\frac vc=\tanh\chi\]
+	\[\gamma=\inv{\sqrt{1-\beta^2}}=\cosh\chi\]
+	\[\vec p=\gamma m\vec v;\ \mathcal E=\gamma mc^2\]
+	\[\text{free particle: }\lagr=\frac{mc^2}\gamma\]
+	\[\dv{\mathcal E}{t}=\vec v\dv{\vec p}{t};\ \dv{p}{t}=\dv{\mathcal E}{x}\]
+	\[\smqty(ct'\\x')=\gamma\smqty(1 & -\beta \\ -\beta & 1)\smqty(ct\\x)\]
+	\[\chi''=\chi'+\chi\]
+	\[V'_\parallel=\frac{V_\parallel-v}{1-\frac{vV_\parallel}{c^2}}\]
+	\[V'_\bot=\inv\gamma\frac{V_\bot}{1-\frac{vV_\parallel}{c^2}}\]
+	\[\frac{V'}c=1-\frac{(1-\frac{V^2}{c^2})(1-\frac{v^2}{c^2})}{\qty\big(1-\frac{vV_\parallel}{c^2})^2}\]
+	\[\dd\tau=\inv\gamma\dd t\]
+	\[x^\mu=(ct,\vec x)\]
+	\[v^\mu=\dv{x^\mu}{\tau}=\gamma(c,\vec v)\]
+	\[a^\mu=\dv{v^\mu}{\tau}=\gamma\qty\big(\dv{\gamma}{t}c,\dv{(\gamma\vec v)}{t})\]
+	\[p^\mu=mv^\mu=\qty(\frac{\mathcal E}c,\vec p)\]
+	\[\dv{p^\mu}{\tau}=\gamma(\frac{\vec v}c\dv{\vec p}{t},\dv{\vec p}{t})\]
+	\[\partial_\mu=\pdv{x^\mu}=\qty\big(\inv c\pdv t,\grad)\]
+	\[g_{\mu\nu}=\smqty(\dmat[0]{1,-1,-1,-1})\]
+	\[x_\mu=g_{\mu\nu}x^\nu\]
+	\[\partial_\mu\partial^\mu=\dalembertian\]
+	\[p^\mu p_\mu=(mc)^2\]
+	\[v^\mu a_\mu=0\]
+	\[M\chemarrow\sum_im_i\]
+	\[E_1^\text{max}=\frac{M^2+m_1^2-\sum_{i\neq1}m_i^2}{2M}c^2\]
+	\[\text{doppler: }\sqrt\frac{1+\beta}{1-\beta}\approx1+\beta\]
+	\[\operatorname{SO}_{1,3}=\Setdef[\Lambda]{\smqty{\transp\Lambda g\Lambda=g\\\det\Lambda\ge0}}\]
+	\[(\tensor\Lambda{^0_0})^2\ge1\]
+	\[\Lambda=\smqty(
+		\gamma & & -\gamma\vec\beta & \\
+		& & & \\
+		-\gamma\vec\beta & & I+\frac{\gamma-1}{\beta^2}\vec\beta\otimes\vec\beta & \\
+		& & &
+	)\]
 \end{formulae}
 
-\begin{formulae}{3}{Linear algebra}
-	\[\dim(U+V)=\dim U+\dim V-\dim(U\cap V)\]
-	\[\dim V=\dim \ell(V)+\dim(V\cap\ker\ell)\]
+\begin{formulae}{3}{thermodynamics}
+	\[\dj Q=T\dd S=\dd U+\dj L=\dd U+p\dd V-\mu\dd N\]
+	\[C_{V,N}=\pdv{Q}{T}\at{V,N}=\pdv{U}{T}\at{V,N}\]
+	\[C_{p,N}=\pdv{Q}{T}\at{p,N}=\pdv{U}{T}\at{p,N}+p\pdv{V}{T}\at{p,N}\]
+	\[\gamma\is\frac{C_p}{C_V}\]
+	\[\mu_J\is\pdv{T}{V}\at{U,N}\]
+	\[\lambda U=U(\lambda(S,V,N))\then U=ST-pV+\mu N\]
+	\[\then S\dd T-V\dd p+N\dd\mu=0\]
+	\[\text{Fix }S,V,N:\min U\text{ at equilibrium}\]
+	\[\text{Fix }T,V,N:\min F=U-TS\]
+	\[\text{Fix }T,p,N:\min G=F+pV\]
+	\[\text{Fix }S,p,N:\min H=U+pV\]
+	\begin{equation*}
+		\pgfmathsetmacro{\maxr}{1}
+		\begin{tikzpicture}[scale=.4]
+			\draw[->] (-1,-1) node[below left]{$S$} -- (1,1) node[above right]{$T$};
+			\draw[->] (1,-1) node[below right]{$p$} -- (-1,1) node[above left]{$V$};
+			\path (90:\maxr) node{$F$} (180:\maxr) node{$U$} (-90:\maxr) node{$H$} (0:\maxr) node{$G$};
+			\path (2.5,1) node[right] {$\pdv{T}\frac GT\at p=-\frac H{T^2}$};
+			\path (2.5,-1) node[right] {$\pdv{T}\frac FT\at V=-\frac U{T^2}$};
+		\end{tikzpicture}
+	\end{equation*}
+	\[\Omega=U-TS-\mu N\]
 \end{formulae}
 
-% \begin{formulae}{5}{Groups}
-% 	\[\text{stabilizer: }\operatorname{Stab}_Gx=\setdef[g\in G]{gx=x}\]
-% \end{formulae}
-%
-% \begin{formulae}{3}{linear representations}
-% 	\[\C[G]=\setdef[\sum_ia_ig_i]{a_i\in\C\et g_i\in G}\]
-% 	\[\C^G=\set{\fundef G\C}\]
-% 	\[\C[G]\simeq\C^G;\,\sum_ia_ig_i\mapsto(g_i\mapsto a_i)\]
-% 	\[\psp fg=\inv{\abs{G}}\sum_{s\in G}f(s)\conj g(s)\]
-% 	\[\dim\Hom(\rho,\sigma)=\psp{\chi_\rho}{\chi_\sigma}\]
-% 	\[\dim V_\rho^G=\psp{\chi_\rho}I\]
-% 	\[\Hom(V_\rho,V_\sigma)\simeq V_\rho^*\otimes V_\sigma\text{ (finite dimension)}\]
-% 	\[V_\tau=\Hom(V_\rho,V_\sigma);\,\tau_g(\varphi)=\sigma_g\circ\varphi\circ\rho_g^{-1}\]
-% 	\[\chi_\text{reg}(g)=\abs{G}\delta_{ge};\,\psp{\chi_\text{reg}}{\chi_\rho}=\deg\rho\]
-% 	\[\dim\Lambda^mV=\binom nm;\,\dim S^mV=\binom{n+m-1}m\]
-% 	\[\chi_{\Lambda^2\rho}=\frac{\chi_\rho(g)^2-\chi_\rho(g^2)}2;\,\chi_{S^2\rho}=\frac{\chi_\rho(g)^2+\chi_\rho(g^2)}2\]
-% 	\[\Hom_H(\rho,\sigma_H)\simeq\Hom_G(\Ind_H^G\rho,\sigma)\]
-% 	\[\Reg_{(h_1,h_2)}f=g\mapsto f(h_2^{-1}gh_1)\]
-% 	\[i=\dim\Hom(S^2\rho,I)-\dim\Hom(\Lambda^2\rho,I)\]
-% 	\[i=\inv{\abs{G}}\sum_{g\in G}\chi(g^2)=\begin{cases}1&\text{forma simm.}\\0&\text{no forma}\\-1&\text{forma alt.}\end{cases}\]
-% 	\[M(\rho)=\Span\set{[\rho_g]_{ij}}\]
-% 	\[\C^G=\bigoperp_{\rho\text{ irr.}}M(\rho)\]
-% 	\[\rho,\sigma\text{ irr.}\et\Reg_{M(\rho)}\simeq\Reg_{M(\sigma)}\so\rho\simeq\sigma\]
-% 	\[\int_{\SU_2^\#}f=\inv\pi\int_0^{2\pi}f(g_\theta)\sin^2\theta\dd\theta;\,g\sim\smqty(e^{i\theta}&0\\0&e^{-i\theta})\]
-% 	\[\rho_m\otimes\rho_n\simeq\bigoplus_{j=0}^{\min(m,n)}\rho_{m+n-2j}\]
-% 	\[\chi_{\rho_m}(g_\theta)=\frac{z^{m+1}-z^{-(m+1)}}{z-z^{-1}},\,z=e^{i\theta}\]
-% \end{formulae}
-
-\begin{formulae}{2}{symbols}
-\[\begin{array}{llll llll llll}
-A&B&\Gamma&\Delta&E&Z&H&\Theta&I&K&\Lambda&M\\
-\alpha&\beta&\gamma&\delta&\epsilon/\varepsilon&\zeta&\eta&\theta/\vartheta&\iota&\kappa&\lambda&\mu
-\end{array}\]
-\[\begin{array}{llll llll llll}
-N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
-\nu&\xi&o&\pi/\varpi&\rho/\varrho&\sigma/\varsigma&\tau&\upsilon&\phi/\varphi&\chi&\psi&\omega
-\end{array}\]
+\begin{formulae}{3}{ideal gas}
+\[pV=nRT\]
+\[c_V,c_p=\frac{C_V,C_p}n,\ c_V=\frac{\text{dof}}2R,\ c_p=c_V+R\]
+\[c_V=\frac R{\gamma-1},\ c_p=\frac\gamma{\gamma-1}R\]
+\[\dj Q=0:pV^\gamma,TV^{\gamma-1},p^{\inv\gamma-1}T\text{ const.}\]
 \end{formulae}
 
-\sisetup{
-	exponent-product=\cdot,
-	scientific-notation=true,
-	per-mode=fraction,
-	round-mode=figures,
-	round-precision=4
-}
-\begin{formulae}{5}{constants, units}
-	\[\pi=\num{3.14159265358979}\]
-	\[e=\num{2.71828182845905}\]
-	\[\gamma=\num{0.5772156649015328606065120900824024310421}\]
-	\[G=\SI{6.67384e-11}{\m\cubed\per\kg\per\s\squared}\]
-	\[R=\SI{8.3144621}{\J\per\mol\per\K}\]
-	\[R=\SI{0.08205736}{\l\atm\per\mol\per\K}\]
-	\[N_\text A=\SI{6.02214129 E+23}{\per\mol}\]
-	\[k_\text B=\SI{1.3806488 E-23}{\J\per\K}\]
-	\[k_\text B=\SI{8.6173324 E-5}{\eV\per\K}\]
-	\[c=\SI{2.99792458 E+8}{\m\per\s}\]
-	\[q_\text e=\SI{1.602176565 E-19}{\A\s}\]
-	\[m_\text e=\SI{9.10938291 E-31}{\kg}\]
-	\[m_\text p=\SI{1.672621777 E-27}{\kg}\]
-	\[m_\text n=\SI{1.674927351 E-27}{\kg}\]
-	\[\text{amu}=\SI{1.660538921 E-27}{\kg}\]
-	\[h=\SI{6.62606957 E-34}{\J\s}\]
-	\[h=\SI{4.13566751 E-15}{\eV\s}\]
-	\[\varepsilon_0=\SI{8.854187817 E-12}{\per\newton\per\metre\squared\coulomb\squared}\]
-	\[\frac1{4\pi\varepsilon_0}=\SI{8.98755178736818 E+9}{\newton\metre\squared\per\coulomb\squared}\]
-	\[\mu_0=\SI{0.00000125663706143592}{\N\per\A\squared}\]
-	\[\mu_\text B=\SI{9.27400968 E-24}{\A\m\squared}\]
-	\[\alpha=\num{7.2973525698e-3}\]
-	\[\si{barn}=\SI{1e-28}{m^2}\]
-	\[\si{\candela}_{\SI[scientific-notation=false]{555}{\nano\metre}}=\SI{0.00146412884333821}{\watt\per\steradian}\]
+\begin{formulae}{3}{statistical mechanics}
+	\[Z=\frac1{h^N}\int\dd q_1\dotsm\dd q_N\int\dd p_1\dotsm\dd p_Ne^{-\beta\hami}\]
+	\[U=-\pdv\beta\log Z;\,\beta=\frac1{k_\text BT};\,C=\pdv{U}{T}\]
+	\[F(T,V)=U-TS=-\frac{\log Z}\beta\]
+	\[S=-\pdv{F}{T}\]
+\end{formulae}
+
+\begin{formulae}{3}{electronics (MKS)}
+	\[\begin{psmallmatrix}V\\I\end{psmallmatrix}=\begin{psmallmatrix}V_0\\I_0\end{psmallmatrix}e^{i\omega t},\ Z=\frac VI\]
+	\[Z_R=R,\ Z_C=-i\inv{\omega C},\ Z_L=i\omega L\]
+	\[Z_\text{series}=\sum_k Z_k,\ \inv{Z_\text{parallel}}=\sum_k\inv{Z_k}\]
+	\[\sum_\text{loop}V_k=0,\ \sum_\text{node}I_k=0\]
+	\[\mathcal E=-L\dot I,\ L=\frac{\Phi_B}I\]
+	\[I_{A\to C}=I_0\qty\big(e^{\frac{V_{AC}}{V_T}}-1),\ V_T=\eta\frac{k_\text BT}{q_\text e}\]
+	\[I_{E,\text{out}}=I_0^E\qty\big(e^{\frac{V_{BE}}{V_T}}-1)-\alpha_R I_0^C\qty\big(e^{\frac{V_{BC}}{V_T}}-1)\]
+	\[I_{C,\text{in}}=-I_0^C\qty\big(e^{\frac{V_{BC}}{V_T}}-1)+\alpha_F I_0^E\qty\big(e^{\frac{V_{BE}}{V_T}}-1)\]
 \end{formulae}
 
 \begin{formulae}{4}{chemistry}
@@ -548,93 +705,6 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\text{(std) }\Delta E=\deltastd E-\frac{0.059}{n_\text e}\log_{10}Q\]
 	\[\text{pH}=-\log_{10}[\ce{H3O+}]\]
 	\[K_a=\frac{[\ce{A-}][\ce{H3O+}]}{[\ce{AH}]}\]
-\end{formulae}
-
-\begin{formulae}{3}{thermodynamics}
-	\[\dj Q=T\dd S=\dd U+\dj L=\dd U+p\dd V-\mu\dd N\]
-	\[C_{V,N}=\pdv{Q}{T}\at{V,N}=\pdv{U}{T}\at{V,N}\]
-	\[C_{p,N}=\pdv{Q}{T}\at{p,N}=\pdv{U}{T}\at{p,N}+p\pdv{V}{T}\at{p,N}\]
-	\[\gamma\is\frac{C_p}{C_V}\]
-	\[\mu_J\is\pdv{T}{V}\at{U,N}\]
-	\[\lambda U=U(\lambda(S,V,N))\then U=ST-pV+\mu N\]
-	\[\then S\dd T-V\dd p+N\dd\mu=0\]
-	\[\text{Fix }S,V,N:\min U\text{ at equilibrium}\]
-	\[\text{Fix }T,V,N:\min F=U-TS\]
-	\[\text{Fix }T,p,N:\min G=F+pV\]
-	\[\text{Fix }S,p,N:\min H=U+pV\]
-	\begin{centering}
-		\pgfmathsetmacro{\maxr}{1}
-		\begin{tikzpicture}[scale=.4]
-			\draw[->] (-1,-1) node[below left]{$S$} -- (1,1) node[above right]{$T$};
-			\draw[->] (1,-1) node[below right]{$p$} -- (-1,1) node[above left]{$V$};
-			\path (90:\maxr) node{$F$} (180:\maxr) node{$U$} (-90:\maxr) node{$H$} (0:\maxr) node{$G$};
-			\path (2.5,1) node[right] {$\pdv{T}\frac GT\at p=-\frac H{T^2}$};
-			\path (2.5,-1) node[right] {$\pdv{T}\frac FT\at V=-\frac U{T^2}$};
-		\end{tikzpicture}
-	\end{centering}
-	\[\Omega=U-TS-\mu N\]
-\end{formulae}
-
-\begin{formulae}{3}{ideal gas}
-\[pV=nRT\]
-\[c_V,c_p=\frac{C_V,C_p}n,\ c_V=\frac{\text{dof}}2R,\ c_p=c_V+R\]
-\[c_V=\frac R{\gamma-1},\ c_p=\frac\gamma{\gamma-1}R\]
-\[\dj Q=0:pV^\gamma,TV^{\gamma-1},p^{\inv\gamma-1}T\text{ const.}\]
-\end{formulae}
-
-\begin{formulae}{3}{statistical mechanics}
-	\[Z=\frac1{h^N}\int\dd q_1\dotsm\dd q_N\int\dd p_1\dotsm\dd p_Ne^{-\beta\hami}\]
-	\[U=-\pdv\beta\log Z;\,\beta=\frac1{k_\text BT};\,C=\pdv{U}{T}\]
-	\[F(T,V)=U-TS=-\frac{\log Z}\beta\]
-	\[S=-\pdv{F}{T}\]
-\end{formulae}
-
-\begin{formulae}{3}{electronics (MKS)}
-	\[\begin{psmallmatrix}V\\I\end{psmallmatrix}=\begin{psmallmatrix}V_0\\I_0\end{psmallmatrix}e^{i\omega t},\ Z=\frac VI\]
-	\[Z_R=R,\ Z_C=-i\inv{\omega C},\ Z_L=i\omega L\]
-	\[Z_\text{series}=\sum_k Z_k,\ \inv{Z_\text{parallel}}=\sum_k\inv{Z_k}\]
-	\[\sum_\text{loop}V_k=0,\ \sum_\text{node}I_k=0\]
-	\[\mathcal E=-L\dot I,\ L=\frac{\Phi_B}I\]
-	\[I_{A\to C}=I_0\qty\big(e^{\frac{V_{AC}}{V_T}}-1),\ V_T=\eta\frac{k_\text BT}{q_\text e}\]
-	\[I_{E,\text{out}}=I_0^E\qty\big(e^{\frac{V_{BE}}{V_T}}-1)-\alpha_R I_0^C\qty\big(e^{\frac{V_{BC}}{V_T}}-1)\]
-	\[I_{C,\text{in}}=-I_0^C\qty\big(e^{\frac{V_{BC}}{V_T}}-1)+\alpha_F I_0^E\qty\big(e^{\frac{V_{BE}}{V_T}}-1)\]
-\end{formulae}
-
-\begin{formulae}{5}{relativity}
-	\[\beta=\frac vc=\tanh\chi\]
-	\[\gamma=\inv{\sqrt{1-\beta^2}}=\cosh\chi\]
-	\[\vec p=\gamma m\vec v\]
-	\[\mathcal E=\gamma mc^2\]
-	\[\text{free particle: }\lagr=\frac{mc^2}\gamma\]
-	\[\dv{\mathcal E}{t}=\vec v\dv{\vec p}{t}\]
-	\[\smqty(ct'\\x')=\gamma\smqty(1 & -\beta \\ -\beta & 1)\smqty(ct\\x)\]
-	\[\chi''=\chi'+\chi\]
-	\[V'_\parallel=\frac{V_\parallel-v}{1-\frac{vV_\parallel}{c^2}}\]
-	\[V'_\bot=\inv\gamma\frac{V_\bot}{1-\frac{vV_\parallel}{c^2}}\]
-	\[\frac{V'}c=1-\frac{(1-\frac{V^2}{c^2})(1-\frac{v^2}{c^2})}{\qty\big(1-\frac{vV_\parallel}{c^2})^2}\]
-	\[\dd\tau=\inv\gamma\dd t\]
-	\[x^\mu=(ct,\vec x)\]
-	\[v^\mu=\dv{x^\mu}{\tau}=\gamma(c,\vec v)\]
-	\[a^\mu=\dv{v^\mu}{\tau}=\gamma\qty\big(\dv{\gamma}{t}c,\dv{(\gamma\vec v)}{t})\]
-	\[p^\mu=mv^\mu=\qty(\frac{\mathcal E}c,\vec p)\]
-	\[\dv{p^\mu}{\tau}=\gamma(\frac{\vec v}c\dv{\vec p}{t},\dv{\vec p}{t})\]
-	\[\partial_\mu=\pdv{x^\mu}=\qty\big(\inv c\pdv t,\grad)\]
-	\[g_{\mu\nu}=\smqty(\dmat[0]{1,-1,-1,-1})\]
-	\[x_\mu=g_{\mu\nu}x^\nu\]
-	\[\partial_\mu\partial^\mu=\dalembertian\]
-	\[p^\mu p_\mu=(mc)^2\]
-	\[v^\mu a_\mu=0\]
-	\[M\chemarrow\sum_im_i\]
-	\[E_1^\text{max}=\frac{M^2+m_1^2-\sum_{i\neq1}m_i^2}{2M}c^2\]
-	\[\text{doppler: }\sqrt\frac{1+\beta}{1-\beta}\approx1+\beta\]
-	\[\operatorname{SO}_{1,3}=\Setdef[\Lambda]{\smqty{\transp\Lambda g\Lambda=g\\\det\Lambda\ge0}}\]
-	\[(\tensor\Lambda{^0_0})^2\ge1\]
-	\[\Lambda=\smqty(
-		\gamma & & -\gamma\vec\beta & \\
-		& & & \\
-		-\gamma\vec\beta & & I+\frac{\gamma-1}{\beta^2}\vec\beta\otimes\vec\beta & \\
-		& & &
-	)\]
 \end{formulae}
 
 \begin{formulae}{8}{CGS$\rightarrow$MKS}
@@ -735,7 +805,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\partial_\mu F_{\nu\sigma}+\partial_\nu F_{\sigma\mu}+\partial_\sigma F_{\mu\nu}=0;\,\det F=(\vec E\vec B)^2\]
 	\[F^{\alpha\beta}F_{\alpha\beta}=2(B^2-E^2);\,F^{\alpha\beta}\mathscr F_{\alpha\beta}=4\vec E\vec B\]
 	\[\Theta^{\mu\nu}=\inv{4\pi}\qty(F^\mu_{\phantom\mu\alpha}F^{\alpha\nu}+\inv4g^{\mu\nu}F_{\alpha\beta}F^{\alpha\beta})\]
-	\[\Theta^{\mu\nu}=\smqty(u & c\vec g \\ c\vec g & -\tens T);\,\partial_\alpha\Theta^{\alpha\nu}=\frac{J_\alpha}cF^{\alpha\nu} (-?)\]
+	\[\Theta^{\mu\nu}=\smqty(u & c\vec g \\ c\vec g & -\tens T);\,\partial_\alpha\Theta^{\alpha\nu}=\frac{J_\alpha}cF^{\alpha\nu}\isis-G^\nu\]
 	\[\lagr=\frac{mc^2}\gamma-q\vec A\frac{\vec v}c+q\phi;\,\hami=\inv{2m}\qty(\vec p-\frac{q\vec A}c)^2+q\phi\] % is this hamiltonian relativistic?
 \end{formulae}
 
@@ -792,17 +862,17 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[r_B=\frac{\hbar^2}{m_ee^2}=\SI{5.2917721067 E-11}{\m}\]
 	\[\text{Rydberg}=\frac{e^2}{2r_B}=\SI{13.605693009}\eV\]
 	\[r_e=\frac{e^2}{mc^2}=\SI{2.81794032680003 E-15}{m}\]
-	\[E_B=-\frac1{n^2}\frac{e^2}{2r_B}\]
 	\[\alpha=\frac{e^2}{\hbar c}\]
 	\[\text{Planck: }\frac{8\pi\hbar}{c^3}\frac{\nu^3}{e^\frac{h\nu}{kT}-1}\dd\nu\]
 	\[\lambda_\text{Broglie}=\frac hp\]
 	\[\sigma_1=\smqty(0&1\\1&0);\,\sigma_2=\smqty(0&-i\\i&0);\,\sigma_3=\smqty(1&0\\0&-1)\]
 	\[\sigma_i\sigma_j=\delta_{ij}+i\varepsilon_{ijk}\sigma_k\]
 	\[\comm{\sigma_i}{\sigma_j}=2i\varepsilon_{ijk}\sigma_k\]
+	\[\acomm{\sigma_i}{\sigma_j}=2\delta_{ij}\]
 	\[i\hbar\pdv{\mathcal U}{t}=\hami\mathcal U\]
 	\[\pdv{\hami}{t}=0\then\mathcal U(t)=e^{-\frac{i\hami t}\hbar}\]
 	\[\comm{\hami(t)}{\hami(t')}=0\then\mathcal U(t)=e^{-\frac{i\int_0^t\dd t\hami(t)}\hbar}\]
-	\[\mathcal U(t)=\qty(\frac{-i}\hbar)^k\int_0^t\dd t_1\dotsm\dd t_k\hami(t_1)\dotsm\hami(t_k)\]
+	\[\mathcal U(t)=\qty(\frac{-i}\hbar)^k\int_0^t\dd t_1\dotsm\int_0^{t_{k-1}}\dd t_k\hami(t_1)\dotsm\hami(t_k)\]
 	\[H=H_0+V_\lambda:\pdv{E_n}{\lambda}\at{\lambda=0}=\bra{\psi_n}{\pdv{V_\lambda}{\lambda}}\ket{\psi_n}\at{\lambda=0}\]
 	\[[A,BC]=[A,B]C+B[A,C]\]
 	\[\comm{A}{\comm{B}{C}}+\comm{B}{\comm{C}{A}}+\comm{C}{\comm{A}{B}}=0\]
@@ -829,6 +899,26 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[K(x,t;x')=\sum_E\conj{\psi_E(x')}\psi_E(x)e^{-\frac{iEt}\hbar}=\]
 	\[=\bra{x}{e^{-\frac{i\hami t}\hbar}}\ket{x'}\]
 	\[\qty(\hami-i\hbar\pdv{t})K(x,t;x')=-i\hbar\delta(x-x')\delta(t)\]
+	\[\comm{J_i}{J_j}=i\hbar\varepsilon_{ijk}J_k\]
+	\[\comm{J^2}{J_z}=0\]
+	\[J_\pm\is J_x\pm iJ_y\]
+	\[\comm{J_+}{J_-}=i\hbar J_z\]
+	\[\comm{J_z}{J_\pm}=\pm\hbar J_\pm\]
+	\[\comm{J^2}{J_\pm}=0\]
+	\[J^2\ket{j,m}=j(j+1)\hbar^2\ket{j,m}\]
+	\[J_z\ket{j,m}=m\hbar\ket{j,m}\]
+	\[m=-j,j-1,\dotsc,j;\ 2j\in\N\]
+	\[(\vec\sigma\vec a)(\vec\sigma\vec b)=\vec a\vec b+i\vec\sigma(\vec a\times\vec b)\]
+	\[e^{-\frac{i\vec\sigma\hat n\phi}2}=\cos\frac\phi2-i(\vec\sigma\hat n)\sin\frac\phi2\]
+	\[\ket{\vec S\hat n,\frac\hbar2}=\cos\frac\theta2\ket{S_z,\frac\hbar2}+e^{i\varphi}\sin\frac\theta2\ket{S_z,-\frac\hbar2}\]
+	\[\bra{\vec x}{L_z}\ket{\alpha}=\frac\hbar i\pdv{\phi}\bra{\vec x}\ket{\alpha}\]
+	\[\rho[\ket{\alpha_i},w_i]\is\sum_iw_i\dyad{\alpha_i}\]
+	\[\tr\rho=1\]
+	\[[A]\is\tr(\rho A)\]
+	\[\card\set{w_i>0}=1\iff tr(\rho^2)=1\]
+	\[\card\set{w_i>0}>1\iff 0<\tr(\rho^2)<1\]
+	\[i\hbar\pdv{\rho}{t}=-\comm{\rho}{\hami}\]
+	\[W_\psi(x,p)=\int\frac{\dd y}{2\pi\hbar}\bra{x+\frac y2}\ket{\psi}\bra{\psi}\ket{x-\frac y2}e^{-\frac{ipy}2}\]
 \end{formulae}
 
 \begin{formulae}{3}{QM solutions}
@@ -864,13 +954,23 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\hami_\text{delta}=\frac{P^2}{2m}-\lambda\delta(x),\ \lambda>0\]
 	\[\psi_\text{bounded}(x)=\inv{\sqrt{x_0}}e^{-\frac{|x|}{x_0}},\ x_0=\frac{\hbar^2}{\lambda m}\]
 	\[E_\text{bounded}=-\frac\lambda{2x_0}\]
+	\[\hami_\text{hydrogen}=\frac{P^2}{2M}-\frac{e^2}r\]
+	\[a=\frac{\hbar^2}{Me^2}=r_B\]
+	\[E_n=-\frac1{n^2}\frac{e^2}{2a}\]
+	\[\text{degen.}=n^2\]
+	\[\psi_{nlm}=R_{nl}Y_{lm}\]
+	\[\vec j=\frac\hbar M\hat\varphi\frac{m}{r\sin\theta}|\psi|^2\]
+	\[R_{nl}=2\sqrt{\frac{(n-l-1)!}{a^3n^4(n+l)!}}e^{-\frac r{na}}\qty(\frac{2r}{na})^lL_{n+l}^{2l+1}\qty(\frac{2r}{na})\]
+	\[L_n^{(j)}(x)=\sum_{m=0}^{n-j}(-1)^m\binom n{n-j-m}\frac{x^m}{m!}\]
+	\[L_k(x)=e^x\dv[k]{x}(x^ke^{-x})\]
+	\[L_k^{(j)}=(-1)^j\dv[j]{x}L_k(x)\]
 \end{formulae}
 
 \sisetup{
 	scientific-notation=false,
 	round-mode=off
 }
-\begin{formulae}{2}{nuclear physics (MKSA)}
+\begin{formulae}{2}{particle physics}
 	\[M(A,Z)=Zm_\text p+(A-Z)m_\text n-B(A,Z)\]
 	\[B(A,Z)=a_vA-a_sA^{2/3}-a_c\frac{Z(Z-1)}{A^{1/3}}-a_\text{sym}\frac{(A-2Z)^2}A+a_pA^{-3/4}\Delta\]
 	\[\Delta=\begin{cases}
@@ -883,45 +983,17 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[a_v=15.5;\,a_s=16.8;\,a_c=0.72;\,a_\text{sym}=23;\,a_p=34\text{ [MeV]}\]
 	\[\pdv{M}{Z}=0:Z=\frac{m_\text n-m_\text p+4a_\text{sym}}{\frac{2a_c}{A^{1/3}}+\frac{8a_\text{sym}}A}\]
 	\[\dv{\sigma}{\Omega}=\abs{\frac b{\sin\theta}\dv{b}{\theta}}\]
-	\[s_{ab}:=\abs{p^\mu_a+p^\mu_b}^2\]
+	\[s_{ab}:=(p_a+p_b)^2\]
 	\[M\chemarrow abc:(m_a+m_b)^2\le s_{ab}\le(M-m_c)^2\]
 	\[M\chemarrow abc:s_{ab}+s_{bc}+s_{ac}=M^2+m_a^2+m_b^2+m_c^2\]
-	\[a_iA_i\chemarrow b_jB_j:Q:=(a_im_{A_i}-b_jm_{B_j})c^2\]
+	\[a_iA_i\chemarrow b_jB_j:Q:=a_im_{A_i}-b_jm_{B_j}\]
 	\[p=qBR\]
-\end{formulae}
-
-\newcommand*\fourier{\mathcal F} % fourier transform
-\renewcommand*\L[1][1]{L^{#1}} % p-integrable functions
-\newcommand*\conv{\mathop{\star}} % convolution
-\begin{formulae}{3}{fourier}
-	\[\fourier^2f=2\pi f(-t)\]
-	\[\fourier[t^nf(t)]=(-i)^n\dv[n]{\omega}\fourier[f(t)],\ t^{k\le n}f\in\L[1]\]
-	\[\fourier\qty[\dv[k]{f}{t}]=(-i\omega)^k\fourier[f],\ f^{(k'\le k)}\in\L[1]\]
-	\[\int \conj fg=2\pi\int\conj{\fourier[f]}\fourier[g],\ f,g\in\L[2]\]
-	\[\fourier[f]=\int\dd te^{i\omega t}f(t)\]
-	\[\fourier[f\conv g\ (\in\L[p])]=\fourier[f]\fourier[g],\ f\in\L[1],\ g\in\L[p]\]
-	\[f\conv g=\inv{2\pi}\int\fourier[f]\fourier[g]e^{-i\omega t}\dd\omega,\ f,g\in\L[2]\]
-	\[\norm{f}=1:\D\omega\D t\ge\inv2\]
-	\[\D\omega\D t=\inv2:f(t)=g(t;\bar t,\D t)e^{-i\bar\omega t}\]
-	\[(\omega\hat f)'=-\fourier(xf')\]
-\end{formulae}
-
-\newcommand*\pp{\mathcal{P}} % principal part integral
-\newcommand*\sgn{\operatorname{sgn}} % sign
-\newcommand*\dist[2]{\langle{#1},{#2}\rangle}
-\begin{formulae}{3}{distributions}
-	\[\fourier\theta=i\pp\inv\omega+\pi\delta(\omega)\]
-	\[\fourier1=2\pi\delta(\omega)\]
-	\[\fourier\sgn=2i\pp\inv\omega\]
-	\[\dist{\fourier T}f\is\dist T{\fourier f}\]
-	\[\dist{T'}f\is-\dist T{f'}\]
-	\[\dist{gT}f\is\dist T{gf}\]
-	\[x^nT=0\then T=\sum_{k=0}^{n-1}a_k\delta^{(k)}\]
-	\[xT=S\then T=S/x+k\delta\]
-	\[\dist{T\otimes S}\phi\is\dist{T(x)}{\dist{S(y)}{\phi(x+y)}}\]
-	\[T\otimes S=S\otimes T,\ T,S\in\mathcal D'\]
-	\[\dist{T\conv S}\phi\is\dist{T\otimes S}{\phi(x+y)}\]
-	\[\sum_{n=0}^\infty e^{inx}=\pp\inv{1-e^{ix}}+\pi\sum_{n=-\infty}^\infty\delta(x-2n\pi)\]
+	\[\frac{\dd^3\vec p}{2E}=\dd^4p\delta(p^2-m^2)\theta(p_0)\]
+	\[\dd L_p=\qty(\prod_n\frac{\dd^3\vec p_n}{2E_n})\delta^4(p_\text{in}-\sum_np_n)\]
+	\[\dd\sigma=f_\text{coll}(p_1,\dotsc,p_n)\dd L_p\]
+	\[\text{two body: }\dv{\sigma}{\Omega_1}=f(\Omega_1)\frac{p_1}{4\sqrt s}\]
+	\[\sqrt s=\text{c.m. energy}\]
+	\[\text{Rutherford: }\tan\frac\theta2=\inv{4\pi\varepsilon_0}\frac{Qqm}{p^2b};\ \dv{\sigma}{\Omega}=\frac{d_\text{min}^2}{16}\inv{\sin^4(\frac\theta2)}\]
 \end{formulae}
 
 \end{document}
