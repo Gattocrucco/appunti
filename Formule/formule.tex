@@ -11,6 +11,7 @@
 \usepackage[margin=5mm]{geometry}
 \usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage{bbm}
 \usepackage{mfirstuc} % \makefirstuc \xmakefirstuc
 \usepackage{multicol} % {multicols}
 \usepackage{siunitx}
@@ -38,7 +39,7 @@
 \newcommand*\titlet[1]{\textbf{\xmakefirstuc{#1}}}
 
 \newenvironment{formulae}[2]{%
-\vspace{-20pt}
+\vspace{-19pt}
 \begin{multicols}{#1}
 \noindent\titlet{#2}}
 {\end{multicols}}
@@ -102,8 +103,7 @@
 	\[\begin{psmallmatrix}\sinh x\\\cosh x\end{psmallmatrix}=\inv2\begin{psmallmatrix}e^x-e^{-x}\\e^x+e^{-x}\end{psmallmatrix}\]
 	\[\cosh^2x-\sinh^2x=1\]
 	\[\cosh^2x=\inv{1-\tanh^2x}\]
-	\[\sin x=-i\sinh(ix)\]
-	\[\cos x=\cosh(ix)\]
+	\[\sin x=-i\sinh(ix);\ \cos x=\cosh(ix)\]
 	\[\begin{psmallmatrix}
 		\arsinh x\\ \arcosh x
 	\end{psmallmatrix}=\log(x+\sqrt{x^2+\begin{psmallmatrix}
@@ -137,7 +137,7 @@
 	\[\Gamma(1+z)=\int_0^\infty t^ze^{-t}dt=z!\]
 	\[n!\approx(\frac ne)^n\sqrt{2\pi n}\]
 	\[\dv{}{x}\int_0^xg(x,y)\dd y=\int_0^x\pdv{g}{x} (x,y)\dd y+g(x,x)\]
-	\[\pm\sqrt z=\sqrt\frac{\Re z+\abs{z}}2+\frac{i\Im z}{\sqrt{2(\Re z+\abs{z})}}\]
+	\[\sqrt z=\sqrt\frac{\abs{z}+\Re z}2\pm\sqrt\frac{\abs{z}-\Re z}2\]
 	\[\avg{\Re(ae^{-i\omega t})\Re(be^{-i\omega t})}=\inv2\Re(a\conj b)\]
 	\[\erf(x)=\frac2{\sqrt\pi}\int_0^xe^{-t^2}\dd t\]
 	\[f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint\frac{f(z)\dd z}{(z-z_0)^{n+1}}\]
@@ -870,6 +870,9 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\mathcal U(t)=\qty(\frac{-i}\hbar)^k\int_0^t\dd t_1\dotsm\int_0^{t_{k-1}}\dd t_k\hami(t_1)\dotsm\hami(t_k)\]
 	\[A_H(t)=\mathcal U(t)^\dagger A\mathcal U(t)\]
 	\[\pdv{\hami}{t}=0\then\dv{A_H}{t}=\frac{\comm{A_H}{\hami}}{i\hbar}\] % se dH/dt != 0 si usa H_H (com'era definito?)
+	\[(A\otimes B)(\ket{a}\otimes\ket{b})=A\ket{a}\otimes B\ket{b}\]
+	\[(\bra{a}\otimes\bra{b})(\ket{c}\otimes\ket{d})=\ip{a}{c}\ip{b}{d}\]
+	\[\hami_{1\otimes2}=\hami^{(1)}\otimes\mathbbm1^{(2)}+\mathbbm1^{(1)}\otimes\hami^{(2)}\]
 	\[H=H_0+V_\lambda:\pdv{E_n}{\lambda}\at{\lambda=0}=\bra{\psi_n}{\pdv{V_\lambda}{\lambda}}\ket{\psi_n}\at{\lambda=0}\]
 	\[[A,BC]=[A,B]C+B[A,C]\]
 	\[\comm{A}{\comm{B}{C}}+\comm{B}{\comm{C}{A}}+\comm{C}{\comm{A}{B}}=0\]
@@ -880,9 +883,9 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\comm{A}{B}\propto I\then\comm{A}{f(B)}=\comm{A}{B}f'(B)\]
 	\[\comm{A}{B}\propto I\then e^Ae^B=e^{A+B+\inv2\comm{A}{B}}\]
 	\[e^{ip'X}\ket{p}=\ket{p+p'};\ e^{-iPx'}\ket{x}=\ket{x+x'}\]
-	\[\psi(x)=\bra{x}\ket{\psi};\ \psi=|\psi|e^{\frac{iS}\hbar}\]
-	\[\rho=|\psi|^2;\ \vec j=\frac\hbar m\Im(\conj\psi\grad\psi)=\frac{|\psi|^2\grad S}m\]
-	\[\pdv{\rho}{t}=-\grad\vec j;\ \int\dd^3x\vec j=\frac{\ev{\vec p}}m\] % cos'è m? questa roba vale per la particella libera?
+	\[\psi(x)=\bra{x}\ket{\psi};\ \rho=|\psi|^2;\ \psi=\sqrt\rho e^{\frac{iS}\hbar}\]
+	\[\hami=\frac{\vec P^2}{2m}+V(\vec X):\vec j=\frac\hbar m\Im(\conj\psi\grad\psi)=\frac{\rho\grad S}m\]
+	\[\pdv{\rho}{t}=-\grad\vec j;\ \int\dd^3x\vec j=\frac{\ev{\vec p}}m\]
 	\[\psi(x,t)=\int\dd x'K(x,t;x')\psi(x',t=0)\]
 	\[K(x,t;x')=\sum_E\conj{\psi_E(x')}\psi_E(x)e^{-\frac{iEt}\hbar}=\]
 	\[=\bra{x}{e^{-\frac{i\hami t}\hbar}}\ket{x'}\]
@@ -900,6 +903,9 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[J^2\ket{j,m}=j(j+1)\hbar^2\ket{j,m}\]
 	\[J_z\ket{j,m}=m\hbar\ket{j,m}\]
 	\[m=-j,j-1,\dotsc,j;\ 2j\in\N\]
+	\[U^\dagger U=1:U=\smqty(a & b \\ -\conj b & \conj a),\ |a|^2+|b|^2=1\]
+	\[U=e^{-\frac{i\sigma_z\alpha}2}e^{-\frac{i\sigma_y\beta}2}e^{-\frac{i\sigma_z\gamma}2}\]
+	\[\smqty{a=\cos\frac\phi2-in_z\sin\frac\phi2=e^{-i\frac{\alpha+\gamma}2}\cos\frac\beta2 \\ b=-\sin\frac\phi2(n_y+in_x)=-e^{-i\frac{\alpha-\gamma}2}\sin\frac\beta2}\]
 	\[\vec L=\vec X\times\vec P;\ \bra{\vec x}{L_z}\ket{\psi}=\frac\hbar i\pdv{\phi}\bra{\vec x}\ket{\psi}\]
 	\[A=\vec A\means\comm{A_i}{J_j}=i\varepsilon_{ijk}\hbar A_k\]
 	\[T=\tens T\means\comm{J_z}{T_q}=\hbar qT_q\]
@@ -916,9 +922,9 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\hami_\text{box}=\frac{P^2}{2m}+\begin{cases}
 		0 & 0<x<L \\ \infty & \text{otherwise}
 	\end{cases}\]
-	\[\psi_n(x)=\sqrt\frac2L\sin(n\pi\frac xL),\ n\ge1\]
-	\[E_n=\frac{n^2\pi^2\hbar^2}{2mL^2}=\frac{n^2h^2}{8mL^2}\]
-	\[\D x^2=L^2\qty(\inv{12}-\inv{2n^2\pi^2});\ \D p=\frac{\hbar n\pi}{L}=\frac{hn}{2L}\]
+	\[E_n=\frac{n^2\pi^2\hbar^2}{2mL^2},\ n\ge1\]
+	\[\psi_n(x)=\sqrt\frac2L\sin(n\pi\frac xL)=\sqrt\frac2L\sin(\sqrt\frac{2mE}{\hbar^2}x)\]
+	\[\D x^2=L^2\qty(\inv{12}-\inv{2n^2\pi^2});\ \D p=\frac{\hbar n\pi}{L}\]
 	\[\hami_\text{harm}=\frac{P^2}{2m}+\frac{m\omega^2X^2}2\]
 	\[A=\sqrt{\frac{m\omega}{2\hbar}}\qty(X+\frac{iP}{m\omega});\ A^\dagger=\sqrt{\frac{m\omega}{2\hbar}}\qty(X-\frac{iP}{m\omega})\]
 	\[N=A^\dagger A=\frac{\hami}{\hbar\omega}-\inv2;\,\hami=\hbar\omega\qty(N+\inv2)\]
@@ -939,6 +945,15 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\hami_\text{delta}=\frac{P^2}{2m}-\lambda\delta(x),\ \lambda>0\]
 	\[\psi_\text{bounded}(x)=\inv{\sqrt{x_0}}e^{-\frac{|x|}{x_0}},\ x_0=\frac{\hbar^2}{\lambda m}\]
 	\[E_\text{bounded}=-\frac\lambda{2x_0}\]
+	\[\hami_\text{step}=\frac{P^2}{2m}+\begin{cases}
+		0 & x<0 \\
+		V_0>0 & x>0
+	\end{cases}\]
+	\[k^2\is\frac{2mE}{\hbar^2},\ q^2\is\frac{2m(E-V_0)}{\hbar^2}\]
+	\[\psi_\text{right}(x)\propto\begin{cases}
+		e^{ikx}+\frac{k-q}{k+q}e^{-ikx} & x<0 \\
+		\frac{2k}{k+q}e^{iqx} & x>0
+	\end{cases}\]
 	\[\hami_\text{hydrogen}=\frac{\vec P^2}{2M}-\frac{e^2}{X}\]
 	\[a\is r_B\is\frac{\hbar^2}{Me^2};\ \text{Rydberg}=\frac{e^2}{2r_B}\]
 	\[E_n=-\frac1{n^2}\frac{e^2}{2a};\ \text{degen.}=n^2\]
