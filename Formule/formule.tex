@@ -396,6 +396,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\frac1{4\pi\varepsilon_0}=\SI{8.98755178736818 E+9}{\newton\metre\squared\per\coulomb\squared}\]
 	\[\mu_0=\SI{0.00000125663706143592}{\N\per\A\squared}\]
 	\[\mu_\text B=\SI{9.27400968 E-24}{\A\m\squared}\]
+	\[\mu_\text B=\SI{0.000057883818067}{\eV\over\tesla}\]
 	\[\alpha=\num{7.2973525698e-3}\]
 	\[\si{barn}=\SI{1e-28}{m^2}\]
 	\[\si{\candela}_{\SI[scientific-notation=false]{555}{\nano\metre}}=\SI{0.00146412884333821}{\watt\per\steradian}\]
@@ -486,6 +487,8 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\sigma^2\approx s^2=\inv{n-1}\sum_{i=1}^n(x_i-m)^2\]
 	\[s_m^2=\frac{s^2}{n}\]
 	\[p\big[\frac{m-\mu}{s_m}\big]=S(;n)\]
+	\[H_{0\text{ sign.lev.}}=\int_\text{reject}p(S|H_0)\dd{S}\]
+	\[H_{0\text{ pow.vs. }H_1}=\int_\text{reject}p(S|H_1)\dd{S}\]
 \end{formulae}
 
 \begin{formulae}{4}{fit (ML)}
@@ -655,13 +658,14 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\mu_J\is\pdv{T}{V}\at{U,N};\ \alpha\is\inv V\pdv{V}{T}\at p\]
 	\[\kappa_T\is-\inv V\pdv{V}{p}\at T;\ \kappa_S\is-\inv V\pdv{V}{p}\at S\]
 	\[\gamma\is\frac{C_p}{C_V}=\frac{\kappa_T}{\kappa_S};\ C_p-C_V=\frac{\alpha^2VT}{\kappa_T}\]
+	\[\kappa,C\ge 0\]
 	\[\text{Euler: }U=ST-pV+\mu N\]
 	\[\text{Gibbs-Duhem: }S\dd T-V\dd p+N\dd\mu=0\]
 	\[\text{Fix }S,V,N:\min U\text{ at equilibrium}\]
 	\[\text{Fix }T,V,N:\min F\is U-TS\]
-	\[\text{Fix }T,p,N:\min G\is F+pV\]
+	\[\text{Fix }T,p,N:\min G\is F+pV=\mu N\]
 	\[\text{Fix }S,p,N:\min H\is U+pV\]
-	\[\Omega\is U-TS-\mu N=-pV\]
+	\[\Omega(T,V,\mu)\is U-TS-\mu N=-pV\]
 	\begin{equation*}
 		\pgfmathsetmacro{\maxr}{1}
 		\begin{tikzpicture}[scale=.4]
@@ -672,6 +676,9 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 			\path (2.5,-1) node[right] {$\pdv{T}\frac FT\at V=-\frac U{T^2}$};
 		\end{tikzpicture}
 	\end{equation*}
+	\[\delta E\le T\delta S-p\delta V+H\delta\int M\dd V+\mu\delta N\]
+	\[\dd U=T\dd S+H\dd\ev{M}_V;\ \chi\is\pdv{M}{H}\]
+	\[\text{Clausius-Clapeyron: }\dv{p}{T}=\frac{s_2-s_1}{v_2-v_1}\]
 \end{formulae}
 
 \begin{formulae}{3}{ideal gas}
@@ -696,11 +703,16 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\text{GRAND CANONICAL}\]
 	\[\rho\is\inv{h^{3N}N!}e^{-\beta(\hami-\mu N+pV)}\]
 	\[\mathcal Z\is\sum_{N=0}^\infty e^{\beta\mu N}Z\]
-	\[\log\mathcal Z=pV\beta\]
 	\[z\is e^{\beta\mu N}\]
 	\[\avg N=z\pdv{z}\log\mathcal Z\at{T,V}\]
 	\[\avg\hami=-\pdv{\beta}\log\mathcal Z\at{z,V}\]
 	\[\Omega=-\frac{\log\mathcal Z}\beta\]
+\end{formulae}
+
+\begin{formulae}{3}{Statistical QM}
+	\[\Omega(T,V,\mu)=\pm\frac V\beta\sum_\alpha\log(1\mp e^{-\beta(\varepsilon_\alpha-\mu)})\]
+	\[f(\epsilon)=\frac1{1+e^{\beta\epsilon}}\]
+	\[n(\varepsilon,T,\mu)=f(\varepsilon-\mu)\]
 \end{formulae}
 
 \begin{formulae}{3}{electronics (MKS)}
@@ -805,7 +817,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\vec B=\curl\vec A;\,\vec E=-\grad\phi-\inv c\pdv{\vec A}{t}\]
 	\[-\laplacian\phi-\inv c\pdv t\div\vec A=4\pi\rho\]
 	\[\grad\qty\big(\div\vec A+\inv c\pdv{\phi}{t})-\laplacian\vec A+\inv c\pdv[2]{\vec A}{t}=4\pi\frac{\vec J}c\]
-	\[(\phi,\vec A)\cong\big(\phi-\inv c\pdv{\chi}{t},\vec A+\grad\chi\big)\]
+	\[(\phi,\vec A)\cong\big(\phi-\inv c\pdv{\Lambda}{t},\vec A+\grad\Lambda\big)\]
 	\[(\phi,\vec A)=\int\dd^3r'\frac{\qty(\rho,\frac{\vec J}c)\qty(\vec r',t-\inv c\abs{\vec r-\vec r'})}{\abs{\vec r-\vec r'}}\]
 	\[\div\vec A=0\rightarrow\dalembertian\vec A=\frac{4\pi}c(\vec J-\vec J_L)=:\frac{4\pi}c\vec J_T\]
 	\[\vec J_L=\frac1{4\pi}\grad\pdv{\phi}{t}=-\frac1{4\pi}\div\int\frac{\grad'\vec J'}{\abs{\vec r-\vec r'}}\dd^3r'\]
@@ -885,7 +897,8 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 \end{formulae}
 
 \begin{formulae}{3}{Quantum mechanics (CGS)}
-	\[r_e=\frac{e^2}{mc^2};\ \alpha=\frac{e^2}{\hbar c};\ \lambda_\text{Broglie}=\frac hp\]
+	\[r_\text e=\frac{e^2}{m_\text ec^2};\ \alpha=\frac{e^2}{\hbar c};\ \mu_\text B=\frac{e\hbar}{2m_\text ec}\]
+	\[\lambda_\text{Broglie}=\frac hp\]
 	\[\text{Planck: }\frac{8\pi\hbar}{c^3}\frac{\nu^3}{e^\frac{h\nu}{kT}-1}\dd\nu\]
 	\[i\hbar\pdv{\mathcal U}{t}=\hami\mathcal U;\ \pdv{\hami}{t}=0\then\mathcal U(t)=e^{-\frac{i\hami t}\hbar}\]
 	\[\comm{\hami(t)}{\hami(t')}=0\then\mathcal U(t)=e^{-\frac{i\int_0^t\dd t\hami(t)}\hbar}\]
@@ -912,19 +925,43 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[K(x,t;x')=\sum_E\conj{\psi_E(x')}\psi_E(x)e^{-\frac{iEt}\hbar}=\]
 	\[=\bra{x}{e^{-\frac{i\hami t}\hbar}}\ket{x'}\]
 	\[\qty(\hami-i\hbar\pdv{t})K(x,t;x')=-i\hbar\delta(x-x')\delta(t)\]
+	\[\rho[\ket{\alpha_i},w_i]\is\sum_iw_i\dyad{\alpha_i}\]
+	\[\tr\rho=1;\ [A]\is\tr(\rho A)\]
+	\[\card\set{w_i>0}=1\iff \tr(\rho^2)=1\]
+	\[\card\set{w_i>0}>1\iff 0<\tr(\rho^2)<1\]
+	\[\pdv{\rho}{t}=-\frac{\comm{\rho}{\hami}}{i\hbar}\]
+	\[W_\psi(x,p)=\int\frac{\dd y}{2\pi\hbar}\bra{x+\frac y2}\ket{\psi}\bra{\psi}\ket{x-\frac y2}e^{-\frac{ipy}2}\]
+	\[V(x+a)=V(x)\then\psi_{nk}(x)=e^{ikx}u_{nk}(x),\]
+	\[u_{nk}(x+a)=u_{nk}(x)\]
+	\[\text{trasm.}\approx e^{-\int_0^d\frac{\sqrt{2m(V(x)-E)}}\hbar\dd x}\]
+	\[D_\mu=\partial_\mu + i\frac q{\hbar c}A_\mu\]
+	\[\vec A\mapsto \vec A+\grad\Lambda\then\ket{\psi}\mapsto e^{\frac{iq\Lambda}{\hbar c}}\ket{\psi}\]
+	\[\hami=\hami_0+V\]
+	\[E=E_0+\epsilon_1+\epsilon_2+\dotsb\]
+	\[V\mapsto kV\then \epsilon_n\mapsto k^n\epsilon_n\]
+	\[\ket{\psi}=\ket{\psi_0}+\ket{\psi_1}+\dotsb\]
+	\[\epsilon_1=\ev{V}{\psi_0}\]
+	\[\ket{\psi_1}=\sum_{\alpha\neq\psi_0}\ket{\alpha}\frac{\bra{\alpha}{V}\ket{\psi_0}}{E_0-E_\alpha}\]
+	\[\epsilon_2=\sum_{\alpha\neq\psi_0}\frac{\abs{\bra{\alpha}{V}\ket{\psi_0}}^2}{E_0-E_\alpha}=\bra{\psi_0}{V}\ket{\psi_1}\]
+	\[\epsilon_n=\bra{\psi_0}{V}\ket{\psi_{n-1}}\]
+	\[Q\is\sum_{n\neq0}\dyad{\psi_n};\ G_Q\is Q\frac1{E_0-\hami_0}Q\]
+	\[\ket{\psi_n}=G_Q\ket{\psi_{n-1}}-\sum_{s=1}^{n-1}\epsilon_sG_Q\ket{\psi_{n-s}}\]
+\end{formulae}
+
+\begin{formulae}{3}{QM rotations}
 	\[\sigma_1=\smqty(0&1\\1&0);\,\sigma_2=\smqty(0&-i\\i&0);\,\sigma_3=\smqty(1&0\\0&-1)\]
-	\[\sigma_i\sigma_j=\delta_{ij}+i\varepsilon_{ijk}\sigma_k\]
+	\[\sigma_i\sigma_j=\delta_{ij}+i\varepsilon_{ijk}\sigma_k;\ \tr(\hat n\vec\sigma)=0\]
 	\[\comm{\sigma_i}{\sigma_j}=2i\varepsilon_{ijk}\sigma_k;\ \acomm{\sigma_i}{\sigma_j}=2\delta_{ij}\]
 	\[(\vec\sigma\vec a)(\vec\sigma\vec b)=\vec a\vec b+i\vec\sigma(\vec a\times\vec b)\]
-	\[e^{-\frac{i\vec\sigma\hat n\phi}2}=\cos\frac\phi2-i(\vec\sigma\hat n)\sin\frac\phi2\]
+	\[e^{i\vec\sigma\hat n\alpha}=\cos\alpha+i(\vec\sigma\hat n)\sin\alpha\]
 	\[\ket{\vec\sigma\hat n,1}=\cos\frac\theta2\ket{\sigma_3,1}+e^{i\varphi}\sin\frac\theta2\ket{\sigma_3,-1}\]
 	\[M=1+\vec v\vec\sigma\then\lambda_M=1\pm\abs{\vec v}\]
-	\[R(\hat n,\phi)=\exp(-\frac{i\vec J\hat n\phi}\hbar)\]
-	\[\comm{J_i}{J_j}=i\hbar\varepsilon_{ijk}J_k;\ J_\pm\is J_x\pm iJ_y\]
-	\[\comm{J_+}{J_-}=2\hbar J_z;\ \comm{J_z}{J_\pm}=\pm\hbar J_\pm\]
+	\[U(R_{\hat n,\phi})=\exp(-i\vec J\hat n\phi)\]
+	\[\comm{J_i}{J_j}=i\varepsilon_{ijk}J_k;\ J_\pm\is J_x\pm iJ_y\]
+	\[\comm{J_+}{J_-}=2 J_z;\ \comm{J_z}{J_\pm}=\pm J_\pm\]
 	\[\comm{J^2}{J_\pm}=\comm{J^2}{J_z}=0\]
-	\[J^2\ket{j,m}=j(j+1)\hbar^2\ket{j,m}\]
-	\[J_z\ket{j,m}=m\hbar\ket{j,m}\]
+	\[J^2\ket{j,m}=j(j+1)\ket{j,m}\]
+	\[J_z\ket{j,m}=m\ket{j,m}\]
 	\[J_\pm\ket{j,m}=\sqrt{j(j+1)-m(m\pm1)}\ket{j,m\pm1}\]
 	\[m=-j,j-1,\dotsc,j;\ 2j\in\N\]
 	\[U\in\SU_2:U=\smqty(a & b \\ -\conj b & \conj a),\ |a|^2+|b|^2=1\]
@@ -935,18 +972,22 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[L_\pm=\hbar e^{\pm i\varphi}\qty(\pm\pdv{\theta}+i\cot\theta\pdv{\varphi})\]
 	\[\vec L^2=-\hbar^2\qty(\inv{\sin^2\theta}\pdv[2]{\varphi}+\inv{\sin\theta}\pdv{\theta}(\inv{\sin\theta}\pdv{\theta}))\]
 	\[\vec L^2Y_{lm}=\hbar l(l+1)Y_{lm};\ L_zY_{lm}=\hbar mY_{lm}\]
-	\[A=\vec A\means\comm{A_i}{J_j}=i\varepsilon_{ijk}\hbar A_k\]
-	\[T=\tens T\means\comm{J_z}{T_q}=\hbar qT_q\]
-	\[\comm{J_\pm}{T_q^{(k)}}=\hbar\sqrt{(k\mp q)(k\pm q+1)}T_{q\pm1}^{(k)}\]
-	\[\rho[\ket{\alpha_i},w_i]\is\sum_iw_i\dyad{\alpha_i}\]
-	\[\tr\rho=1;\ [A]\is\tr(\rho A)\]
-	\[\card\set{w_i>0}=1\iff tr(\rho^2)=1\]
-	\[\card\set{w_i>0}>1\iff 0<\tr(\rho^2)<1\]
-	\[i\hbar\pdv{\rho}{t}=-\comm{\rho}{\hami}\]
-	\[W_\psi(x,p)=\int\frac{\dd y}{2\pi\hbar}\bra{x+\frac y2}\ket{\psi}\bra{\psi}\ket{x-\frac y2}e^{-\frac{ipy}2}\]
-	\[V(x+a)=V(x)\then\psi_{nk}(x)=e^{ikx}u_{nk}(x),\]
-	\[u_{nk}(x+a)=u_{nk}(x)\]
-	\[\text{trasm.}\approx e^{-\int_0^d\frac{\sqrt{2m(V(x)-E)}}\hbar\dd x}\]
+	\[A=\vec A\means\comm{J_i}{A_j}=i\varepsilon_{ijk} A_k\]
+	\[T=\tens T\means\comm{J_z}{T_q}=qT_q\]
+	\[U(R)\vec AU(R)^\dagger=R\vec A\]
+	\[\comm{\vec\theta\vec J}{\vec A}=-i\vec\theta\times\vec A\]
+	\[\comm{J_\pm}{T_q^{(k)}}=\sqrt{k(k+1)-q(q\pm1)}T_{q\pm1}^{(k)}\]
+	\[\bra{jm'}{e^{-i\alpha J_z}e^{-i\beta J_y}e^{-i\gamma J_z}}\ket{jm} =\]
+	\[= e^{-i\alpha m'}\bra{jm'}{e^{-i\beta J_y}}\ket{jm}e^{-i\gamma m}\]
+	\[\bra{jm'}{e^{-i\beta J_y}}\ket{jm} =\]
+	\[= (-1)^{m'-m}\sqrt{\frac{(j+m')!(j-m')!}{(j+m)!(j-m)!}}\qty(\cos\frac\beta2)^{2j} \cdot\]
+	\[\cdot \sum_\mu (-1)^\mu \binom{j+m}{\mu} \binom{j-m}{j-m'-\mu} \qty(\tan\frac\beta2)^{m'-m+2\mu}\]
+	\[Y_{lk}(\theta,\varphi)=\sqrt{\frac{2l+1}{4\pi}} \bra{lk}{e^{-i\theta J_y}}\ket{l0}e^{ik\varphi}\]
+	\[C^{J;j_1j_2}_{M;m_1m_2}\is\bra{j_1m_1;j_2m_2}\ket{j_1j_2JM}\]
+	\[C\in\R;\ C\neq 0\then M = m_1 + m_2\]
+	\[C\neq 0\then\abs{j_1-j_2}\le J \le j_1+j_2\]
+	\[C^{J;j_1j_2}_{M;m_1m_2}=(-1)^{J-j_1-j_2}C^{J;j_2j_1}_{M;m_2m_1}\]
+	\[\bra{\alpha jm}{T^{(k)}_q}\ket{\beta j'm'} = \langle \alpha j \| T^{(k)} \| \beta j' \rangle C^{j;j'k}_{m;m'q}\]
 \end{formulae}
 
 \begin{formulae}{3}{QM solutions}
@@ -995,6 +1036,9 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[L_n^{(j)}(x)=\sum_{m=0}^{n-j}(-1)^m\binom n{n-j-m}\frac{x^m}{m!}\]
 	\[L_k(x)=e^x\dv[k]{x}(x^ke^{-x})\]
 	\[L_k^{(j)}=(-1)^j\dv[j]{x}L_k(x)\]
+	\[R_{1s}=2a^{-\frac32}e^{-\frac ra}\]
+	\[R_{2s}=\frac1{\sqrt2}a^{-\frac32}\qty(1-\frac r{2a})e^{-\frac r{2a}}\]
+	\[R_{2p}=\frac1{2\sqrt6}a^{-\frac32}\frac rae^{-\frac r{2a}}\]
 	% cos'era 'sta roba?
 	% \[\hami_\text{harm3D}=\frac{\vec P^2}{2m}+\frac{m\omega^2\vec X^2}2\]
 	% \[E_{ql}=\qty(2q+l+\frac32)\hbar\omega\]
