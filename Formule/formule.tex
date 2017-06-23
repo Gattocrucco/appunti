@@ -139,12 +139,13 @@
 	\[n!\approx(\frac ne)^n\sqrt{2\pi n};\ 
 	\log n! \approx n(\log n-1)\]
 	\[\dv{}{x}\int_0^xg(x,y)\dd y=\int_0^x\pdv{g}{x} (x,y)\dd y+g(x,x)\]
-	\[\sqrt z=\sqrt\frac{\abs{z}+\Re z}2\pm\sqrt\frac{\abs{z}-\Re z}2\]
+	\[\sqrt z=\sqrt\frac{\abs{z}+\Re z}2\pm i\sqrt\frac{\abs{z}-\Re z}2\]
 	\[\avg{\Re(ae^{-i\omega t})\Re(be^{-i\omega t})}=\inv2\Re(a\conj b)\]
 	\[\erf(x)=\frac2{\sqrt\pi}\int_0^xe^{-t^2}\dd t\]
 	\[f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint\frac{f(z)\dd z}{(z-z_0)^{n+1}}\]
 	\[f(z)=\sum_{k=-\infty}^\infty\qty(\inv{2\pi i}\oint\frac{f(z')\dd z'}{(z'-z_0)^{k+1}})(z-z_0)^k\]
-	\[\sinc x\is\frac{\sin x}x\]
+	\[\sinc x = \frac{\sin x}x\]
+	\[\Li_s(z)=\sum_{n=1}^\infty\frac{z^n}{n^s}\]
 \end{formulae}
 
 \newcommand*\at[1]{\big|_{#1}}
@@ -715,7 +716,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[F = -\frac{\log Z}\beta;\ U = -\pdv{\log Z}{\beta}\]
 	\[\text{GRAND CANONICAL}\]
 	\[\rho = \inv{h^{3N}N!}e^{-\beta(\hami-\mu N-\Omega)}\]
-	\[\mathcal Z\is\sum_{N=0}^\infty e^{\beta\mu N}Z;\ 
+	\[\mathcal Z\is\sum_{N=0}^\infty z^N Z;\ 
 	z\is e^{\beta\mu}\]
 	\[N=z\pdv{z}\log\mathcal Z\at{\beta,V}\]
 	\[U=-\pdv{\beta}\log\mathcal Z\at{z,V}\]
@@ -734,12 +735,17 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 \end{formulae}
 
 \begin{formulae}{3}{Statistical QM}
-	\[\Omega(T,V,\mu)=\pm\frac1\beta\sum_\alpha\log(1\mp e^{-\beta(\varepsilon_\alpha-\mu)})\]
-	\[f(\epsilon)=\frac1{1+e^{\beta\epsilon}}\]
+	\[\text{FERMIONS}\]
+	\[\Omega(T,V,\mu)=-\frac1\beta\sum_\alpha\log(1+ e^{-\beta(\varepsilon_\alpha-\mu)})\]
+	\[f(\epsilon) \is \frac1{1+e^{\beta\epsilon}}\]
 	\[n(\varepsilon,T,\mu)=f(\varepsilon-\mu)\]
-	\[\int_{-\infty}^\infty f(\epsilon-\mu)\psi(\epsilon)=\frac{\pi D}{\sin(\pi D)}\Phi(\mu)\]
+	\[\int_{-\infty}^\infty \dd{\epsilon} f(\epsilon-\mu)\psi(\epsilon)=\frac{\pi D}{\sin(\pi D)}\Phi(\mu)\]
 	\[\Phi(\mu) \is \int_{-\infty}^\mu\dd{\epsilon}\phi(\epsilon);\ 
 	D \is \frac1\beta\dv{\mu}\]
+	\[\text{BOSONS}\]
+	\[\Omega(T,V,\mu)=\frac1\beta\sum_\alpha\log(1- e^{-\beta(\varepsilon_\alpha-\mu)})\]
+	\[\epsilon\propto p^2 : n(T,z) = n_0 + g\lambda_T^{-d}\Li_{\frac d2}(z)\]
+	\[\epsilon\propto p^2 : p(T,z) = g\boltz T\lambda_T^{-d}\Li_{\frac d2+1}(z)\]
 \end{formulae}
 
 \begin{formulae}{3}{electronics (MKS)}
@@ -982,8 +988,13 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[V(x+a)=V(x)\then\psi_{nk}(x)=e^{ikx}u_{nk}(x),\]
 	\[u_{nk}(x+a)=u_{nk}(x)\]
 	\[\text{trasm.}\approx e^{-\int_0^d\frac{\sqrt{2m(V(x)-E)}}\hbar\dd x}\]
+	\[\hami_\text{em} = \frac1{2m}\qty(\vec p-\frac ec\vec A)^2 + e\phi(\vec x) - \vec\mu\vec B\]
+	\[\vec j_\text{em} = \frac{e\hbar}m \Im(\conj\psi\grad\psi) -
+	\frac{e^2}{mc} |\psi|^2 \vec A + c\curl(\conj\psi\vec\mu\psi)=\]
+	\[=\frac em\Im\qty(\conj\psi\qty(\vec p-\frac ec\vec A)\psi)+c\curl(\conj\psi\vec\mu\psi)\]
 	\[D_\mu=\partial_\mu + i\frac q{\hbar c}A_\mu\]
 	\[\vec A\mapsto \vec A+\grad\Lambda\then\ket{\psi}\mapsto e^{\frac{iq\Lambda}{\hbar c}}\ket{\psi}\]
+	\[\vec\mu = g \frac{e\hbar}{2mc} \vec L\]
 	\[\hami=\hami_0+V\]
 	\[E=E_0+\epsilon_1+\epsilon_2+\dotsb\]
 	\[V\mapsto kV\then \epsilon_n\mapsto k^n\epsilon_n\]
@@ -1038,6 +1049,8 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[C\neq 0\then\abs{j_1-j_2}\le J \le j_1+j_2\]
 	\[C^{J;j_1j_2}_{M;m_1m_2}=(-1)^{J-j_1-j_2}C^{J;j_2j_1}_{M;m_2m_1}\]
 	\[\bra{\alpha jm}{T^{(k)}_q}\ket{\beta j'm'} = \langle \alpha j \| T^{(k)} \| \beta j' \rangle C^{j;j'k}_{m;m'q}\]
+	\[J_x^{(1)} = \frac1{\sqrt2}\smqty(&1&\\1&&1\\&1&)\]
+	\[\bra{l+1,m}{\cos\theta}\ket{lm} = \sqrt{\frac{(l+1)^2-m^2}{(2l+1)(2l+3)}}\]
 \end{formulae}
 
 \begin{formulae}{3}{QM solutions}
@@ -1064,7 +1077,9 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[H_{n+1}(x)=2xH_n(x)-2nH_{n-1}(x)\]
 	\[H_n''(x)=2xH_n'(x)-2nH_n(x)\]
 	\[\int_{-\infty}^\infty\dd xH_n(x)H_m(x)e^{-x^2}=\sqrt\pi2^nn!\delta_{nm}\]
+	\[A_H(t) = A e^{-i\omega t}\]
 	\[A\ket{\alpha}=\alpha\ket{\alpha},\ \ket{\alpha}=\sum_{n=0}^\infty\frac{\alpha^n}{\sqrt{n!}}e^{-\frac12\abs{\alpha}^2}\ket{n}\]
+	\[D(\alpha) \is e^{\alpha A^\dagger - \conj\alpha A};\ D(\alpha)\ket{0} = \ket{\alpha}\]
 	\[\text{DELTA}=\frac{P^2}{2m}-\lambda\delta(x),\ \lambda>0\]
 	\[x_0\is\frac{\hbar^2}{\lambda m};\ \beta\is\frac{m\lambda}{\hbar^2};\ k^2\is\frac{2mE}{\hbar^2}\]
 	\[\psi_\text{bounded}(x)=\inv{\sqrt{x_0}}e^{-\frac{|x|}{x_0}},\ E_\text{bounded}=-\frac\lambda{2x_0}\]
@@ -1089,6 +1104,16 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[R_{1s}=2a^{-\frac32}e^{-\frac ra}\]
 	\[R_{2s}=\frac1{\sqrt2}a^{-\frac32}\qty(1-\frac r{2a})e^{-\frac r{2a}}\]
 	\[R_{2p}=\frac1{2\sqrt6}a^{-\frac32}\frac rae^{-\frac r{2a}}\]
+	\[\Delta\hami_\text{f.s.} = -\frac18\frac{P^4}{m^3c^2} +
+	\pi K\delta(\vec X) +
+	(g-1)K\frac{\vec L\vec S}{X^3}\]
+	\[K \is \frac{Ze^2\hbar^2}{2m^2c^2};\ \vec J=\vec L+\vec S\]
+	\[\Delta E_\text{f.s.}(n,l,j) = -Z^4\frac{\alpha^2}{2n^3}\qty(\frac1{j+\frac12}-\frac3{4n})\]
+	\[\Delta\hami_\text{h.s.} = C\vec I\vec J\]
+	\[C_{nlj} = 2g_N\mu_N\mu_B \begin{cases} \frac{8\pi}3|\psi(0)|^2 & l=0 \\ \ev{\frac1{R^3}}\frac{l(l+1)}{j(j+1)} & l > 0 \end{cases}\]
+	\[\Delta E^\text{Zeeman}_{jm} = \mu_BBm\Big(1 + (g-1)\cdot\]
+	\[\cdot\frac{j(j+1)+s(s+1)-l(l+1)}{2j(j+1)}\Big)\]
+	\[\vec\omega_\text{Thomas} = \frac{\vec a\times\vec v}{2c^2}\]
 \end{formulae}
 
 \sisetup{

@@ -15,8 +15,6 @@
 \newcommand*\avg[1]{\langle{#1}\rangle} % average
 
 \newcommand*\conj[1]{{#1}^{*}} % conjugate
-\DeclareMathOperator\ddom{dom} % domain of a function
-\DeclareMathOperator\card{\#} % cardinality
 
 \newcommand*\nan{\mathtt{NaN}} % not-a-number
 \newcommand*\Ell{\mathscr{L}}
@@ -30,15 +28,19 @@
 \newcommand*\funarrow{\mathrel{\chemarrow}}
 \newcommand*\fundef[3][f]{{#1}:{#2}\funarrow{#3}}
 
-\DeclareMathOperator\id{id} % identity
-
 \newcommand*\R{\mathbb{R}} % set/field of real numbers
 \newcommand*\Q{\mathbb{Q}} % set/field of rational numbers
 \newcommand*\N{\mathbb{N}} % set of natural numbers
 
 \newcommand*\wlg{\;\mathtt{WLOG}\;} % without loss of generality
 
-\DeclareMathOperator\sinc{sinc}
+\DeclareMathOperator\ddom{dom} % domain of a function
+\DeclareMathOperator\card{\#} % cardinality
+\DeclareMathOperator\id{id} % identity
+\DeclareMathOperator\sinc{sinc} % sin x / x
+\DeclareMathOperator\Li{Li} % Polilogarithm function
+
+\newcommand*\hc{\text{h.c.}} % hermitian conjugate
 
 %%% CALCULUS %%%
 \newcommand*\integ[2][x]{\int #2\,\dd #1} % \integ[x]{f} = ∫fdx
