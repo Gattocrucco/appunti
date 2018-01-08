@@ -145,7 +145,8 @@
 	\[f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint\frac{f(z)\dd z}{(z-z_0)^{n+1}}\]
 	\[f(z)=\sum_{k=-\infty}^\infty\qty(\inv{2\pi i}\oint\frac{f(z')\dd z'}{(z'-z_0)^{k+1}})(z-z_0)^k\]
 	\[\sinc x = \frac{\sin x}x\]
-	\[\Li_s(z)=\sum_{n=1}^\infty\frac{z^n}{n^s}\]
+	\[\zeta(s) = \sum_{n=1}^\infty \frac1{n^s};\ 
+	\Li_s(z)=\sum_{n=1}^\infty\frac{z^n}{n^s}\]
 \end{formulae}
 
 \newcommand*\at[1]{\big|_{#1}}
@@ -193,6 +194,8 @@
 	\[\int_{-\infty}^\infty e^{i\omega t}\dd t=2\pi\delta(\omega)\]
 	\[\int \frac{\dd{u}}{(1+u^2)^{3/2}} = \frac{u}{\sqrt{1+u^2}}\]
 	\[\int \dd{\Omega_d} = \frac{d\pi^{d/2}}{\Gamma(\frac d2 + 1)}\]
+	\[\int_0^\infty \frac{x^3}{e^x-1} = \frac{\pi^4}{15}\]
+	\[\int_0^\infty \frac{x^n}{e^x-1} = \Gamma(n+1)\zeta(n+1)\]
 \end{formulae}
 
 \begin{formulae}{3}{differential equations}
@@ -704,34 +707,36 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 
 \begin{formulae}{4}{statistical mechanics}
 	\[\text{MICROCANONICAL}\]
-	\[\rho\is\begin{cases}\text{const.}&E<\hami<E+\Delta\\0&\text{otherwise}\end{cases}\]
-	\[\Gamma(E)\is\int_{E<\hami<E+\Delta}\dd p\dd q\]
+	\[\rho \is \frac1{N!} \begin{cases}\text{const.}&E<\hami<E+\Delta\\0&\text{otherwise}\end{cases}\]
+	\[\Gamma(E) \is \frac1{N!}\int_{E<\hami<E+\Delta}\dd p\dd q\]
 	\[S\is \boltz\log\Gamma(E)\]
 	\[T\is\pdv{E}{S}\at V;\ p\is-\pdv{E}{V}\at S\]
 	\[S=-\boltz\avg{\log\rho}\]
-	\[\Sigma(E)\is\int_{\hami<E}\dd p\dd q\]
+	% \[\Sigma(E)\is\int_{\hami<E}\dd p\dd q\] % tanto non è usata da nessuna parte
+	\[\ev{x_i\pdv{\hami}{x_j}} = \delta_{ij} kT\]
 	\[\text{CANONICAL}\]
 	\[\rho = \inv{h^{3N}N!}e^{-\beta\hami};\ \beta\is\inv{\boltz T}\]
 	\[Z \is \inv{h^{3N}N!}\int\dd p\dd qe^{-\beta\hami}\]
 	\[F = -\frac{\log Z}\beta;\ U = -\pdv{\log Z}{\beta}\]
 	\[\text{GRAND CANONICAL}\]
-	\[\rho = \inv{h^{3N}N!}e^{-\beta(\hami-\mu N-\Omega)}\]
+	\[\rho = \inv{h^{3N}N!}e^{-\beta(\hami-\mu N+pV)}\]
 	\[\mathcal Z\is\sum_{N=0}^\infty z^N Z;\ 
 	z\is e^{\beta\mu}\]
 	\[N=z\pdv{z}\log\mathcal Z\at{\beta,V}\]
-	\[U=-\pdv{\beta}\log\mathcal Z\at{z,V}\]
-	\[\Omega=-\frac{\log\mathcal Z}\beta\]
+	\[U=-\pdv{\beta}\log\mathcal Z\at{z,V};\ 
+	\Omega=-\frac{\log\mathcal Z}\beta\]
+	\[\lambda_T^2 \is \frac{h^2\beta}{2\pi m};\ 
+	z\ll1 \rightarrow z \approx \frac{N\lambda_T^3}{V}\]
 	\[\text{VIRIAL EXPANSION}\]
 	\[\hami = \sum_i\frac{p_i^2}{2m} + \sum_{i<j}v(|\vec r_i-\vec r_j|)\]
 	\[\frac{pV}{N\boltz T}=\sum_{l=1}^\infty B_l(T)\qty(\frac NV)^{l-1}\]
 	\[\Omega = -V\boltz T\sum_{l=1}^\infty\qty(\frac z{\lambda_T^3})^l b_l(T)\]
-	\[\lambda_T^2 \is \frac{h^2\beta}{2\pi m}\]
 	\[B_1=1,\ B_2=-b_2,\ B_3=4b_2^2-2b_3\]
 	\[f_{ij} \is e^{-\beta v(|\vec r_i - \vec r_j|)} - 1\]
 	\[\mathcal U_l \is \sum\limits_{\substack{\text{connected}\\\text{$l$ vertices}\\\text{graphs}}}\prod\limits_{\substack{\text{connections}\\\langle i,j \rangle}} f_{ij}\]
 	\[b_l = \frac1{l!}\frac1V\int\dd{\vec r_1}\dotsm\dd{\vec r_l}\mathcal U_l\]
 	\[\mathcal W_l \is \sum\limits_{\substack{\text{conn. $l$ vert. graphs}\\\text{that remain conn.}\\\text{removing a point}}}\prod\limits_{\substack{\text{conn.}\\\langle i,j \rangle}} f_{ij}\]
-	\[B_l = \frac1{l(l-2)!}\frac1V\int\dd{\vec r_1}\dotsm\dd{\vec r_l}\mathcal W_l\]
+	\[B_l = -\frac1{l(l-2)!}\frac1V\int\dd{\vec r_1}\dotsm\dd{\vec r_l}\mathcal W_l\]
 \end{formulae}
 
 \begin{formulae}{3}{Statistical QM}
@@ -739,13 +744,17 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\Omega(T,V,\mu)=-\frac1\beta\sum_\alpha\log(1+ e^{-\beta(\varepsilon_\alpha-\mu)})\]
 	\[f(\epsilon) \is \frac1{1+e^{\beta\epsilon}}\]
 	\[n(\varepsilon,T,\mu)=f(\varepsilon-\mu)\]
-	\[\int_{-\infty}^\infty \dd{\epsilon} f(\epsilon-\mu)\psi(\epsilon)=\frac{\pi D}{\sin(\pi D)}\Phi(\mu)\]
+	\[\int_{-\infty}^\infty \dd{\epsilon} f(\epsilon-\mu)\phi(\epsilon)=\frac{\pi D}{\sin(\pi D)}\Phi(\mu)\]
 	\[\Phi(\mu) \is \int_{-\infty}^\mu\dd{\epsilon}\phi(\epsilon);\ 
 	D \is \frac1\beta\dv{\mu}\]
+	\[\frac{pV}{NkT} = 1 + 2^{-5/2}\frac{N\lambda_T^3}{V} + O((N\lambda_T^3/V)^2)\]
+	\[\epsilon = \frac{p^2}{2m} \rightarrow
+	\epsilon_F = \frac{h^2}{2m} \big(\frac NV\big)^{2/3} \big(\frac{3}{4\pi g}\big)^{2/3}\]
 	\[\text{BOSONS}\]
 	\[\Omega(T,V,\mu)=\frac1\beta\sum_\alpha\log(1- e^{-\beta(\varepsilon_\alpha-\mu)})\]
 	\[\epsilon\propto p^2 : n(T,z) = n_0 + g\lambda_T^{-d}\Li_{\frac d2}(z)\]
 	\[\epsilon\propto p^2 : p(T,z) = g\boltz T\lambda_T^{-d}\Li_{\frac d2+1}(z)\]
+	\[\frac{pV}{NkT} = 1 - 2^{-5/2}\frac{N\lambda_T^3}{V} + O((N\lambda_T^3/V)^2)\]
 \end{formulae}
 
 \begin{formulae}{3}{electronics (MKS)}
@@ -995,16 +1004,55 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[D_\mu=\partial_\mu + i\frac q{\hbar c}A_\mu\]
 	\[\vec A\mapsto \vec A+\grad\Lambda\then\ket{\psi}\mapsto e^{\frac{iq\Lambda}{\hbar c}}\ket{\psi}\]
 	\[\vec\mu = g \frac{e\hbar}{2mc} \vec L\]
+\end{formulae}
+
+\begin{formulae}{3}{QM perturbative}
 	\[\hami=\hami_0+V\]
 	\[E=E_0+\epsilon_1+\epsilon_2+\dotsb\]
 	\[V\mapsto kV\then \epsilon_n\mapsto k^n\epsilon_n\]
-	\[\ket{\psi}=\ket{\psi_0}+\ket{\psi_1}+\dotsb;\ \bra{\psi_0}\ket{\psi_0}=1\]
+	\[\ket{\psi}=\ket{\psi_0}+\ket{\psi_1}+\dotsb;\ \bra{\psi_0}\ket{\psi}=1\]
 	\[\epsilon_1=\ev{V}{\psi_0}\]
 	\[\ket{\psi_1}=\sum_{\alpha\neq\psi_0}\ket{\alpha}\frac{\bra{\alpha}{V}\ket{\psi_0}}{E_0-E_\alpha}\]
 	\[\epsilon_2=\sum_{\alpha\neq\psi_0}\frac{\abs{\bra{\alpha}{V}\ket{\psi_0}}^2}{E_0-E_\alpha}=\bra{\psi_0}{V}\ket{\psi_1}\]
 	\[\epsilon_n=\bra{\psi_0}{V}\ket{\psi_{n-1}}\]
 	\[Q\is\sum_{\alpha\neq\psi_0}\dyad{\alpha};\ G_Q\is Q\frac1{E_0-\hami_0}Q\]
 	\[\ket{\psi_n}=G_QV\ket{\psi_{n-1}}-\sum_{s=1}^{n-1}\epsilon_sG_Q\ket{\psi_{n-s}}\]
+	\[\hami = \hami_0 + V(t)\]
+	\[\ket{\psi(t)} = \sum_k a_k(t) e^{-iE_kt/\hbar}\ket{k}\]
+	\[a_k = a_k^{(0)} + a_k^{(1)} + \dotsb\]
+	\[\hbar\omega_{ab} \is E_a-E_b;\ 
+	V_{ab} \is \bra{a}{V}\ket{b}\]
+	\[a_k^{(n+1)}(t) = \frac i\hbar \sum_s \int_0^t \dd{\tau} e^{i\omega_{ks}\tau} V_{ks}(\tau) a_s^{(n)}(\tau)\]
+	\[\underset{f\neq i}{P_{i\,\chemarrow f}}(t)
+	= \big|\frac1\hbar \int_0^t \dd{\tau} e^{i\omega_{fi}\tau} V_{fi}(\tau)\big|^2\]
+	\[\underset{f\neq i}{P_{i\,\chemarrow f}}
+	= \big|\frac1{\hbar\omega_{fi}} \int_{-\infty}^\infty \dd{t} e^{i\omega_{fi}t} V_{fi}'(t) + O(V^2)\big|^2\]
+	\[\ket{\psi(t)} \isis e^{-i\hami_0t/\hbar} \ket{\tilde\psi(t)}\]
+	\[\tilde\hami(t) = e^{i\hami_0t/\hbar} V(t) e^{-i\hami_0t/\hbar}\]
+	\[\comm{\comm{\hami(t')}{\hami(t'')}}{\tilde\hami(t''')} = 0 \rightarrow\]
+	\[\rightarrow U(t) = e^{\frac1{i\hbar} \int_0^t \tilde\hami}
+	e^{\frac{-1}{2\hbar^2} \int_0^t \dd{t_1} \int_0^{t_1} \dd{t_2} \comm{\hami(t_1)}{\hami(t_2)}}\]
+	\[R_{i\,\chemarrow f} \approx \frac{2\pi}\hbar
+	\big|V_{fi} + \sum_{s\neq i} \frac{V_{fs} V_{si}}{E_i-E_s+i\varepsilon}\big|^2 \delta(E_f-E_i)\]
+	\[V(t) = F e^{-i\omega t} + F^\dagger e^{i\omega t} \rightarrow\]
+	\[\rightarrow R_{i\,\chemarrow f} \approx \frac{2\pi}\hbar |F_{fi}|^2 \delta(E_f-E_i\pm\hbar\omega)\]
+\end{formulae}
+
+\begin{formulae}{3}{QM scattering}
+	\[\dv{\sigma}{\Omega} = |f|^2;\ 
+	\text{elastic: } f = \frac{k}{2\pi\hbar v} \bra{\vec k_f}{T}\ket{\vec k_i}\]
+	\[\text{anelastic: } f = \sqrt{\frac{k'^2}{4\pi^2\hbar^2vv'}} \bra{\vec k',b}{T}\ket{\vec k,a}\]
+	\[\text{Born: }\bra{}{T}\ket{} \approx \bra{}{V}\ket{}\]
+	\[\vec q \is \vec k'-\vec k;\ 
+	\bra{\vec k'}{V}\ket{\vec k} = \int \dd{\vec x} V(\vec x) e^{-i\vec q \vec x}\]
+	\[V = V(r): \bra{\vec k'}{V}\ket{\vec k} = 4\pi \int_0^\infty \dd{r} r V \frac{\sin(qr)}{q}\]
+	\[\psi(\vec x) = e^{i\vec k\vec x} - \frac{m}{2\pi\hbar^2}
+	\int \dd{\vec y} \frac{e^{i\vec k|\vec x-\vec y|}}{|\vec x-\vec y|} V(\vec y)\psi(\vec y)\]
+	\[f = -\frac{m}{2\pi\hbar^2} \int \dd{\vec y} e^{-i\vec k'\vec y} V(\vec y)\psi(\vec y)\]
+	\[\dd{\Omega} = 2\pi\frac{q\dd{q}}{k^2};\ 
+	\sigma_\text{tot} = \frac{4\pi}{k} \Im(f(0))\]
+	\[\text{charge: } f = -\frac{2m}{\hbar^2} \frac{q_\text{part}}{q^2} 
+	\qty\big(Q_\text{tot} - \int \dd{\vec r} \rho(\vec r) e^{-i\vec q\vec r})\]
 \end{formulae}
 
 \begin{formulae}{3}{QM rotations}
@@ -1032,12 +1080,11 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\vec L^2=-\hbar^2\qty(\inv{\sin^2\theta}\pdv[2]{\varphi}+\inv{\sin\theta}\pdv{\theta}(\inv{\sin\theta}\pdv{\theta}))\]
 	\[\vec L^2Y_{lm}=\hbar l(l+1)Y_{lm};\ L_zY_{lm}=\hbar mY_{lm}\]
 	\[A=\vec A\means\comm{J_i}{A_j}=i\varepsilon_{ijk} A_k\]
-	\[T=\tens T\means\comm{J_z}{T_q}=qT_q\]
-	% ma questa basta come definizione di tensore sferico?
-	\[U(R)\vec AU(R)^\dagger=R\vec A\]
-	% perché le rotazioni agiscono con UAUdagger e non UdaggerAU come al solito?
+	\[T=\tens T\means\comm{J_z}{T_q}=qT_q,\]
+	\[\comm{J_\pm}{T_q^{(k)}}=\sqrt{k(k+1)-q(q\pm1)}T_{q\pm1}^{(k)}\] % anche questo è nella def. di tensore
+	\[U(R)^\dagger\vec AU(R)=R\vec A\]
 	\[\comm{\vec\theta\vec J}{\vec A}=-i\vec\theta\times\vec A\]
-	\[\comm{J_\pm}{T_q^{(k)}}=\sqrt{k(k+1)-q(q\pm1)}T_{q\pm1}^{(k)}\]
+	\[\comm{\hat n\vec J}{T_q^{(k)}} = \sum_{q'} \bra{kq'}{\hat n\vec J}\ket{kq} T_{q'}^{(k)}\]
 	\[\bra{jm'}{e^{-i\alpha J_z}e^{-i\beta J_y}e^{-i\gamma J_z}}\ket{jm} =\]
 	\[= e^{-i\alpha m'}\bra{jm'}{e^{-i\beta J_y}}\ket{jm}e^{-i\gamma m}\]
 	\[\bra{jm'}{e^{-i\beta J_y}}\ket{jm} =\]
@@ -1054,13 +1101,13 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 \end{formulae}
 
 \begin{formulae}{3}{QM solutions}
-	\[\text{BOX}=\frac{P^2}{2m}+\begin{cases}
+	\[\text{BOX: }\hami=\frac{P^2}{2m}+\begin{cases}
 		0 & 0<x<L \\ \infty & \text{otherwise}
 	\end{cases}\]
 	\[E_n=\frac{n^2\pi^2\hbar^2}{2mL^2},\ n\ge1\]
 	\[\psi_n(x)=\sqrt\frac2L\sin(n\pi\frac xL)=\sqrt\frac2L\sin(\sqrt\frac{2mE}{\hbar^2}x)\]
 	\[\D x^2=L^2\qty(\inv{12}-\inv{2n^2\pi^2});\ \D p=\frac{\hbar n\pi}{L}\]
-	\[\text{HARM}=\frac{P^2}{2m}+\frac{m\omega^2X^2}2;\ x_0\is\sqrt{\frac\hbar{m\omega}}\]
+	\[\text{HARM.: }\hami=\frac{P^2}{2m}+\frac{m\omega^2X^2}2;\ x_0\is\sqrt{\frac\hbar{m\omega}}\]
 	\[A\is\inv{\sqrt2x_0}\qty(X+\frac{iP}{m\omega});\ A^\dagger=\inv{\sqrt2x_0}\qty(X-\frac{iP}{m\omega})\]
 	\[N\is A^\dagger A=\frac{\hami}{\hbar\omega}-\inv2;\,\hami=\hbar\omega\qty(N+\inv2)\]
 	\[\comm{A}{A^\dagger}=1;\ \comm{N}{A}=-A;\ \comm{N}{A^\dagger}=A^\dagger\]
@@ -1080,11 +1127,11 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[A_H(t) = A e^{-i\omega t}\]
 	\[A\ket{\alpha}=\alpha\ket{\alpha},\ \ket{\alpha}=\sum_{n=0}^\infty\frac{\alpha^n}{\sqrt{n!}}e^{-\frac12\abs{\alpha}^2}\ket{n}\]
 	\[D(\alpha) \is e^{\alpha A^\dagger - \conj\alpha A};\ D(\alpha)\ket{0} = \ket{\alpha}\]
-	\[\text{DELTA}=\frac{P^2}{2m}-\lambda\delta(x),\ \lambda>0\]
+	\[\text{DELTA: }\hami=\frac{P^2}{2m}-\lambda\delta(x),\ \lambda>0\]
 	\[x_0\is\frac{\hbar^2}{\lambda m};\ \beta\is\frac{m\lambda}{\hbar^2};\ k^2\is\frac{2mE}{\hbar^2}\]
 	\[\psi_\text{bounded}(x)=\inv{\sqrt{x_0}}e^{-\frac{|x|}{x_0}},\ E_\text{bounded}=-\frac\lambda{2x_0}\]
 	\[R=\inv{-1+i\frac k\beta};\ T=\inv{1+i\frac\beta k}=R+1\]
-	\[\text{STEP}=\frac{P^2}{2m}+\begin{cases}
+	\[\text{STEP: }\hami=\frac{P^2}{2m}+\begin{cases}
 		0 & x<0 \\
 		V_0>0 & x>0
 	\end{cases}\]
@@ -1093,7 +1140,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 		e^{ikx}+\frac{k-q}{k+q}e^{-ikx} & x<0 \\
 		\frac{2k}{k+q}e^{iqx} & x>0
 	\end{cases}\]
-	\[\text{HYDROGEN}=\frac{\vec P^2}{2M}-\frac{e^2}{X}\]
+	\[\text{HYDROGEN: }\hami=\frac{\vec P^2}{2M}-\frac{e^2}{X}\]
 	\[a\is r_B\is\frac{\hbar^2}{Me^2};\ \text{Rydberg}\is\frac{e^2}{2a}\]
 	\[E_n=-\frac1{n^2}\frac{e^2}{2a};\ \text{degen.}=n^2\]
 	\[\psi_{nlm}=R_{nl}Y_{lm};\ \vec j=\frac\hbar M\hat\varphi\frac{m}{r\sin\theta}|\psi|^2\]
@@ -1114,6 +1161,15 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\Delta E^\text{Zeeman}_{jm} = \mu_BBm\Big(1 + (g-1)\cdot\]
 	\[\cdot\frac{j(j+1)+s(s+1)-l(l+1)}{2j(j+1)}\Big)\]
 	\[\vec\omega_\text{Thomas} = \frac{\vec a\times\vec v}{2c^2}\]
+	\[\text{RUTHERFORD: } V(r) = \frac{zZe^2}{r}\]
+	\[\dv{\sigma}{\Omega} = \qty\big(\frac{zZe^2}{2mv^2})^2 \qty\big(\sin^4(\theta/2))^{-1}\]
+	\[\text{YUKAWA: } V(r) = \frac\alpha r e^{-\mu r}\]
+	\[\dv{\sigma}{\Omega} = \qty\big(\frac{2m\alpha}{\hbar^2})^2 \qty\big(|\vec k'-\vec k|^2+\mu^2)^{-2}\]
+	\[q \is \vec k'-\vec k;\ 
+	\dv{\sigma}{q} = \frac{2\pi q}{k^2} \dv{\sigma}{\Omega}\]
+	\[\sigma = 16\pi \qty\big(\frac{m\alpha}{\hbar^2})^2 \frac1{\mu^2} \frac1{4k^2+\mu^2}\]
+	\[\text{CHARGED SHERE } e\rho(r)\]
+	\[\bra{\vec k'}{V}\ket{\vec k} = \frac{4\pi}{q^2}ze^2\int \dd{\vec r} \rho(r) e^{-i\vec q\vec r}\]
 \end{formulae}
 
 \sisetup{
