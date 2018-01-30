@@ -4,9 +4,12 @@
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
+\RequirePackage{amsbsy}
+\RequirePackage{bbold} % \mathbb on numbers
 \RequirePackage{mathrsfs} % \mathscr
 \RequirePackage{mathtools}
 \RequirePackage{stmaryrd}
+\RequirePackage{slashed} % \slashed
 \RequirePackage{chemarrow} % \chemarrow
 \RequirePackage[arrowdel]{physics}
 
@@ -39,6 +42,7 @@
 \DeclareMathOperator\id{id} % identity
 \DeclareMathOperator\sinc{sinc} % sin x / x
 \DeclareMathOperator\Li{Li} % Polilogarithm function
+\DeclareMathOperator\sgn{sgn} % sign
 
 \newcommand*\hc{\text{h.c.}} % hermitian conjugate
 
@@ -70,8 +74,8 @@
 \newcommand*\gl[1][n]{\operatorname{GL}_{#1}} % linear group
 \newcommand*\go[1][n]{\operatorname{O}_{#1}} % orthogonal group
 \newcommand*\gu[1][n]{\operatorname{U}_{#1}} % unitary group
-\newcommand*\transp[1]{{#1}^{\text T}} % transpose
-\newcommand*\ctransp[1]{{#1}^*} % conjugate transpose
+\newcommand*\transp[1]{{#1}^{\top}} % transpose
+\newcommand*\ctransp[1]{{#1}^\dagger} % conjugate transpose
 \newcommand*\ortc[1]{{#1}^\bot} % orthogonal complement
 \newcommand*\dotp[2]{\langle{#1},{#2}\rangle} % scalar product
 \newcommand*\Dotp[2]{\left\langle{#1},{#2}\right\rangle} % scalar product (with big brackets)
@@ -131,5 +135,6 @@
 \newcommand*\hami{\mathcal H} % hamiltonian symbol
 \newcommand*\dalembertian\Box
 \newcommand*\tens[1]{\mathbf{#1}} % tensor notation
+\newcommand*\ordering[1]{\,:\!#1\!:\,} % creation/annihilation operators ordering
 
 \endinput

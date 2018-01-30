@@ -91,9 +91,9 @@
 	\[\sin^2\alpha=\frac{\tan^2\alpha}{1+\tan^2\alpha}\quad\sin\alpha=\frac{2\tan\frac{\alpha}{2}}{1+\tan^2\frac{\alpha}{2}}\]
 	\[\cos^2\alpha=\frac{1}{1+\tan^2\alpha}\quad\cos\alpha=\frac{1-\tan^2\frac{\alpha}{2}}{1+\tan^2\frac{\alpha}{2}}\]
 	\[a\sin x+b\cos x=\]
-	\[=\frac{\abs{a}}a\sqrt{a^2+b^2}\sin(x+\atan\frac ba)\]
-	\[=\frac{\abs{b}}b\sqrt{a^2+b^2}\cos(x-\atan\frac ab)\]
-\[\acos x+\asin x=\frac\pi2\]
+	\[=\sgn(a)\sqrt{a^2+b^2}\sin(x+\atan\frac ba)\]
+	\[=\sgn(b)\sqrt{a^2+b^2}\cos(x-\atan\frac ab)\]
+	\[\acos x+\asin x=\frac\pi2\]
 \end{formulae}
 
 \begin{formulae}{3}{hyperbolic functions}
@@ -195,7 +195,7 @@
 	\[\int \frac{\dd{u}}{(1+u^2)^{3/2}} = \frac{u}{\sqrt{1+u^2}}\]
 	\[\int \dd{\Omega_d} = \frac{d\pi^{d/2}}{\Gamma(\frac d2 + 1)}\]
 	\[\int_0^\infty \frac{x^3}{e^x-1} = \frac{\pi^4}{15}\]
-	\[\int_0^\infty \frac{x^n}{e^x-1} = \Gamma(n+1)\zeta(n+1)\]
+	\[\int_0^\infty \frac{x^{n-1}}{e^x-1} = \Gamma(n)\zeta(n)\]
 \end{formulae}
 
 \begin{formulae}{3}{differential equations}
@@ -257,7 +257,6 @@
 \end{formulae}
 
 \newcommand*\pp{\mathcal{P}} % principal part integral
-\newcommand*\sgn{\operatorname{sgn}} % sign
 \newcommand*\dist[2]{\langle{#1},{#2}\rangle} % distribution
 \begin{formulae}{3}{distributions}
 	\[\mathcal D\is\setdef[f\in C^\infty]{\exists K\text{ compact}:f(\comp K)=0}\]
@@ -275,7 +274,7 @@
 	\[T,S\in\mathcal D':T\otimes S=S\otimes T\]
 	\[\sum_{n=0}^\infty e^{inx}=\pp\inv{1-e^{ix}}+\pi\sum_{n=-\infty}^\infty\delta(x-2n\pi)\]
 	\[\delta^{(n)}\conv f=f^{(n)}\]
-	\[\delta(g(x))=\frac{\delta(x-x_i)}{\abs{g'(x_i)}};\,g(x_i)=0\]
+	\[\delta(g(x))=\sum_{x_i\in g^{-1}(0)}\frac{\delta(x-x_i)}{\abs{g'(x_i)}}\]
 \end{formulae}
 
 \newcommand*\Z{\mathbb{Z}}
@@ -296,7 +295,7 @@
 	\[\alpha\in\Z:Y_{-\alpha}=(-1)^\alpha Y_\alpha\]
 	\[\frac{2\alpha}xJ_\alpha(x)=J_{\alpha-1}(x)+J_{\alpha+1}(x)\]
 	\[2J_\alpha'(x)=J_{\alpha-1}(x)-J_{\alpha+1}(x)\]
-	\[\int_0^1\dd xxJ_\alpha(xu_{\alpha,m})J_\alpha(xu_{\alpha,n})=\frac{\delta_{mn}}2J_{\alpha+1}^2(u_{\alpha,m})\]
+	\[\int_0^1xJ_\alpha(xu_{\alpha,m})J_\alpha(xu_{\alpha,n})=\frac{\delta_{mn}}2J_{\alpha+1}^2(u_{\alpha,m})\]
 	\[u_{\alpha,n}=\text{$n$th. zero of $J_\alpha$}\]
 \end{formulae}
 
@@ -507,23 +506,22 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[H_{0\text{ pow.vs. }H_1}=\int_\text{reject}p(S|H_1)\dd{S}\]
 \end{formulae}
 
-\begin{formulae}{4}{fit (ML)}
+\begin{formulae}{4}{least squares}
 	\[f(x)=mx+q,\quad f(x)=a,\]
-	\[f(x)=bx,\quad f(x;\theta)=\theta_ih_i(x)\]
-	\[m=\frac{\sum\inv{\D y^2}\cdot\sum\frac{xy}{\D y^2}-\sum\frac{x}{\D y^2}\cdot\sum\frac{y}{\D y^2}}{\sum\inv{\D y^2}\cdot\sum\frac{x^2}{\D y^2}-(\sum\frac x{\D y^2})^2}\]
-	\[\D m^2=\frac{\sum\inv{\D y^2}}{\sum\inv{\D y^2}\cdot\sum\frac{x^2}{\D y^2}-(\sum\frac{x}{\D y^2})^2}\]
-	\[q=\frac{\sum\frac y{\D y^2}\cdot\sum\frac{x^2}{\D y^2}-\sum\frac x{\D y^2}\cdot\sum\frac{xy}{\D y^2}}{\sum\inv{\D y^2}\cdot\sum\frac{x^2}{\D y^2}-(\sum\frac x{\D y^2})^2}\]
-	\[\D q^2=\frac{\sum\frac{x^2}{\D y^2}}{\sum\inv{\D y^2}\cdot\sum\frac{x^2}{\D y^2}-(\sum\frac{x}{\D y^2})^2}
+	\[f(x)=bx,\quad f(x;\boldsymbol\theta)=\theta_ih_i(x)\]
+	\[\hat m=\frac{\sum\inv{\D y^2}\cdot\sum\frac{xy}{\D y^2}-\sum\frac{x}{\D y^2}\cdot\sum\frac{y}{\D y^2}}{\sum\inv{\D y^2}\cdot\sum\frac{x^2}{\D y^2}-(\sum\frac x{\D y^2})^2}\]
+	\[\sigma_{\hat m}^2=\frac{\sum\inv{\D y^2}}{\sum\inv{\D y^2}\cdot\sum\frac{x^2}{\D y^2}-(\sum\frac{x}{\D y^2})^2}\]
+	\[\hat q=\frac{\sum\frac y{\D y^2}\cdot\sum\frac{x^2}{\D y^2}-\sum\frac x{\D y^2}\cdot\sum\frac{xy}{\D y^2}}{\sum\inv{\D y^2}\cdot\sum\frac{x^2}{\D y^2}-(\sum\frac x{\D y^2})^2}\]
+	\[\sigma_{\hat q}^2=\frac{\sum\frac{x^2}{\D y^2}}{\sum\inv{\D y^2}\cdot\sum\frac{x^2}{\D y^2}-(\sum\frac{x}{\D y^2})^2}
 	\]
-	\[\Delta mq=\frac{-\sum\frac x{\D y^2}}{\sum\inv{\D y^2}\cdot\sum\frac{x^2}{\D y^2}-(\sum\frac{x}{\D y^2})^2}\]
-	\[a=\frac{\sum\frac y{\D y^2}}{\sum\inv{\D y^2}},\ \D a^2=\inv{\sum\inv{\D y^2}}\]
-	\[\mathbf a=(\sum V_\mathbf y^{-1})^{-1}(\sum V_\mathbf y^{-1}\mathbf y)\]
-	\[\D\mathbf a^2=(\sum V_\mathbf y^{-1})^{-1}\]
-	\[b=\frac{\sum\frac{xy}{\D y^2}}{\sum\frac{x^2}{\D y^2}},\ \D b^2=\inv{\sum\frac{x^2}{\D y^2}}\]
-	\[H_{ij}:=h_j(x_i);\,V_{ij}:=\Delta y_iy_j\]
-	\[\chi^2=(y-f(x;\theta))^TV^{-1}(y-f(x;\theta))\]
-	\[\theta=(H^TV^{-1}H)^{-1}H^TV^{-1}y\]
-	\[\Delta\theta\theta=(H^TV^{-1}H)^{-1}\]
+	\[\sigma_{\hat m,\hat q}=\frac{-\sum\frac x{\D y^2}}{\sum\inv{\D y^2}\cdot\sum\frac{x^2}{\D y^2}-(\sum\frac{x}{\D y^2})^2}\]
+	\[\hat a=\frac{\sum\frac y{\D y^2}}{\sum\inv{\D y^2}},\ \sigma_{\hat a}^2=\inv{\sum\inv{\D y^2}}\]
+	\[\hat{\mathbf a}=(\sum V_\mathbf y^{-1})^{-1}(\sum V_\mathbf y^{-1}\mathbf y)\]
+	\[V_{\hat{\mathbf a}}=(\sum V_\mathbf y^{-1})^{-1}\]
+	\[\hat b=\frac{\sum\frac{xy}{\D y^2}}{\sum\frac{x^2}{\D y^2}},\ \sigma_{\hat b}^2=\inv{\sum\frac{x^2}{\D y^2}}\]
+	\[H_{ij}:=h_j(x_i)\]
+	\[\hat{\boldsymbol\theta}=(\transp HV_{\mathbf y}^{-1}H)^{-1}\transp HV_{\mathbf y}^{-1}\mathbf y\]
+	\[V_{\hat{\boldsymbol\theta}}=(\transp HV_{\mathbf y}^{-1}H)^{-1}\]
 \end{formulae}
 
 \begin{formulae}{3}{kinematics}
@@ -533,9 +531,9 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\theta\equiv\frac\pi2\rightarrow\dot{\vec r}=\dot r\hat r+r\dot\varphi\hat\varphi\]
 	\[\theta\equiv\frac\pi2\rightarrow\ddotvec r=(\ddot r-r\dot\varphi^2)\hat r+(r\ddot\varphi+2\dot r\dot\varphi)\hat\varphi\]
 	\[\dot{\vec r}=\dot r\hat r+r\dot\theta\hat\theta+r\dot\varphi\sin\theta\hat\varphi\]
-	\[\dotp{\ddot{\vec r}}{\hat r}=\ddot r-r\dot\theta^2-r\dot\varphi^2\sin^2\theta\]
-	\[\dotp{\ddot{\vec r}}{\hat\theta}=r\ddot\theta+2\dot r\dot\theta-r\dot\varphi^2\sin\theta\cos\theta\]
-	\[\dotp{\ddot{\vec r}}{\hat\varphi}=r\ddot\varphi\sin\theta+2\dot r\dot\varphi\sin\theta+2r\dot\theta\dot\varphi\cos\theta\]
+	\[\ddot{\vec r}\,{\hat r}=\ddot r-r\dot\theta^2-r\dot\varphi^2\sin^2\theta\]
+	\[\ddot{\vec r}\,{\hat\theta}=r\ddot\theta+2\dot r\dot\theta-r\dot\varphi^2\sin\theta\cos\theta\]
+	\[{\ddot{\vec r}}\,{\hat\varphi}=r\ddot\varphi\sin\theta+2\dot r\dot\varphi\sin\theta+2r\dot\theta\dot\varphi\cos\theta\]
 	\[\vec{A}=\ddotvec r+\vec{A}_\text T+\vec\omega\times(\vec\omega\times\vec{r})+\dot{\vec\omega}\times\vec{r}+2\vec\omega\times\dotvec r\]
 	\begin{centering}
 	\tdplotsetmaincoords{60}{110}
@@ -1027,11 +1025,13 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	= \big|\frac1\hbar \int_0^t \dd{\tau} e^{i\omega_{fi}\tau} V_{fi}(\tau)\big|^2\]
 	\[\underset{f\neq i}{P_{i\,\chemarrow f}}
 	= \big|\frac1{\hbar\omega_{fi}} \int_{-\infty}^\infty \dd{t} e^{i\omega_{fi}t} V_{fi}'(t) + O(V^2)\big|^2\]
-	\[\ket{\psi(t)} \isis e^{-i\hami_0t/\hbar} \ket{\tilde\psi(t)}\]
-	\[\tilde\hami(t) = e^{i\hami_0t/\hbar} V(t) e^{-i\hami_0t/\hbar}\]
-	\[\comm{\comm{\hami(t')}{\hami(t'')}}{\tilde\hami(t''')} = 0 \rightarrow\]
-	\[\rightarrow U(t) = e^{\frac1{i\hbar} \int_0^t \tilde\hami}
-	e^{\frac{-1}{2\hbar^2} \int_0^t \dd{t_1} \int_0^{t_1} \dd{t_2} \comm{\hami(t_1)}{\hami(t_2)}}\]
+	\[\ket{\psi(t)} \isis e^{-i\hami_0t/\hbar} \ket*{\tilde\psi(t)}\]
+	\[\ket*{\tilde\psi(t)} \isis \tilde U(t) \ket*{\tilde\psi(0)}\]
+	\[i\hbar \pdv{\tilde U}{t} \isis \tilde\hami \tilde U;\ 
+	\tilde\hami(t) = e^{i\hami_0t/\hbar} V(t) e^{-i\hami_0t/\hbar}\]
+	% \[\comm{\comm{\hami(t')}{\hami(t'')}}{\tilde\hami(t''')} = 0 \rightarrow\]
+	% \[\rightarrow U(t) = e^{\frac1{i\hbar} \int_0^t \tilde\hami}
+	% e^{\frac{-1}{2\hbar^2} \int_0^t \dd{t_1} \int_0^{t_1} \dd{t_2} \comm{\hami(t_1)}{\hami(t_2)}}\]
 	\[R_{i\,\chemarrow f} \approx \frac{2\pi}\hbar
 	\big|V_{fi} + \sum_{s\neq i} \frac{V_{fs} V_{si}}{E_i-E_s+i\varepsilon}\big|^2 \delta(E_f-E_i)\]
 	\[V(t) = F e^{-i\omega t} + F^\dagger e^{i\omega t} \rightarrow\]
@@ -1198,6 +1198,165 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\text{Rutherford: }\tan\frac\theta2=\inv{4\pi\varepsilon_0}\frac{Qqm}{p^2b};\ \dv{\sigma}{\Omega}=\abs{\frac b{\sin\theta}\dv{b}{\theta}};\ \dv{\sigma}{\Omega}=\frac{d_\text{min}^2}{16}\inv{\sin^4\frac\theta2}\]
 	\[\dv{\sigma}{\Omega}\big|_\text{Mott}=\dv{\sigma}{\Omega}\big|_\text{Rutherford}\cdot\cos^2\frac\theta2\]
 	\[\text{mass defect}\is M-A\cdot\mathrm{amu}\]
+\end{formulae}
+
+\begin{formulae}{2}{QFT ($\hbar=c=1$)}
+	\[-\sigma^2\vec\sigma\sigma^2 = \transp{\vec\sigma}\]
+	\[-\sigma^2\conj{\vec\sigma}\sigma^2 = \vec\sigma\]
+	\[\comm{J^{\mu\nu}}{J^{\rho\sigma}}
+	= i(\eta^{\mu\sigma}J^{\nu\rho} + \eta^{\nu\rho}J^{\mu\sigma}
+	- \eta^{\mu\rho}J^{\nu\sigma} - \eta^{\nu\sigma}J^{\mu\rho})\]
+	\[J^i \is \frac12 \varepsilon^{ijk} J^{jk}\]
+	\[K^i \is \frac12 J^{0i}\]
+	\[\vec J_\pm \is \frac12 (\vec J \pm i\vec K)\]
+	\[\comm{J^i}{J^j} = i \varepsilon^{ijk} J^k\]
+	\[J^{ij} = \varepsilon^{ijk} J^k\]
+	\[\comm{K^i}{K^j} = -i J^{ij}\]
+	\[\comm{J^i}{K^j} = i \varepsilon^{ijk} K^k\]
+	\[\comm{J_+}{J_-} = 0\]
+	\[\comm*{J_\pm^i}{J_\pm^j} = i \varepsilon^{ijk} J_\pm^k\]
+	\[\text{fermions: } \acomm{a}{\ctransp a} = 1;\, \acomm{a}{a} = \acomm{\ctransp a}{\ctransp a} = 0\]
+	\[b_\alpha \is \eta_\alpha a_\alpha\]
+	\[\eta_\alpha \is \prod_{\beta=1}^{\alpha-1} \smqty(-1&\\&1)_\beta\]
+	\[\bra{\vec x}\ket{\vec p} \is \frac1{\sqrt V} e^{i\vec p\vec x}\text{ (then $V\to\infty$)}\]
+	\[\bra{\vec p_1}\ket{\vec p_2} = \frac{(2\pi)^3}V \delta(\vec p_1-\vec p_2)\]
+	\[\varphi(x) = \int \frac{V\dd^3p}{(2\pi)^3} \frac1{\sqrt{2E(\vec p)}}
+	\qty(a(\vec p) \frac{e^{-ipx}}{\sqrt V} + \ctransp a(\vec p) \frac{e^{ipx}}{\sqrt V})\]
+	\[\tilde U(\infty,-\infty) = T_W \exp(i\int\dd^4x \lagr_I[\Phi](x))\]
+	\[S[\Phi] \isis \int \dd^4x \lagr[\Phi](x) \isis \int \dd^4x (\lagr_0[\Phi](x) + \lagr_I[\Phi](x))\]
+	\[T_W \Phi_1(x)\Phi_2(y) \is
+	\theta(x^0-y^0) \Phi_1(x)\Phi_2(y) \pm \theta(y^0-x^0) \Phi_2(y)\Phi_1(x),\]
+	\[\text{$-$ iff $\Phi_1$ and $\Phi_2$ fermions}\]
+	\[T_W\pdv{\Phi_1}{x}\pdv{\Phi_2}{y}
+	\is \pdv{x}\pdv{y} T_W\Phi_1(x)\Phi_2(y)\]
+	\[S[\varphi] = S[x\mapsto \varphi(x+\lambda)] + \LO(\lambda^2) \rightarrow\]
+	\[\rightarrow T^{\mu\nu} = \partial^\mu\varphi \partial^\nu\varphi - \frac12 \eta^{\mu\nu} \lagr\]
+	\[\text{standard: }\gamma^0_S = \smqty(\mathbb 1&\\&-\mathbb 1)\]
+	\[\text{standard: }\gamma^i_S = \smqty(&\sigma^i\\-\sigma^i&)\]
+	\[\bar u \is \ctransp u \gamma^0 \underset{\text{(standard)}}{=} \smqty(\conj u_1&\conj u_2&-\conj u_3&-\conj u_4)\]
+	\[\gamma^5 = i\gamma^0\gamma^1\gamma^2\gamma^3 \underset{\text{(standard)}}{=} \smqty(&\mathbb 1\\\mathbb 1&)\]
+	\[\bar ab \text{ scalar}\]
+	\[\bar a \gamma^5 b \text{ pseudoscalar}\]
+	\[\bar a \gamma^\mu b \text{ vector}\]
+	\[\bar a \gamma^\mu\gamma^5 b \text{ pseudovector}\]
+	\[\bar a \sigma^{\mu\nu} b \text{ tensor}\]
+	\[\ordering{\ctransp a \dotsm a \dotsm \ctransp a}
+	\is \ctransp a\ctransp a \dotsm aa + \ldots \text{ (creation to the left)}\]
+	\[\text{real scalar }
+	\lagr_0 = \frac12 (\partial_\mu\varphi \partial^\mu\varphi - m^2\varphi^2),\ 
+	(\partial^\mu\partial_\mu + m^2)\varphi = 0\]
+	\[\text{complex scalar }
+	\lagr_0 = \partial_\mu\conj\phi\partial^\mu\phi - m^2\conj\phi\phi,\ 
+	(\partial_\mu\partial^\mu + m^2) \smqty(\phi\\\conj\phi) = 0\]
+	\[\text{real vector }
+	\lagr_0 = -\frac14 F^{\mu\nu} F_{\mu\nu} + \frac{m^2}2 B^\mu B_\mu,\ 
+	F^{\mu\nu} \is \partial^\mu B^\nu - \partial^\nu B^\mu,\]
+	\[(\partial_\mu\partial^\mu + m^2) B^\nu = 0,\ \partial_\mu B^\mu = 0\]
+	\[\text{Dirac spinor }
+	\lagr_0 = \bar\psi (i\gamma^\mu\partial_\mu - m) \psi,\ 
+	(i\gamma^\mu\partial_\mu - m)\psi = 0\]
+	\[\acomm{\gamma^\mu}{\gamma^\nu} = 2\eta^{\mu\nu}\]
+	\[\Lambda(\omega) = e^{\frac i2 \omega_{\mu\nu}J^{\mu\nu}}\]
+	\[R(\omega) = e^{\frac i4 \omega_{\mu\nu}\Sigma^{\mu\nu}}\]
+	\[R^{-1}(\omega)\gamma^\mu R(\omega) = \lambda^\mu_{\,\nu}(\omega)\gamma^\nu\]
+	\[R^{-1}(\omega) = \gamma^0 \ctransp R(\omega) \gamma^0\]
+	\[\bar u_r(\vec p) u_s(\vec p) = -\bar v_r(\vec p) v_s(\vec p) = 2m\delta_{rs}\]
+	\[\ctransp u_r(\vec p) u_s(\vec p) = \ctransp v_r(\vec p) v_s(\vec p) = 2 E(\vec p) \delta_{rs}\]
+	\[\bar v_r(\vec p) u_s(\vec p) = \bar u_r(\vec p) v_s(\vec p) = 0\]
+	\[\ctransp v_r(\vec p) u_s(-\vec p) = \ctransp u_r(\vec p) v_s(-\vec p) = 0\]
+	\[u_r^\alpha(\vec p)\bar u_r^\beta(\vec p) - v_r^\alpha(\vec p)\bar v_r^\beta(\vec p) = 2m\delta^{\alpha\beta}\]
+	\[u_r^\alpha(\vec p) \bar u_r^\beta(\vec p) = (\slashed p + m)^{\alpha\beta}\]
+	\[v_r^\alpha(\vec p) \bar v_r^\beta(\vec p) = (\slashed p - m)^{\alpha\beta}\]
+	\[\ctransp{(\gamma^0)} = \gamma^0\]
+	\[\ctransp{(\gamma^i)} = -\gamma^i\]
+	\[\gamma^0\ctransp{(\gamma^i)}\gamma^0 = \gamma^i\]
+	\[\ctransp{(\gamma^5)} = \gamma^5\]
+	\[\acomm{\gamma^5}{\gamma^\mu} = 0\]
+	\[\comm{\gamma^5}{\Sigma^{\mu\nu}} = 0\]
+	\[\tr\gamma^5 = 0\]
+	\[\slashed p \is \gamma^\mu p_\mu\]
+	\[\acomm{\gamma^5}{\gamma^\mu} = 0\]
+	\[\slashed p\slashed q = pq - i\Sigma_{\mu\nu}p^\mu q^\nu\]
+	\[\gamma_\mu \slashed p \gamma^\mu = -2\slashed p\]
+	\[\gamma_\mu \slashed p \slashed q \slashed k \gamma^\mu = -2\slashed k \slashed q \slashed p\]
+	\[\gamma_\mu \slashed p \slashed q \gamma^\mu = 4pq\]
+	\[{\tr}(\underbrace{\gamma^\mu\gamma^\nu\dotsm\gamma^\sigma}_{\text{dispari}}) = 0\]
+	\[\tr(\gamma^5 \slashed p \slashed q) = 0\]
+	\[\tr(\slashed p \slashed q) = 4pq\]
+	\[\tr(\gamma^5 \slashed p \slashed q \slashed k \slashed l) = 4i\varepsilon_{\mu\nu\rho\sigma}p^\mu q^\nu k^\rho l^\sigma\]
+	\[\tr(\slashed p \slashed q \slashed k \slashed l) = 4\qty\big((pq)(kl) - (pk)(ql) + (pl)(qk))\]
+	\[\text{base }\set{1,\gamma^5,\gamma^\mu,\gamma^\mu\gamma^5,\sigma^{\mu\nu}}\]
+	\[\psi(x) = \int \frac{V\dd^3 p}{(2\pi)^3} \frac1{\sqrt{2E(\vec p)}}
+	\qty(b_r(\vec p)u_r(\vec p) \frac{e^{-ipx}}{\sqrt V}
+	+ \ctransp d_r(\vec p)v_r(\vec p) \frac{e^{ipx}}{\sqrt V})\]
+	\[E(\vec p) \is \sqrt{m^2 + \vec p^2}\]
+	\[\acomm*{b_r(\vec p)}{\ctransp b_s(\vec k)}
+	= \acomm*{d_r(\vec p)}{\ctransp d_s(\vec k)}
+	= \frac{(2\pi)^3}V \delta_{rs} \delta^3(\vec p-\vec k)\]
+	\[\acomm*{a(\vec p)}{\ctransp a(\vec k)} = \frac{(2\pi)^3}V \delta^3(\vec p-\vec k)\]
+	\[\theta^{\mu\nu} \is i\bar\psi \gamma^\mu\partial^\nu \psi\]
+	\[P^\mu \is \int \dd^3x \theta^{0\nu} = \int \dd^3x \ctransp\psi i\partial^\nu\psi\]
+	\[\theta_a \is \frac12 \varepsilon_{abc}\omega^{bc}\]
+	\[\eta_a \is \omega^{0a}\]
+	\[\Lambda(\omega) = e^{i(\theta_aJ^a + \eta_aK^a)}\]
+	\[J^aK^a = 0\]
+	\[J^aJ^a-K^aK^a = 3\]
+	\[J_R = J_-\]
+	\[J_L = J_+\]
+	\[\psi_R = \frac{1+\gamma^5}2 \psi \underset{\text{(standard)}}{=} \smqty(\xi_R\\\xi_R),\ 
+	\xi_R = \frac12 \smqty(\psi_1+\psi_3 \\ \psi_2+\psi_4)\]
+	\[\psi_L = \frac{1-\gamma^5}2 \psi \underset{\text{(standard)}}{=} \smqty(\xi_L\\-\xi_L),\ 
+	\xi_L = \frac12 \smqty(\psi_1-\psi_3 \\ \psi_2-\psi_4)\]
+	\[\Sigma^{0a}_S = i\smqty(&\sigma^a\\\sigma^a&)\]
+	\[\Sigma^{ab}_S = \varepsilon^{abc}\smqty(\sigma^c&\\&\sigma^c)\]
+	\[\frac i4 \omega_{\mu\nu}\Sigma^{\mu\nu}
+	= \frac12 \smqty(i\theta_a\sigma^a & -\eta_a\sigma^a \\ -\eta_a\sigma^a & i\theta_a\sigma^a)\]
+	\[\text{chiral: } \gamma^0_C = \smqty(&1\\1&)\]
+	\[\text{chiral: } \gamma^i_C = \smqty(&-\sigma^i\\\sigma^i&)\]
+	\[\gamma^5_C = \smqty(1&\\&-1)\]
+	\[\gamma^0_C \gamma^\mu_C = \smqty(\sigma^\mu&\\&\sigma_\mu)\]
+	\[\frac12(\sigma_\mu\sigma^\nu + \sigma_\nu\sigma^\mu)
+	= \frac12(\sigma^\mu\sigma_\nu + \sigma^\nu\sigma_\mu) = \eta^{\mu\nu}\]
+	\[\sigma_\mu \sigma^\nu \sigma^\mu = -2\sigma_\nu\]
+	\[\sigma^\mu \sigma_\nu \sigma^\mu = -2\sigma^\nu\]
+	\[\sigma^{\mu\nu} \is \frac i2 (\sigma_\mu\sigma^\nu-\sigma_\nu\sigma^\mu)\]
+	\[\bar\sigma^{\mu\nu} \is \frac i2 (\sigma^\mu\sigma_\nu - \sigma^\nu\sigma_\mu)\]
+	\[\sigma^{0j} = i\sigma^j\]
+	\[\bar\sigma^{0j} = -i\sigma^j\]
+	\[\sigma^{ij} = \bar\sigma^{ij} = \varepsilon^{ijk}\sigma^k\]
+	\[\bar\sigma^{\mu\nu} = -\frac12 \varepsilon^{\mu\nu\rho\sigma}\sigma^{\rho\sigma}\]
+	\[\tr(\sigma_\mu\sigma^\nu) = 2\eta^{\mu\nu}\]
+	\[\tr(\sigma_\mu\sigma^\nu\sigma_\rho\sigma^\sigma)
+	= 2(\eta^{\mu\nu}\eta^{\rho\sigma} - \eta^{\mu\rho}\eta^{\nu\sigma} + \eta^{\mu\sigma}\eta^{\nu\rho}
+	- i \varepsilon^{\mu\nu\rho\sigma})\]
+	\[\sigma^{\mu\nu}_C = \smqty(\sigma^{\mu\nu}&\\&\bar\sigma^{\mu\nu})\]
+	\[\gamma_C^\mu = W^{-1} \gamma_S^\mu W\]
+	\[W = \frac1{\sqrt2}\smqty(\mathbb1 & \mathbb1 \\ \mathbb1 & -\mathbb1)\]
+	\[\text{parity: } \psi(x) \xmapsto{\ P\ } \gamma^0 \psi(Px)\]
+	\[\text{charge: } \psi \xmapsto{\ C\ } i\gamma^2 \ctransp\psi\]
+	\[\bar\psi \xmapsto{\ C\ } -\psi (i\gamma^2)^{-1}\]
+	\[\text{time: } \psi(x) \xmapsto{\ T\ } i\gamma^1\gamma^3 \psi(Tx)\]
+	\[\tilde U(\infty,-\infty) = T_W e^{iS_I}
+	\isis e^{i\theta_0} \mathbb S \isis e^{i\theta_0} (1+i\mathbb T)\]
+	\[A(\set{\vec k_\text{out}},\set{\vec k_\text{in}})
+	\isis (2\pi)^4 \delta^4(\sum k_\text{out}-\sum k_\text{in}) \cdot\]
+	\[\cdot\prod\frac1{\sqrt{2E(\vec k_\text{out})}}
+	\prod\frac1{\sqrt{2E(\vec k_\text{in})}}
+	V^{-(\#\mathrm{in}+\#\mathrm{out})/2}
+	\mathcal M(\set{\vec k_\text{out}},\set{\vec k_\text{in}})\]
+	\[\dv{P}{t} = \frac {(2\pi)^4 \delta^4(\sum k_\text{out}-\sum k_\text{in})}
+	{V^{\#\mathrm{in}-1} \prod 2E(\vec k_\text{in})}
+	\abs{\mathcal M}^2 \prod \frac {\dd^3 k_\text{out}}{(2\pi)^3 2E(\vec k_\text{out})}\]
+	\[\dd\sigma_{12\to\mathrm{out}} = \frac1{4\sqrt{(k_1k_2)^2 - m_1^2m_2^2}}
+	\prod \frac {\dd^3 k_\text{out}} {(2\pi)^3 2E(\vec k_\text{out})}
+	\abs{\mathcal M}^2 (2\pi)^4 \delta^4(k_1+k_2 - \sum k_\text{out})\]
+	\[\overline{\prod_\mu\gamma^\mu}
+	\is \gamma^0 \ctransp{\qty\big(\prod_\mu\gamma^\mu)} \gamma^0
+	= \prod_\text{rev. $\mu$} \bar\gamma^\mu\]
+	\[\bar\gamma^\mu = \gamma^\mu\]
+	\[\bar\gamma^5 = -\gamma^5\]
+	\[\sum_{rs} \abs\big{\bar u_s(\vec k) \prod_\mu\gamma^\mu v_s(\vec p)}^2
+	= \tr\qty\big((\slashed k+m) \prod_\mu\gamma^\mu (\slashed p-m) \overline{\prod_\mu\gamma^\mu})\]
 \end{formulae}
 
 \end{document}
