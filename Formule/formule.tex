@@ -100,15 +100,21 @@
 	\[\sinh(x+y)=\sinh x\cosh y+\cosh x\sinh y\]
 	\[\cosh(x+y)=\cosh x\cosh y+\sinh x\sinh y\]
 	\[\tanh(x+y)=\frac{\tanh x+\tanh y}{1+\tanh x\tanh y}\]
-	\[\begin{psmallmatrix}\sinh x\\\cosh x\end{psmallmatrix}=\inv2\begin{psmallmatrix}e^x-e^{-x}\\e^x+e^{-x}\end{psmallmatrix}\]
+    \begin{equation*}
+        \sinh x = \frac12 (e^x-e^{-x})
+    \end{equation*}
+    \begin{equation*}
+        \cosh x = \frac12 (e^x+e^{-x})
+    \end{equation*}
 	\[\cosh^2x-\sinh^2x=1\]
 	\[\cosh^2x=\inv{1-\tanh^2x}\]
 	\[\sinh(ix)=i\sin x;\ \cosh(ix)=\cos x\]
-	\[\begin{psmallmatrix}
-		\arsinh x\\ \arcosh x
-	\end{psmallmatrix}=\log(x+\sqrt{x^2+\begin{psmallmatrix}
-		1 \\ -1
-	\end{psmallmatrix}})\]
+    \begin{equation*}
+        \arsinh x = \log(x+\sqrt{x^2+1})
+    \end{equation*}
+    \begin{equation*}
+        \arcosh x = \log(x+\sqrt{x^2-1})
+    \end{equation*}
 	\[\artanh x=\inv2\log\frac{1+x}{1-x}\]
 \end{formulae}
 
@@ -135,16 +141,22 @@
 	\[\binom{n}{k}=\binom{n-1}{k-1}+\binom{n-1}{k}\]
 	\[(a+b)^n=\sum_{k=0}^n\binom{n}{k}a^{n-k}b^k\]
 	\[e^{i\theta}=\cos\theta+i\sin\theta\]
-	\[\Gamma(1+z)=\int_0^\infty t^ze^{-t}dt=z!\]
 	\[n!\approx(\frac ne)^n\sqrt{2\pi n};\ 
 	\log n! \approx n(\log n-1)\]
 	\[\dv{}{x}\int_0^xg(x,y)\dd y=\int_0^x\pdv{g}{x} (x,y)\dd y+g(x,x)\]
 	\[\sqrt z=\sqrt\frac{\abs{z}+\Re z}2\pm i\sqrt\frac{\abs{z}-\Re z}2\]
 	\[\avg{\Re(ae^{-i\omega t})\Re(be^{-i\omega t})}=\inv2\Re(a\conj b)\]
-	\[\erf(x)=\frac2{\sqrt\pi}\int_0^xe^{-t^2}\dd t\]
 	\[f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint\frac{f(z)\dd z}{(z-z_0)^{n+1}}\]
 	\[f(z)=\sum_{k=-\infty}^\infty\qty(\inv{2\pi i}\oint\frac{f(z')\dd z'}{(z'-z_0)^{k+1}})(z-z_0)^k\]
 	\[\sinc x = \frac{\sin x}x\]
+\end{formulae}
+
+\begin{formulae}{3}{Special functions}
+	\[\Gamma(1+z)=\int_0^\infty t^ze^{-t}dt=z!\]
+	\[\erf(x)=\frac2{\sqrt\pi}\int_0^xe^{-t^2}\dd t\]
+    \begin{equation*}
+        \erfc(x) = 1 - \erf(x)
+    \end{equation*}
 	\[\zeta(s) = \sum_{n=1}^\infty \frac1{n^s};\ 
 	\Li_s(z)=\sum_{n=1}^\infty\frac{z^n}{n^s}\]
 \end{formulae}
@@ -254,6 +266,9 @@
 	\[f,g\in\L[2]:f\conv g=\inv{2\pi}\int\hat f\hat ge^{-i\omega t}\dd\omega\]
 	\[\norm{f}=1:\D\omega\D t\ge\inv2\]
 	\[\D\omega\D t=\inv2:f(t)=g(t;\bar t,\D t)e^{-i\bar\omega t}\]
+    \begin{equation*}
+        \int \de^3 x \frac{e^{i\vec x\vec k}}{x} = \frac{4\pi}{k^2}
+    \end{equation*}
 \end{formulae}
 
 \newcommand*\pp{\mathcal{P}} % principal part integral
@@ -482,6 +497,9 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\mu_\varepsilon=\inv{\lambda},\,\sigma_\varepsilon^2=\inv{\lambda^2}\]
 	\[g(x;\mu,\sigma)=\inv{\sigma\sqrt{2\pi}}e^{-\inv{2}(\frac{x-\mu}{\sigma})^2}\]
 	\[g(\vec x;\vec\mu,V)=\frac{e^{-\inv2\transp{(\vec x-\vec\mu)}V^{-1}(\vec x-\vec\mu)}}{\sqrt{\det(2\pi V)}}\]
+    \begin{equation*}
+        \Phi(x) = \int_{-\infty}^x g(x;0,1) = \frac12\erfc\frac{-x}{\sqrt2}
+    \end{equation*}
 	\[\fwhm_g=2\sigma\sqrt{2\ln2}\]
 	\[z=\frac{x-\mu}{\sigma};\,\mu,\sigma[z]=0,1\]
 	\[\chi^2=\sum_{i=1}^nz_i^2;\,\wp:=p[\chi^2]\]
@@ -576,6 +594,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 \end{formulae}
 
 \begin{formulae}{4}{mechanics}
+    % what is the definition of the inertia tensor?
 	\[\dot\alpha=\dv t\alpha(\beta,t)=\pdv{\alpha}{\beta}\dot\beta+\pdv{\alpha}{t}\]
 	\[\vec p:=m\dotvec r;\,\vec F=\dotvec p;\,\dv{(mT)}{t}=\vec F\vec p\]
 	\[M:=\sum_im_i;\,\vec R:=\frac{m_i\vec r_i}M\]
@@ -663,6 +682,12 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[E_A^\text{min}=\frac{(\sum_im_i)^2-m_A^2-m_B^2}{2m_B}\]
 	\[m,M_\text{still}\text{ 1D coll.}\]
 	\[E_m'=\frac{(M+m)^2E_m+2Mm^2}{M^2+m^2+2ME_m}\]
+    \begin{equation*}
+        y = \artanh\frac{p_z}E = \frac12\log\frac{E+p_z}{E-p_z}
+    \end{equation*}
+    \begin{equation*}
+        \eta = -\log\tan\frac\theta2
+    \end{equation*}
 \end{formulae}
 
 \begin{formulae}{3}{thermodynamics}
@@ -757,9 +782,9 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 
 \begin{formulae}{3}{electronics (MKS)}
 	\[\begin{psmallmatrix}V\\I\end{psmallmatrix}=\begin{psmallmatrix}V_0\\I_0\end{psmallmatrix}e^{i\omega t},\ Z=\frac VI\]
-	\[Z_R=R,\ Z_C=-i\inv{\omega C},\ Z_L=i\omega L\]
-	\[Z_\text{series}=\sum_k Z_k,\ \inv{Z_\text{parallel}}=\sum_k\inv{Z_k}\]
-	\[\sum_\text{loop}V_k=0,\ \sum_\text{node}I_k=0\]
+	\[Z_R=R,\ Z_C=\inv{i\omega C},\ Z_L=i\omega L\]
+	\[Z_\text{series}=\sum Z,\ \inv{Z_\text{parallel}}=\sum\inv{Z}\]
+	\[\sum_\text{loop}V=0,\ \sum_\text{node}I=0\]
 	\[\mathcal E=-L\dot I,\ L=\frac{\Phi_B}I\]
 	\[I_{A\to C}=I_0\qty\big(e^{\frac{V_{AC}}{V_T}}-1),\ V_T=\eta\frac{k_\text BT}{q_\text e}\]
 	\[I_{E,\text{out}}=I_0^E\qty\big(e^{\frac{V_{BE}}{V_T}}-1)-\alpha_R I_0^C\qty\big(e^{\frac{V_{BC}}{V_T}}-1)\]
@@ -918,6 +943,10 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\vec P=\dv{\avg{\vec p}}{V};\,\vec M=\dv{\avg{\vec m}}{V}\]
 	\[\rho_\text{pol}=-\grad\vec P;\,\sigma_\text{pol}=\hat n\vec P;\,\frac{\vec J_\text{mag}}c=\curl\vec M\]
 	\[\vec D_\text{pol}=\vec E+4\pi\vec P;\,\vec H_\text{mag}=\vec B-4\pi\vec M\]
+    \begin{equation*}
+        \vec D = \varepsilon \vec E, \,
+        \vec B = \mu \vec H
+    \end{equation*}
 	\[\text{static linear isotropic: }\vec P=\chi\vec E\]
 	\[\text{static linear: }P_i=\chi_{ij}E_j\]
 	\[\text{static linear: }\varepsilon=1+4\pi\chi\]
@@ -1141,7 +1170,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 		\frac{2k}{k+q}e^{iqx} & x>0
 	\end{cases}\]
 	\[\text{HYDROGEN: }\hami=\frac{\vec P^2}{2M}-\frac{e^2}{X}\]
-	\[a\is r_B\is\frac{\hbar^2}{Me^2};\ \text{Rydberg}\is\frac{e^2}{2a}\]
+	\[a\is r_B\is\frac{\hbar^2}{Me^2};\ \text{Rydberg}\is\frac{e^2}{2a}=\frac{\alpha^2Mc^2}2\]
 	\[E_n=-\frac1{n^2}\frac{e^2}{2a};\ \text{degen.}=n^2\]
 	\[\psi_{nlm}=R_{nl}Y_{lm};\ \vec j=\frac\hbar M\hat\varphi\frac{m}{r\sin\theta}|\psi|^2\]
 	\[R_{nl}=2\sqrt{\frac{(n-l-1)!}{a^3n^4(n+l)!}}e^{-\frac r{na}}\qty(\frac{2r}{na})^lL_{n+l}^{2l+1}\qty(\frac{2r}{na})\]
@@ -1191,8 +1220,11 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[s_{ab}:=(p_a+p_b)^2;\ M\chemarrow abc:(m_a+m_b)^2\le s_{ab}\le(M-m_c)^2\]
 	\[M\chemarrow abc:s_{ab}+s_{bc}+s_{ac}=M^2+m_a^2+m_b^2+m_c^2\]
 	\[a_iA_i\chemarrow b_jB_j:Q:=a_im_{A_i}-b_jm_{B_j}\]
-	\[p=qBR\]
-	\[\frac{\dd^3\vec p}{2E}=\dd^4p\delta(p^2-m^2)\theta(p_0)\]
+	\begin{equation*}
+	    p_T \approx (\SI{0.3}{GeV/cT^{-1}m^{-1}}) BR
+	\end{equation*}
+	\[\frac{\dd^3\vec p}{2E}=\dd^4p\delta(p^2-m^2)\theta(p_0)
+    =\frac12\de p_\bot\,p_\bot \de\phi \de y\]
 	\[\dd L_p=\qty(\prod_n\frac{\dd^3\vec p_n}{2E_n})\delta^4(p_\text{in}-\sum_np_n);\ \dd\sigma=f_\text{coll}(p_1,\dotsc,p_n)\dd L_p\]
 	\[\text{two body: }\dv{\sigma}{\Omega_1}=f(\Omega_1)\frac{p_1}{4\sqrt s};\ \sqrt s=\text{c.m. energy}\]
 	\[\text{Rutherford: }\tan\frac\theta2=\inv{4\pi\varepsilon_0}\frac{Qqm}{p^2b};\ \dv{\sigma}{\Omega}=\abs{\frac b{\sin\theta}\dv{b}{\theta}};\ \dv{\sigma}{\Omega}=\frac{d_\text{min}^2}{16}\inv{\sin^4\frac\theta2}\]
@@ -1216,27 +1248,27 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
     \begin{equation*}
         B_\mu(x) = \sum_b \int \frac{\de^3 p}{(2\pi)^3}
         \frac1{\sqrt{2p^0}} \left(
-        a_b(\vec p) \varepsilon_\mu(\vec p, b) e^{-ip\cdot x}
-        + a_b^\dagger(\vec p) \varepsilon^*_\mu(\vec p, b) e^{ip\cdot x} \right)
+        a_b(\vec p) \varepsilon_\mu(p, b) e^{-ip\cdot x}
+        + a_b^\dagger(\vec p) \varepsilon^*_\mu(p, b) e^{ip\cdot x} \right)
     \end{equation*}
     \begin{equation*}
         A_\mu(x) = \sum_\lambda \int \frac{\de^3 p}{(2\pi)^3}
         \frac1{\sqrt{2|\vec p|}} \left(
-        a_\lambda(\vec p) \varepsilon_\mu(\vec p, \lambda) e^{-ip\cdot x}
+        a_\lambda(\vec p) \varepsilon_\mu(p, \lambda) e^{-ip\cdot x}
         + a_\lambda^\dagger(\vec p)
-        \varepsilon^*_\mu(\vec p, \lambda) e^{ip\cdot x} \right)
+        \varepsilon^*_\mu(p, \lambda) e^{ip\cdot x} \right)
     \end{equation*}
     \begin{equation*}
         \psi(x) = \sum_r \int \frac{\de^3 p}{(2\pi)^3}
         \frac1{\sqrt{2p^0}} \left(
-        b_r(\vec p) u_r(\vec p) e^{-ip\cdot x}
-        + d^\dagger_r(\vec p) v_r(\vec p) e^{ip\cdot x} \right)
+        b_r(\vec p) u_r(p) e^{-ip\cdot x}
+        + d^\dagger_r(\vec p) v_r(p) e^{ip\cdot x} \right)
     \end{equation*}
     \begin{equation*}
         \bar\psi(x) = \sum_r \int \frac{\de^3 p}{(2\pi)^3}
         \frac1{\sqrt{2p^0}} \left(
-        b^\dagger_r(\vec p) \bar u_r(\vec p) e^{ip\cdot x}
-        + d_r(\vec p) \bar v_r(\vec p) e^{-ip\cdot x} \right)
+        b^\dagger_r(\vec p) \bar u_r(p) e^{ip\cdot x}
+        + d_r(\vec p) \bar v_r(p) e^{-ip\cdot x} \right)
     \end{equation*}
 \end{formulae}
 
@@ -1284,8 +1316,8 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
         \bar\gamma^\mu = \gamma^\mu, \,
         \bar\gamma^5 = -\gamma^5
     \end{equation*}
-	\[\sum_{rs} \abs\big{\bar u_s(\vec k) \prod_\mu\gamma^\mu v_s(\vec p)}^2
-	= \tr\qty\big((\slashed k+m) \prod_\mu\gamma^\mu (\slashed p-m) \overline{\prod_\mu\gamma^\mu})\]
+	\[\sum_{rs} \abs\big{\bar u_s(\vec k) \prod_\mu\gamma^\mu v_s(\vec p)}^2 =\]
+	\[= \tr\qty\big((\slashed k+m) \prod_\mu\gamma^\mu (\slashed p-m) \overline{\prod_\mu\gamma^\mu})\]
 \end{formulae}
 
 \begin{formulae}{2}{QFT ($\hbar=c=1$)}
@@ -1315,7 +1347,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\text{$-$ iff $\Phi_1$ and $\Phi_2$ fermions}\]
 	\[T_W\pdv{\Phi_1}{x}\pdv{\Phi_2}{y}
 	\is \pdv{x}\pdv{y} T_W\Phi_1(x)\Phi_2(y)\]
-	\[S[\varphi] = S[x\mapsto \varphi(x+\lambda)] + \LO(\lambda^2) \rightarrow\]
+	\[S[\varphi] = S[x\mapsto \varphi(x+\lambda)] + \LO[\lambda^2]{} \rightarrow\]
 	\[\rightarrow T^{\mu\nu} = \partial^\mu\varphi \partial^\nu\varphi - \frac12 \eta^{\mu\nu} \lagr\]
 	\[\bar u \is \ctransp u \gamma^0 \underset{\text{(standard)}}{=} \smqty(\conj u_1&\conj u_2&-\conj u_3&-\conj u_4)\]
 	\[\bar ab \text{ scalar}\]
@@ -1403,10 +1435,10 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\mathcal M(\set{\vec k_\text{out}},\set{\vec k_\text{in}})\]
 	\[\dv{P}{t} = \frac {(2\pi)^4 \delta^4(\sum k_\text{out}-\sum k_\text{in})}
 	{V^{\#\mathrm{in}-1} \prod 2E(\vec k_\text{in})}
-	\abs{\mathcal M}^2 \prod \frac {\dd^3 k_\text{out}}{(2\pi)^3 2E(\vec k_\text{out})}\]
+	\abs{\mathcal M}^2 \prod \frac {\dd^3 k_\text{out}}{(2\pi)^3 2E(\vec k_\text{out})}\cdot(\text{Gibbs})\]
 	\[\dd\sigma_{12\to\mathrm{out}} = \frac1{4\sqrt{(k_1k_2)^2 - m_1^2m_2^2}}
 	\prod \frac {\dd^3 k_\text{out}} {(2\pi)^3 2E(\vec k_\text{out})}\cdot\]
-	\[\cdot\abs{\mathcal M}^2 (2\pi)^4 \delta^4(k_1+k_2 - \sum k_\text{out})\]
+	\[\cdot\abs{\mathcal M}^2 (2\pi)^4 \delta^4(k_1+k_2 - \sum k_\text{out})\cdot(\text{Gibbs})\]
 \end{formulae}
 
 \end{document}
