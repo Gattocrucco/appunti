@@ -1240,6 +1240,54 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
     \end{equation*}
 \end{formulae}
 
+\begin{formulae}{3}{QFT $\gamma$ matrices}
+    \begin{equation*}
+        \gamma^0_S = \smqty(\mathbb 1&\\&-\mathbb 1), \,
+        \gamma^i_S = \smqty(&\sigma^i\\-\sigma^i&), \,
+        \gamma^5_S = \smqty(&\mathbb 1\\\mathbb 1&)
+    \end{equation*}
+    \begin{equation*}
+        \gamma^0_C = \smqty(&\mathbb 1\\\mathbb 1&), \,
+        \gamma^i_C = \smqty(&-\sigma^i\\\sigma^i&), \,
+        \gamma^5_C = \smqty(1&\\&-1)
+    \end{equation*}
+    \begin{equation*}
+        \gamma^5 := i\gamma^0\gamma^1\gamma^2\gamma^3, \,
+        \tr\gamma^5 = 0
+    \end{equation*}
+    \begin{equation*}
+        \ctransp{(\gamma^0)} = \gamma^0, \,
+        \ctransp{(\gamma^i)} = -\gamma^i, \,
+        \ctransp{(\gamma^5)} = \gamma^5
+    \end{equation*}
+    \begin{equation*}
+        \acomm{\gamma^\mu}{\gamma^\nu} = 2\eta^{\mu\nu}, \,
+        \acomm{\gamma^5}{\gamma^\mu} = 0
+    \end{equation*}
+	\[\gamma^0\ctransp{(\gamma^i)}\gamma^0 = \gamma^i\]
+	\[\comm{\gamma^5}{\Sigma^{\mu\nu}} = 0\]
+	\[\slashed p \is \gamma^\mu p_\mu\]
+	\[\slashed p\slashed q = pq - i\Sigma_{\mu\nu}p^\mu q^\nu\]
+	\[\gamma_\mu \slashed p \gamma^\mu = -2\slashed p\]
+	\[\gamma_\mu \slashed p \slashed q \slashed k \gamma^\mu = -2\slashed k \slashed q \slashed p\]
+	\[\gamma_\mu \slashed p \slashed q \gamma^\mu = 4pq\]
+	\[{\tr}(\underbrace{\gamma^\mu\gamma^\nu\dotsm\gamma^\sigma}_{\text{dispari}}) = 0\]
+	\[\tr(\gamma^5 \slashed p \slashed q) = 0\]
+	\[\tr(\slashed p \slashed q) = 4pq\]
+	\[\tr(\gamma^5 \slashed p \slashed q \slashed k \slashed l) = 4i\varepsilon_{\mu\nu\rho\sigma}p^\mu q^\nu k^\rho l^\sigma\]
+	\[\tr(\slashed p \slashed q \slashed k \slashed l) = 4\qty\big((pq)(kl) - (pk)(ql) + (pl)(qk))\]
+	\[\gamma^0_C \gamma^\mu_C = \smqty(\sigma^\mu&\\&\sigma_\mu)\]
+	\[\overline{\prod_\mu\gamma^\mu}
+	\is \gamma^0 \ctransp{\qty\big(\prod_\mu\gamma^\mu)} \gamma^0
+	= \prod_\text{rev. $\mu$} \bar\gamma^\mu\]
+    \begin{equation*}
+        \bar\gamma^\mu = \gamma^\mu, \,
+        \bar\gamma^5 = -\gamma^5
+    \end{equation*}
+	\[\sum_{rs} \abs\big{\bar u_s(\vec k) \prod_\mu\gamma^\mu v_s(\vec p)}^2
+	= \tr\qty\big((\slashed k+m) \prod_\mu\gamma^\mu (\slashed p-m) \overline{\prod_\mu\gamma^\mu})\]
+\end{formulae}
+
 \begin{formulae}{2}{QFT ($\hbar=c=1$)}
 	\[-\sigma^2\vec\sigma\sigma^2 = \transp{\vec\sigma}\]
 	\[-\sigma^2\conj{\vec\sigma}\sigma^2 = \vec\sigma\]
@@ -1269,10 +1317,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\is \pdv{x}\pdv{y} T_W\Phi_1(x)\Phi_2(y)\]
 	\[S[\varphi] = S[x\mapsto \varphi(x+\lambda)] + \LO(\lambda^2) \rightarrow\]
 	\[\rightarrow T^{\mu\nu} = \partial^\mu\varphi \partial^\nu\varphi - \frac12 \eta^{\mu\nu} \lagr\]
-	\[\text{standard: }\gamma^0_S = \smqty(\mathbb 1&\\&-\mathbb 1)\]
-	\[\text{standard: }\gamma^i_S = \smqty(&\sigma^i\\-\sigma^i&)\]
 	\[\bar u \is \ctransp u \gamma^0 \underset{\text{(standard)}}{=} \smqty(\conj u_1&\conj u_2&-\conj u_3&-\conj u_4)\]
-	\[\gamma^5 = i\gamma^0\gamma^1\gamma^2\gamma^3 \underset{\text{(standard)}}{=} \smqty(&\mathbb 1\\\mathbb 1&)\]
 	\[\bar ab \text{ scalar}\]
 	\[\bar a \gamma^5 b \text{ pseudoscalar}\]
 	\[\bar a \gamma^\mu b \text{ vector}\]
@@ -1293,7 +1338,6 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\text{Dirac spinor }
 	\lagr_0 = \bar\psi (i\gamma^\mu\partial_\mu - m) \psi,\ 
 	(i\gamma^\mu\partial_\mu - m)\psi = 0\]
-	\[\acomm{\gamma^\mu}{\gamma^\nu} = 2\eta^{\mu\nu}\]
 	\[\Lambda(\omega) = e^{\frac i2 \omega_{\mu\nu}J^{\mu\nu}}\]
 	\[R(\omega) = e^{\frac i4 \omega_{\mu\nu}\Sigma^{\mu\nu}}\]
 	\[R^{-1}(\omega)\gamma^\mu R(\omega) = \lambda^\mu_{\,\nu}(\omega)\gamma^\nu\]
@@ -1305,24 +1349,6 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[u_r^\alpha(\vec p)\bar u_r^\beta(\vec p) - v_r^\alpha(\vec p)\bar v_r^\beta(\vec p) = 2m\delta^{\alpha\beta}\]
 	\[u_r^\alpha(\vec p) \bar u_r^\beta(\vec p) = (\slashed p + m)^{\alpha\beta}\]
 	\[v_r^\alpha(\vec p) \bar v_r^\beta(\vec p) = (\slashed p - m)^{\alpha\beta}\]
-	\[\ctransp{(\gamma^0)} = \gamma^0\]
-	\[\ctransp{(\gamma^i)} = -\gamma^i\]
-	\[\gamma^0\ctransp{(\gamma^i)}\gamma^0 = \gamma^i\]
-	\[\ctransp{(\gamma^5)} = \gamma^5\]
-	\[\acomm{\gamma^5}{\gamma^\mu} = 0\]
-	\[\comm{\gamma^5}{\Sigma^{\mu\nu}} = 0\]
-	\[\tr\gamma^5 = 0\]
-	\[\slashed p \is \gamma^\mu p_\mu\]
-	\[\acomm{\gamma^5}{\gamma^\mu} = 0\]
-	\[\slashed p\slashed q = pq - i\Sigma_{\mu\nu}p^\mu q^\nu\]
-	\[\gamma_\mu \slashed p \gamma^\mu = -2\slashed p\]
-	\[\gamma_\mu \slashed p \slashed q \slashed k \gamma^\mu = -2\slashed k \slashed q \slashed p\]
-	\[\gamma_\mu \slashed p \slashed q \gamma^\mu = 4pq\]
-	\[{\tr}(\underbrace{\gamma^\mu\gamma^\nu\dotsm\gamma^\sigma}_{\text{dispari}}) = 0\]
-	\[\tr(\gamma^5 \slashed p \slashed q) = 0\]
-	\[\tr(\slashed p \slashed q) = 4pq\]
-	\[\tr(\gamma^5 \slashed p \slashed q \slashed k \slashed l) = 4i\varepsilon_{\mu\nu\rho\sigma}p^\mu q^\nu k^\rho l^\sigma\]
-	\[\tr(\slashed p \slashed q \slashed k \slashed l) = 4\qty\big((pq)(kl) - (pk)(ql) + (pl)(qk))\]
 	\[\text{base }\set{1,\gamma^5,\gamma^\mu,\gamma^\mu\gamma^5,\Sigma^{\mu\nu}}\]
 	\[E(\vec p) \is \sqrt{m^2 + \vec p^2}\]
 	\[\acomm*{b_r(\vec p)}{\ctransp b_s(\vec k)}
@@ -1346,10 +1372,6 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\Sigma^{ab}_S = \varepsilon^{abc}\smqty(\sigma^c&\\&\sigma^c)\]
 	\[\frac i4 \omega_{\mu\nu}\Sigma^{\mu\nu}
 	= \frac12 \smqty(i\theta_a\sigma^a & -\eta_a\sigma^a \\ -\eta_a\sigma^a & i\theta_a\sigma^a)\]
-	\[\text{chiral: } \gamma^0_C = \smqty(&1\\1&)\]
-	\[\text{chiral: } \gamma^i_C = \smqty(&-\sigma^i\\\sigma^i&)\]
-	\[\gamma^5_C = \smqty(1&\\&-1)\]
-	\[\gamma^0_C \gamma^\mu_C = \smqty(\sigma^\mu&\\&\sigma_\mu)\]
 	\[\frac12(\sigma_\mu\sigma^\nu + \sigma_\nu\sigma^\mu)
 	= \frac12(\sigma^\mu\sigma_\nu + \sigma^\nu\sigma_\mu) = \eta^{\mu\nu}\]
 	\[\sigma_\mu \sigma^\nu \sigma^\mu = -2\sigma_\nu\]
@@ -1385,13 +1407,6 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\dd\sigma_{12\to\mathrm{out}} = \frac1{4\sqrt{(k_1k_2)^2 - m_1^2m_2^2}}
 	\prod \frac {\dd^3 k_\text{out}} {(2\pi)^3 2E(\vec k_\text{out})}\cdot\]
 	\[\cdot\abs{\mathcal M}^2 (2\pi)^4 \delta^4(k_1+k_2 - \sum k_\text{out})\]
-	\[\overline{\prod_\mu\gamma^\mu}
-	\is \gamma^0 \ctransp{\qty\big(\prod_\mu\gamma^\mu)} \gamma^0
-	= \prod_\text{rev. $\mu$} \bar\gamma^\mu\]
-	\[\bar\gamma^\mu = \gamma^\mu\]
-	\[\bar\gamma^5 = -\gamma^5\]
-	\[\sum_{rs} \abs\big{\bar u_s(\vec k) \prod_\mu\gamma^\mu v_s(\vec p)}^2
-	= \tr\qty\big((\slashed k+m) \prod_\mu\gamma^\mu (\slashed p-m) \overline{\prod_\mu\gamma^\mu})\]
 \end{formulae}
 
 \end{document}
