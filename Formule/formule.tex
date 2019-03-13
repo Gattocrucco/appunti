@@ -1200,6 +1200,46 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\text{mass defect}\is M-A\cdot\mathrm{amu}\]
 \end{formulae}
 
+\begin{formulae}{2}{QFT fields}
+    \begin{equation*}
+        \varphi(x) = \int \frac{\de^3 p}{(2\pi)^3} \frac1{\sqrt{2p^0}} \left(
+        a(\vec p) e^{-ip\cdot x} + a^\dagger(\vec p) e^{ip\cdot x} \right)
+    \end{equation*}
+    \begin{equation*}
+        \phi(x) = \int \frac{\de^3 p}{(2\pi)^3} \frac1{\sqrt{2p^0}} \left(
+        a_+(\vec p) e^{-ip\cdot x} + a_-^\dagger(\vec p) e^{ip\cdot x} \right)
+    \end{equation*}
+    \begin{equation*}
+        \phi^*(x) = \int \frac{\de^3 p}{(2\pi)^3} \frac1{\sqrt{2p^0}} \left(
+        a_+^\dagger(\vec p) e^{ip\cdot x} + a_-(\vec p) e^{-ip\cdot x} \right)
+    \end{equation*}
+    \begin{equation*}
+        B_\mu(x) = \sum_b \int \frac{\de^3 p}{(2\pi)^3}
+        \frac1{\sqrt{2p^0}} \left(
+        a_b(\vec p) \varepsilon_\mu(\vec p, b) e^{-ip\cdot x}
+        + a_b^\dagger(\vec p) \varepsilon^*_\mu(\vec p, b) e^{ip\cdot x} \right)
+    \end{equation*}
+    \begin{equation*}
+        A_\mu(x) = \sum_\lambda \int \frac{\de^3 p}{(2\pi)^3}
+        \frac1{\sqrt{2|\vec p|}} \left(
+        a_\lambda(\vec p) \varepsilon_\mu(\vec p, \lambda) e^{-ip\cdot x}
+        + a_\lambda^\dagger(\vec p)
+        \varepsilon^*_\mu(\vec p, \lambda) e^{ip\cdot x} \right)
+    \end{equation*}
+    \begin{equation*}
+        \psi(x) = \sum_r \int \frac{\de^3 p}{(2\pi)^3}
+        \frac1{\sqrt{2p^0}} \left(
+        b_r(\vec p) u_r(\vec p) e^{-ip\cdot x}
+        + d^\dagger_r(\vec p) v_r(\vec p) e^{ip\cdot x} \right)
+    \end{equation*}
+    \begin{equation*}
+        \bar\psi(x) = \sum_r \int \frac{\de^3 p}{(2\pi)^3}
+        \frac1{\sqrt{2p^0}} \left(
+        b^\dagger_r(\vec p) \bar u_r(\vec p) e^{ip\cdot x}
+        + d_r(\vec p) \bar v_r(\vec p) e^{-ip\cdot x} \right)
+    \end{equation*}
+\end{formulae}
+
 \begin{formulae}{2}{QFT ($\hbar=c=1$)}
 	\[-\sigma^2\vec\sigma\sigma^2 = \transp{\vec\sigma}\]
 	\[-\sigma^2\conj{\vec\sigma}\sigma^2 = \vec\sigma\]
@@ -1220,8 +1260,6 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\eta_\alpha \is \prod_{\beta=1}^{\alpha-1} \smqty(-1&\\&1)_\beta\]
 	\[\bra{\vec x}\ket{\vec p} \is \frac1{\sqrt V} e^{i\vec p\vec x}\text{ (then $V\to\infty$)}\]
 	\[\bra{\vec p_1}\ket{\vec p_2} = \frac{(2\pi)^3}V \delta(\vec p_1-\vec p_2)\]
-	\[\varphi(x) = \int \frac{V\dd^3p}{(2\pi)^3} \frac1{\sqrt{2E(\vec p)}}
-	\qty(a(\vec p) \frac{e^{-ipx}}{\sqrt V} + \ctransp a(\vec p) \frac{e^{ipx}}{\sqrt V})\]
 	\[\tilde U(\infty,-\infty) = T_W \exp(i\int\dd^4x \lagr_I[\Phi](x))\]
 	\[S[\Phi] \isis \int \dd^4x \lagr[\Phi](x) \isis \int \dd^4x (\lagr_0[\Phi](x) + \lagr_I[\Phi](x))\]
 	\[T_W \Phi_1(x)\Phi_2(y) \is
@@ -1285,10 +1323,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\tr(\slashed p \slashed q) = 4pq\]
 	\[\tr(\gamma^5 \slashed p \slashed q \slashed k \slashed l) = 4i\varepsilon_{\mu\nu\rho\sigma}p^\mu q^\nu k^\rho l^\sigma\]
 	\[\tr(\slashed p \slashed q \slashed k \slashed l) = 4\qty\big((pq)(kl) - (pk)(ql) + (pl)(qk))\]
-	\[\text{base }\set{1,\gamma^5,\gamma^\mu,\gamma^\mu\gamma^5,\sigma^{\mu\nu}}\]
-	\[\psi(x) = \int \frac{V\dd^3 p}{(2\pi)^3} \frac1{\sqrt{2E(\vec p)}}
-	\qty(b_r(\vec p)u_r(\vec p) \frac{e^{-ipx}}{\sqrt V}
-	+ \ctransp d_r(\vec p)v_r(\vec p) \frac{e^{ipx}}{\sqrt V})\]
+	\[\text{base }\set{1,\gamma^5,\gamma^\mu,\gamma^\mu\gamma^5,\Sigma^{\mu\nu}}\]
 	\[E(\vec p) \is \sqrt{m^2 + \vec p^2}\]
 	\[\acomm*{b_r(\vec p)}{\ctransp b_s(\vec k)}
 	= \acomm*{d_r(\vec p)}{\ctransp d_s(\vec k)}
@@ -1348,8 +1383,8 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	{V^{\#\mathrm{in}-1} \prod 2E(\vec k_\text{in})}
 	\abs{\mathcal M}^2 \prod \frac {\dd^3 k_\text{out}}{(2\pi)^3 2E(\vec k_\text{out})}\]
 	\[\dd\sigma_{12\to\mathrm{out}} = \frac1{4\sqrt{(k_1k_2)^2 - m_1^2m_2^2}}
-	\prod \frac {\dd^3 k_\text{out}} {(2\pi)^3 2E(\vec k_\text{out})}
-	\abs{\mathcal M}^2 (2\pi)^4 \delta^4(k_1+k_2 - \sum k_\text{out})\]
+	\prod \frac {\dd^3 k_\text{out}} {(2\pi)^3 2E(\vec k_\text{out})}\cdot\]
+	\[\cdot\abs{\mathcal M}^2 (2\pi)^4 \delta^4(k_1+k_2 - \sum k_\text{out})\]
 	\[\overline{\prod_\mu\gamma^\mu}
 	\is \gamma^0 \ctransp{\qty\big(\prod_\mu\gamma^\mu)} \gamma^0
 	= \prod_\text{rev. $\mu$} \bar\gamma^\mu\]
