@@ -628,6 +628,74 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[V_{\hat{\boldsymbol\theta}}=(\transp HV_{\mathbf y}^{-1}H)^{-1}\]
 \end{formulae}
 
+\begin{formulae}{2}{covariance kernels}
+    \begin{equation*}
+        k \ge 0, \text{i.e. }
+        \forall f \iint_{-\infty}^\infty \mathrm dx \mathrm dy\,
+        f(x) k(x, y) f(y) \ge 0
+    \end{equation*}
+    \begin{equation*}
+        k(x, y) = k(y, x)
+    \end{equation*}
+    \begin{equation*}
+        \text{squared exponential: }
+        k(r) = e^{-r^2/2}
+    \end{equation*}
+    \begin{equation*}
+        \forall k(r) \exists p:
+        k(r) = \int \mathrm d\ell\, p(\ell) e^{-1/2 (r/\ell)^2}
+    \end{equation*}
+    \begin{equation*}
+        \text{Matérn: }
+        k_\nu(r) = \frac {2^{1-\nu}} {\gamma(\nu)}
+        (\sqrt{2\nu} r)^\nu K_\nu(\sqrt{2\nu} r),
+    \end{equation*}
+    \begin{equation*}
+        k_{1/2}(r) = e^{-r},
+        k_{3/2}(r) = (1 + \sqrt 3 r) e^{-\sqrt 3 r},
+        k_{5/2}(r) = (1 + \sqrt 5 r + 5/3 r^3) e^{-\sqrt 5 r}
+    \end{equation*}
+    \begin{equation*}
+        \text{$\gamma$-exponential: }
+        k_\gamma(r) = \exp(-r^\gamma), \gamma \in (0, 2)
+    \end{equation*}
+    \begin{equation*}
+        \text{rational quadratic: }
+        k_\alpha(r) = \left( 1 + \frac {r^2} {2\alpha} \right)^{-\alpha},
+        \alpha > 0
+    \end{equation*}
+    \begin{equation*}
+        \text{linear: }
+        k(\mathbf x, \mathbf y) = \mathbf x \cdot \mathbf y
+    \end{equation*}
+    \begin{equation*}
+        \text{neural network: }
+        k(\mathbf x, \mathbf y) = \frac 2 \pi \sin^{-1}
+        \frac {2\tilde{\mathbf x} \cdot \tilde{\mathbf y}}
+        {\sqrt{(1 + 2\tilde{\mathbf x} \cdot \tilde{\mathbf x})
+        (1 + 2\tilde{\mathbf y} \cdot \tilde{\mathbf y})}},
+    \end{equation*}
+    \begin{equation*}
+        \tilde{\mathbf x} = (1, x_1, x_2, \ldots)
+    \end{equation*}
+    \begin{equation*}
+        \text{Wiener: }
+        k(x, y) = \min(x, y)
+    \end{equation*}
+    \begin{equation*}
+        k(x, y) = k_1(x, y) + k_2(x, y)
+    \end{equation*}
+    \begin{equation*}
+        k(x, y) = k_1(x, y) k_2(x, y)
+    \end{equation*}
+    \begin{equation*}
+        k(x, y) = k_1(x, y)^p
+    \end{equation*}
+    \begin{equation*}
+        k(x, y) = f(x) k_1(x, y) f(y)
+    \end{equation*}
+\end{formulae}
+
 \begin{formulae}{3}{kinematics}
 	\[\inv{R}=\abs\big{\frac{v_xa_y-v_ya_x}{v^3}}\]
 	\[\vec\omega=\dot\varphi\cos\theta\hat r-\dot\varphi\sin\theta\hat\theta+\dot\theta\hat\varphi\]
