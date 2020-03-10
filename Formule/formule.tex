@@ -94,6 +94,7 @@
 	\[=\sgn(a)\sqrt{a^2+b^2}\sin(x+\atan\frac ba)\]
 	\[=\sgn(b)\sqrt{a^2+b^2}\cos(x-\atan\frac ab)\]
 	\[\acos x+\asin x=\frac\pi2\]
+    \[\sin\acos x = \sqrt{1 - x^2}\]
 \end{formulae}
 
 \begin{formulae}{3}{hyperbolic functions}
@@ -148,7 +149,6 @@
 	\[\avg{\Re(ae^{-i\omega t})\Re(be^{-i\omega t})}=\inv2\Re(a\conj b)\]
 	\[f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint\frac{f(z)\dd z}{(z-z_0)^{n+1}}\]
 	\[f(z)=\sum_{k=-\infty}^\infty\qty(\inv{2\pi i}\oint\frac{f(z')\dd z'}{(z'-z_0)^{k+1}})(z-z_0)^k\]
-	\[\sinc x = \frac{\sin x}x\]
 \end{formulae}
 
 \begin{formulae}{3}{Special functions}
@@ -159,16 +159,24 @@
     \end{equation*}
 	\[\zeta(s) = \sum_{n=1}^\infty \frac1{n^s};\ 
 	\Li_s(z)=\sum_{n=1}^\infty\frac{z^n}{n^s}\]
+	\[\sinc x = \frac{\sin x}x\]
+    \begin{equation*}
+        \sigma(z) = \frac 1 {1 + e^{-z}};\ 
+        \sigma(z) + \sigma(-z) = 1
+    \end{equation*}
 \end{formulae}
 
 \newcommand*\at[1]{\big|_{#1}}
-\begin{formulae}{5}{derivatives}
+\begin{formulae}{4}{derivatives}
 	\[\tan'x=1+\tan^2x\]
 	\[\cot'x=-1-\cot^2x\]
 	\[\atan'x=-\acot'x=\inv{1+x^2}\]
 	\[\asin'x=-\acos'x=\inv{\sqrt{1-x^2}}\]
 	\[(a^x)'=a^x\ln a\]
 	\[\log_a'x=\inv{x\ln a}\]
+    \begin{equation*}
+        \sinh'x = \cosh'x
+    \end{equation*}
 	\[\cosh'x=\sinh x\]
 	\[\tanh'x=1-\tanh^2x\]
 	\[\artanh'x=\arcoth'x=\inv{1-x^2}\]
@@ -183,6 +191,18 @@
 	\[\pdv{x}{y}\at u\pdv{y}{u}\at x\pdv{u}{x}\at y=-1\]
 	\[\pdv{x}{u}\at y=\pdv{x}{u}\at v-\pdv{x}{y}\at u\pdv{y}{u}\at v\]
 	\[\pdv{x}{u}\at v=\pdv{x}{y}\at v\pdv{y}{u}\at v\]
+    \begin{equation*}
+        \frac {\delta F[f]} {\delta f(x)} =
+        \lim\limits_{\epsilon \to 0}
+        \frac {F[f + \epsilon\delta_x] - F[f]} \epsilon
+    \end{equation*}
+    \begin{equation*}
+        \mathbf F(\mathbf x, \mathbf f(\mathbf x)) = 0 \rightarrow
+    \end{equation*}
+    \begin{equation*}
+        \rightarrow \nabla_{\mathbf x} \mathbf f
+        = -(\partial_{\mathbf f} \mathbf F)^{-1} \partial_{\mathbf x} \mathbf F
+    \end{equation*}
 \end{formulae}
 
 \begin{formulae}{5}{integrals}
@@ -238,6 +258,9 @@
 	\[\inv{\cosh x}=1-\frac{x^2}2+\frac5{24}x^4-\frac{61}{720}x^6+\frac{277}{8064}x^8+\LO{10}\]
 	\[\inv{\tanh x}=\inv x+\frac x3-\frac{x^3}{45}+\frac2{945}x^5+\LO7\]
 	\[\arsinh x = x - \frac{x^{3}}{6} + \frac{3}{40} x^{5} - \frac{5}{112} x^{7} + \LO9\]
+    \begin{equation*}
+        \artanh x = x + \frac{x^3}3 + \frac{x^5}5 + \frac{x^7}7 + \dotsb
+    \end{equation*}
 	\[(1+x)^n=1+nx+\frac{n(n-1)}2x^2+\LO3\]
 	\[(1+x)^x=1+x^2-\frac{x^3}2+\frac56x^4-\frac34x^5+\LO6\]
 	\[x!=1-\gamma x+\big(\frac{\gamma^2}2+\frac{\pi^2}{12}\big)x^2+\LO3\]
@@ -250,8 +273,53 @@
 \newcommand*\conv{\mathop{\star}} % convolution
 \renewcommand*\scp[2]{({#1},{#2})} % scalar product
 \begin{formulae}{3}{fourier}
-	\[\text{Fourier: }c_n=\frac2T\int_0^Tf(t)\cos(n\frac tT)\dd t\]
-	\[\fourier[f](\omega)=\hat f(\omega)=\int\dd te^{i\omega t}f(t)\]
+    %
+    % fourier transform
+    \begin{equation*}
+        f(t) = \frac 1 {2\pi}
+        \int_{-\infty}^\infty \mathrm d\omega\, e^{i\omega t} \tilde f(\omega),
+    \end{equation*}
+    \begin{equation*}
+        \mathcal F[f](\omega) = \tilde f(\omega) =
+        \int_{-\infty}^\infty \mathrm dt\, e^{-i\omega t} f(t)
+    \end{equation*}
+    \begin{equation*}
+        \mathcal F[f'](\omega) = i\omega \mathcal F[f](\omega)
+    \end{equation*}
+    %
+    % fourier series
+    \begin{equation*}
+        g(t) = \sum_{k=-\infty}^\infty \tilde g_k e^{-i2\pi kt/T},
+    \end{equation*}
+    \begin{equation*}
+        \tilde g_k = \int_0^T \frac {\mathrm d t} T e^{i2\pi kt/T} g(t)
+    \end{equation*}
+    %
+    % discrete time transform
+    \begin{equation*}
+        x_n = \frac 1 {2\pi}
+        \int_0^{2\pi} \mathrm d\omega\, e^{i\omega n} \tilde x(\omega),
+    \end{equation*}
+    \begin{equation*}
+        \operatorname{DTFT}[y](\omega) = \tilde x(\omega) =
+        \sum_{n=-\infty}^\infty e^{-i\omega n} x_n
+    \end{equation*}
+    \begin{equation*}
+        \operatorname{DTFT}^{-1}[i\omega] = \begin{cases}
+            0 & n = 0 \\
+            (-1)^n / n & n \neq 0
+        \end{cases}
+    \end{equation*}
+    %
+    % discrete transform
+    \begin{equation*}
+        y_n = \frac 1 N \sum_{k=0}^{N-1} e^{i2\pi kn/N} \tilde y_k,
+    \end{equation*}
+    \begin{equation*}
+        \operatorname{DFT}[y](k) = \tilde y_k =
+        \sum_{n=0}^{N-1} e^{-i2\pi kn/N} y_n
+    \end{equation*}
+    %
 	\[f,g\in\L[2]:\scp{\hat f}{\hat g}=2\pi\scp fg\]
 	\[\fourier\qty[\frac{\sin t}t]=\sqrt\frac\pi2\chi_{[-1;1]}(\omega)\] % verify the constant
 	\[t^{k\le n}f(t)\in\L[1]:\fourier[t^nf(t)]=(-i)^n\hat f^{(n)}\]
@@ -349,6 +417,15 @@
 \begin{formulae}{3}{Linear algebra}
 	\[\dim(U+V)=\dim U+\dim V-\dim(U\cap V)\]
 	\[\dim V=\dim \ell(V)+\dim(V\cap\ker\ell)\]
+    \begin{equation*}
+        (A^{-1} + B^{-1})^{-1} = A - A (A + B)^{-1} A
+    \end{equation*}
+    \begin{equation*}
+        \text{$L$ triangular} \rightarrow \text{$L_{ii}$ eigenvalues}
+    \end{equation*}
+    \begin{equation*}
+        A = A^\dagger, A > 0 \rightarrow A = LL^\top, \text{$L$ triangular}
+    \end{equation*}
 \end{formulae}
 
 % \begin{formulae}{5}{Groups}
@@ -439,6 +516,11 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 \begin{formulae}{3}{vectors}
 	\[\varepsilon_{ijk}=\begin{cases}0&i=j\vel j=k\vel k=i\\1&i+1\equiv j\et j+1\equiv k\\-1&i\equiv j+1\et j\equiv k+1\end{cases}\]
 	\[\varepsilon_{ijk}\varepsilon_{ilm}=\delta_{jl}\delta_{km}-\delta_{jm}\delta_{kl}\]
+    \begin{equation*}
+        \varepsilon^{\alpha\beta\mu\nu} \varepsilon_{\alpha\beta\rho\sigma}
+        = -2(\delta^\mu_\rho \delta^\nu_\sigma
+        - \delta^\mu_\sigma \delta^\nu_\rho)
+    \end{equation*}
 	\[\vec{a}\times\vec{b}=\varepsilon_{ijk}a_jb_k\hat{e}_i;\ (\vec a\otimes\vec b)_{ij}=a_ib_j\]
 	\[(\vec{a}\times\vec{b})\vec{c}=(\vec{c}\times\vec{a})\vec{b}\]
 	\[(\vec{a}\times\vec{b})\times\vec{c}=-(\vec{b}\vec{c})\vec{a}+(\vec{a}\vec{c})\vec{b}\]
@@ -522,6 +604,10 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[p\big[\frac{m-\mu}{s_m}\big]=S(;n)\]
 	\[H_{0\text{ sign.lev.}}=\int_\text{reject}p(S|H_0)\dd{S}\]
 	\[H_{0\text{ pow.vs. }H_1}=\int_\text{reject}p(S|H_1)\dd{S}\]
+    \begin{equation*}
+        \sum_i (x_i - \bar x)^2
+        = \sum_i x_i^2 - \frac 1 n (\sum_i x_i)^2
+    \end{equation*}
 \end{formulae}
 
 \begin{formulae}{4}{least squares}
@@ -860,7 +946,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 \end{formulae}
 
 \begin{formulae}{2}{electrostatics (CGS)}
-	\[\vec F_{12}=q_1q_2\frac{\vec r_2-\vec r_1}{\abs{\vec r_1-\vec r_2}^3};\,\vec E_1=\frac{\vec F_{12}}{q_2};\,V(\vec r)=\int\dd^3r'\frac{\rho(\vec r')}{\abs{\vec r-\vec r'}};\,\rho_q=\delta(\vec r-\vec r_q)\]
+	\[\vec F_{12}=q_1q_2\frac{\vec r_2-\vec r_1}{\abs{\vec r_1-\vec r_2}^3};\,\vec E_1=\frac{\vec F_{12}}{q_2};\,V(\vec r)=\int\dd^3r'\frac{\rho(\vec r')}{\abs{\vec r-\vec r'}};\,\rho_q=q\delta(\vec r-\vec r_q)\]
 	\[\oint\vec E\vec{\dd S}=4\pi\int\rho\,\dd^3x;\,-\laplacian V=\div\vec E=4\pi\rho;\,\curl\vec E=0\]
 	\[U=\inv{8\pi}\int E^2\,\dd^3x;\,\tilde U=\inv2\frac{q_iq_j}{\abs{\vec r_i-\vec r_j}}=\inv{8\pi}\sum_{i\neq j}\int\vec E_i\vec E_j\,\dd^3x\]
 	\[V(\vec r)=\int\rho G_\text D(\vec r)\,\dd^3x-\inv{4\pi}\oint_S V\pdv{G_\text D}{n}(\vec r)\,\dd S\]
@@ -1221,15 +1307,20 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[M\chemarrow abc:s_{ab}+s_{bc}+s_{ac}=M^2+m_a^2+m_b^2+m_c^2\]
 	\[a_iA_i\chemarrow b_jB_j:Q:=a_im_{A_i}-b_jm_{B_j}\]
 	\begin{equation*}
-	    p_T \approx (\SI{0.3}{GeV/cT^{-1}m^{-1}}) BR
+	    p_T = |q|BR \approx (\SI{0.3}{GeV/cT^{-1}m^{-1}}) BR
 	\end{equation*}
 	\[\frac{\dd^3\vec p}{2E}=\dd^4p\delta(p^2-m^2)\theta(p_0)
     =\frac12\de p_\bot\,p_\bot \de\phi \de y\]
 	\[\dd L_p=\qty(\prod_n\frac{\dd^3\vec p_n}{2E_n})\delta^4(p_\text{in}-\sum_np_n);\ \dd\sigma=f_\text{coll}(p_1,\dotsc,p_n)\dd L_p\]
 	\[\text{two body: }\dv{\sigma}{\Omega_1}=f(\Omega_1)\frac{p_1}{4\sqrt s};\ \sqrt s=\text{c.m. energy}\]
 	\[\text{Rutherford: }\tan\frac\theta2=\inv{4\pi\varepsilon_0}\frac{Qqm}{p^2b};\ \dv{\sigma}{\Omega}=\abs{\frac b{\sin\theta}\dv{b}{\theta}};\ \dv{\sigma}{\Omega}=\frac{d_\text{min}^2}{16}\inv{\sin^4\frac\theta2}\]
-	\[\dv{\sigma}{\Omega}\big|_\text{Mott}=\dv{\sigma}{\Omega}\big|_\text{Rutherford}\cdot\cos^2\frac\theta2\]
 	\[\text{mass defect}\is M-A\cdot\mathrm{amu}\]
+    \begin{equation*}
+        e^-A^+_\text{still}\chemarrow e^-A^+_\text{still}:\,
+        \frac{\de\sigma}{\de\Omega} =
+        \frac{Z^2\alpha^2}{4v^4E^2\sin^4\frac\theta2}
+        \left(1 - v^2\sin^2\frac\theta2 \right)
+    \end{equation*}
 \end{formulae}
 
 \begin{formulae}{2}{QFT fields}
@@ -1281,7 +1372,7 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
     \begin{equation*}
         \gamma^0_C = \smqty(&\mathbb 1\\\mathbb 1&), \,
         \gamma^i_C = \smqty(&-\sigma^i\\\sigma^i&), \,
-        \gamma^5_C = \smqty(1&\\&-1)
+        \gamma^5_C = \smqty(\mathbb 1 & \\ & -\mathbb 1)
     \end{equation*}
     \begin{equation*}
         \gamma^5 := i\gamma^0\gamma^1\gamma^2\gamma^3, \,
@@ -1296,7 +1387,9 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
         \acomm{\gamma^\mu}{\gamma^\nu} = 2\eta^{\mu\nu}, \,
         \acomm{\gamma^5}{\gamma^\mu} = 0
     \end{equation*}
-	\[\gamma^0\ctransp{(\gamma^i)}\gamma^0 = \gamma^i\]
+    \begin{equation*}
+        \gamma^0 (\gamma^\mu)^\dagger \gamma^0 = \gamma^\mu
+    \end{equation*}
 	\[\comm{\gamma^5}{\Sigma^{\mu\nu}} = 0\]
 	\[\slashed p \is \gamma^\mu p_\mu\]
 	\[\slashed p\slashed q = pq - i\Sigma_{\mu\nu}p^\mu q^\nu\]
@@ -1316,7 +1409,9 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
         \bar\gamma^\mu = \gamma^\mu, \,
         \bar\gamma^5 = -\gamma^5
     \end{equation*}
-	\[\sum_{rs} \abs\big{\bar u_s(\vec k) \prod_\mu\gamma^\mu v_s(\vec p)}^2 =\]
+    \begin{equation*}
+        \sum_{rs} \abs\big{\bar u_r(\vec k) \prod_\mu\gamma^\mu v_s(\vec p)}^2 =
+    \end{equation*}
 	\[= \tr\qty\big((\slashed k+m) \prod_\mu\gamma^\mu (\slashed p-m) \overline{\prod_\mu\gamma^\mu})\]
 \end{formulae}
 
@@ -1439,6 +1534,11 @@ N&\Xi&O&\Pi&P&\Sigma&T&\Upsilon&\Phi&X&\Psi&\Omega\\
 	\[\dd\sigma_{12\to\mathrm{out}} = \frac1{4\sqrt{(k_1k_2)^2 - m_1^2m_2^2}}
 	\prod \frac {\dd^3 k_\text{out}} {(2\pi)^3 2E(\vec k_\text{out})}\cdot\]
 	\[\cdot\abs{\mathcal M}^2 (2\pi)^4 \delta^4(k_1+k_2 - \sum k_\text{out})\cdot(\text{Gibbs})\]
+    \begin{equation*}
+        \bra{0} T A_\mu(x) A_\nu(y) \ket{0} =
+        -i\eta_{\mu\nu} \int \frac{\mathrm d^4 k} {(2\pi)^4}
+        \frac {e^{-i k \cdot (x - y)}} {k^2 + i\epsilon}
+    \end{equation*}
 \end{formulae}
 
 \end{document}
